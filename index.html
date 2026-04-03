@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO & Partage Social -->
+  <meta name="description" content="Giovanny Gandonou - Consultant tunnel de vente et développeur web. Je crée des systèmes automatisés pour générer des clients qualifiés.">
+  <meta property="og:title" content="Giovanny Gandonou | Expert Tunnels de Vente">
+  <meta property="og:description" content="Générez des clients en continu avec des systèmes automatisés.">
+  
+  <title>Giovanny Gandonou - Consultant & Développeur</title>
+  
+  <!-- Polices et Icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      background: linear-gradient(135deg, #e6ece8, #ffffff);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      color: #333;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 380px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 35px 25px;
+      box-shadow: 0 20px 50px rgba(53, 102, 70, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    /* AVATAR OPTIMISÉ POUR IMAGE */
+    .avatar {
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+      margin: 0 auto 15px auto;
+      box-shadow: 0 10px 25px rgba(53, 102, 70, 0.25);
+      border: 4px solid #fff;
+      position: relative;
+    }
+    
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover; /* Garde les proportions de la photo */
+      background: #f0f4f1; /* Fond de secours */
+    }
+
+    /* Petit badge en ligne */
+    .status-badge {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      width: 20px;
+      height: 20px;
+      background: #22c55e;
+      border: 3px solid #fff;
+      border-radius: 50%;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #1a1a1a;
+      letter-spacing: -0.5px;
+    }
+
+    .role {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: #356646;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    /* PREUVE SOCIALE */
+    .social-proof {
+      text-align: center;
+      font-size: 13px;
+      color: #f59e0b;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .social-proof span { color: #666; font-size: 12px; margin-left: 5px;}
+
+    .desc {
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+
+    /* CTA PRINCIPAL */
+    .main-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px;
+      background: #356646;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 25px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(53, 102, 70, 0.25);
+    }
+    
+    .main-cta:hover {
+      transform: translateY(-2px);
+      background: #295037;
+      box-shadow: 0 12px 25px rgba(53, 102, 70, 0.35);
+    }
+
+    /* SOCIALS */
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .social {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #f0f4f1;
+      color: #356646;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social:hover {
+      transform: translateY(-3px);
+      background: #356646;
+      color: #fff;
+      box-shadow: 0 8px 15px rgba(53, 102, 70, 0.2);
+    }
+
+    /* TABS */
+    .tabs {
+      display: flex;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #f0f4f1;
+      margin-bottom: 20px;
+      padding: 4px;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 12px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #666;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .tab.active {
+      background: #fff;
+      color: #356646;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .section {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .section.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ABOUT CARD */
+    .about {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+      border: 1px solid #f9f9f9;
+    }
+
+    .about h3 {
+      font-size: 15px;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .about h3 i { color: #356646; }
+
+    .about p {
+      font-size: 13.5px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    /* COMPÉTENCES */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-badge {
+      background: #f0f4f1;
+      color: #356646;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      transition: 0.3s;
+      cursor: default;
+    }
+    
+    .skill-badge:hover {
+      background: #356646;
+      color: #fff;
+    }
+
+    /* SERVICES CARDS */
+    .service {
+      display: flex;
+      align-items: center;
+      padding: 18px 16px;
+      border-radius: 16px;
+      background: #fff;
+      margin-bottom: 12px;
+      text-decoration: none;
+      color: #333;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      border: 1px solid #f0f4f1;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .service:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(53, 102, 70, 0.1);
+      border-color: rgba(53, 102, 70, 0.2);
+    }
+
+    .service-icon {
+      width: 42px;
+      height: 42px;
+      background: #f0f4f1;
+      color: #356646;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-right: 15px;
+      flex-shrink: 0;
+      transition: 0.3s;
+    }
+
+    .service:hover .service-icon {
+      background: #356646;
+      color: #fff;
+    }
+
+    .service-content { flex: 1; }
+
+    .service-content h4 {
+      font-size: 14.5px;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+
+    .service-content p {
+      font-size: 12.5px;
+      color: #777;
+      line-height: 1.4;
+    }
+
+    .service-arrow {
+      color: #356646;
+      font-size: 14px;
+      opacity: 0.3;
+      transition: 0.3s;
+    }
+
+    .service:hover .service-arrow {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <!-- PHOTO DE PROFIL --> 
+<div class="avatar"> 
+    <img src="images/pl.png" alt="Giovanny Gandonou - Portrait professionnel"> 
+    <div class="status-badge" title="Disponible pour de nouveaux projets"></div> 
+</div> 
+
+<h1>Giovanny Gandonou</h1> 
+<div class="role">CONSULTANT TUNNELS · DÉVELOPPEUR WEB</div> 
+
+<!-- PREUVE SOCIALE --> 
+<div class="social-proof"> 
+    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 
+    <span>(Consultant certifié)</span> 
+</div> 
+<div class="desc">Je crée des systèmes automatisés qui génèrent des clients qualifiés en continu pour votre business.</div> 
+
+<!-- RESEAUX SOCIAUX (Déplacés au-dessus du bouton principal) --> 
+<div class="socials"> 
+    <a href="https://www.facebook.com/Midogiova229" target="_blank" class="social" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a> 
+    <a href="https://wa.me/2290198054347" target="_blank" class="social" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a> 
+    <a href="https://www.youtube.com/@giovaofficiel" target="_blank" class="social" aria-label="YouTube"><i class="fab fa-youtube"></i></a> 
+    <a href="mailto:midogiova@gmail.com" class="social" aria-label="Email"><i class="fas fa-envelope"></i></a> 
+    <!-- Icône Telegram (à modifier avec ton lien) -->
+    <a href="TON_LIEN_TELEGRAM" target="_blank" class="social" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+</div> 
+
+<!-- BOUTON CTA PRINCIPAL --> 
+<a href="https://calendly.com/TON_LIEN_ICI" target="_blank" class="main-cta"> 
+    <i class="fas fa-calendar-alt"></i> Réserver un appel stratégique gratuit 
+</a> 
+
+<!-- LIEN DISCRET POUR LA COMMUNAUTÉ -->
+<div style="text-align: center; margin-top: 15px; margin-bottom: 25px;">
+    <a href="LIEN_DE_TA_COMMUNAUTE" target="_blank" style="color: #666; font-size: 0.85rem; text-decoration: underline;">
+        Pas prêt pour un appel ? Rejoins plutôt ma communauté privée <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i>
+    </a>
+</div>
+
+<!-- ONGLETS --> 
+<div class="tabs"> 
+    <div class="tab active" onclick="switchTab('profil', event)">Profil</div> 
+    <div class="tab" onclick="switchTab('services', event)">Services</div> 
+    <div class="tab" onclick="switchTab('avis', event)">Avis</div> 
+</div> 
+
+<!-- SECTION 1 : PROFIL --> 
+<div id="profil" class="section active"> 
+    <div class="about"> 
+        <h3><i class="fas fa-user-tie"></i> À propos</h3> 
+        <p> 
+            Passionné par le digital, j'accompagne les entreprises et les entrepreneurs à exploser leurs ventes grâce à des tunnels performants. Développeur web et consultant stratégique, je conçois des écosystèmes sur-mesure optimisés pour la conversion. 
+        </p> 
+        
+        <h3><i class="fas fa-bolt"></i> Mon Expertise</h3> 
+        <div class="skills"> 
+            <span class="skill-badge">Tunnels de vente</span> 
+            <span class="skill-badge">Création Web</span> 
+            <span class="skill-badge">Copywriting</span> 
+            <span class="skill-badge">Acquisition Client</span> 
+        </div> 
+
+        <h3 style="margin-top: 25px;"><i class="fas fa-users"></i> Communauté</h3>
+        <a href="LIEN_DE_TA_COMMUNAUTE" target="_blank" class="service"> 
+            <div class="service-icon"><i class="fas fa-comments"></i></div> 
+            <div class="service-content"> 
+                <h4>Rejoindre mon groupe privé</h4> 
+                <p>Astuces, stratégies et réseautage entre entrepreneurs.</p> 
+            </div> 
+            <div class="service-arrow"><i class="fas fa-chevron-right"></i></div> 
+        </a>
+    </div> 
+</div> 
+
+<!-- SECTION 2 : SERVICES --> 
+<div id="services" class="section"> 
+    <a href="Tunnel de vente/tunnel-de-vente.html" class="service"> 
+        <div class="service-icon"><i class="fas fa-filter"></i></div> 
+        <div class="service-content"> 
+            <h4>Tunnels de vente Haute Conversion</h4> 
+            <p>Création de systèmes d'acquisition automatisés de A à Z.</p> 
+        </div> 
+        <div class="service-arrow"><i class="fas fa-chevron-right"></i></div> 
+    </a> 
+    
+    <a href="Creation site web/creation-site-web.html" class="service"> 
+        <div class="service-icon"><i class="fas fa-laptop-code"></i></div> 
+        <div class="service-content"> 
+            <h4>Développement Site Web</h4> 
+            <p>Sites vitrines et e-commerce rapides, responsives et modernes.</p> 
+        </div> 
+        <div class="service-arrow"><i class="fas fa-chevron-right"></i></div> 
+    </a> 
+    
+    <a href="Audit Strategie/audit-strategie.html" class="service"> 
+        <div class="service-icon"><i class="fas fa-chart-line"></i></div> 
+        <div class="service-content"> 
+            <h4>Audit & Stratégie Digitale</h4> 
+            <p>Analyse de tes offres actuelles et plan d'action personnalisé.</p> 
+        </div> 
+        <div class="service-arrow"><i class="fas fa-chevron-right"></i></div> 
+    </a> 
+</div>
+
+<!-- SECTION 3 : AVIS (Nouveau) -->
+<div id="avis" class="section">
+    <div class="about">
+        <h3><i class="fas fa-heart"></i> Mots de mes clients</h3>
+        
+        <!-- Témoignage 1 -->
+        <div style="padding: 15px; margin-bottom: 15px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.1); text-align: left;">
+            <div style="color: #f39c12; font-size: 0.85rem; margin-bottom: 8px;">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p style="font-size: 0.95rem; font-style: italic; margin-bottom: 10px;">"Giovanny a complètement transformé notre système d'acquisition. Depuis que nous avons lancé le nouveau tunnel, nos ventes ont fait x3 !"</p>
+            <div style="font-weight: 600; font-size: 0.9rem;">Marc D. <span style="font-weight: 400; color: #666; font-size: 0.85rem;">— E-commerçant</span></div>
+        </div>
+
+        <!-- Témoignage 2 -->
+        <div style="padding: 15px; margin-bottom: 15px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.1); text-align: left;">
+            <div style="color: #f39c12; font-size: 0.85rem; margin-bottom: 8px;">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p style="font-size: 0.95rem; font-style: italic; margin-bottom: 10px;">"Un accompagnement ultra professionnel. Il a compris exactement mon besoin et a livré un site hyper rapide et optimisé."</p>
+            <div style="font-weight: 600; font-size: 0.9rem;">Sophie L. <span style="font-weight: 400; color: #666; font-size: 0.85rem;">— Coach</span></div>
+        </div>
+    </div>
+</div>
+
+  </div>
+
+  <script>
+    function switchTab(tabId, event) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      
+      event.currentTarget.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>

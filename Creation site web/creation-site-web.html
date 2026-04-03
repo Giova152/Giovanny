@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Soumission de projet web - Giovanny Gandonou">
+    <title>Soumettre un Projet - Giovanny Gandonou</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #e6ece8, #ffffff);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #333;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(53, 102, 70, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        /* HEADER OPTIMISÉ */
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+        
+        /* Conteneur pour isoler le bouton retour du texte */
+        .header-nav {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .back-btn {
+            color: #356646;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            background: #f0f4f1;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: #356646;
+            color: #fff;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+        
+        .header p {
+            color: #555;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* FORMULAIRE */
+        .project-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .form-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #d1d9d4;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            background: #fcfdfc;
+            transition: all 0.3s ease;
+            color: #333;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: #356646;
+            box-shadow: 0 0 0 4px rgba(53, 102, 70, 0.1);
+            background: #fff;
+        }
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        /* DESIGN SELECT */
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+        
+        /* DESIGN UPLOAD FICHIER */
+        .file-input {
+            padding: 9px 12px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        ::file-selector-button {
+            background: #e6ece8;
+            border: 1px solid #d1d9d4;
+            border-radius: 8px;
+            padding: 8px 14px;
+            margin-right: 12px;
+            color: #356646;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        ::file-selector-button:hover {
+            background: #d1d9d4;
+            color: #1a1a1a;
+        }
+        
+        /* CHECKBOX RGPD */
+        .checkbox-group {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 10px;
+            padding: 15px;
+            background: #f9fbf9;
+            border-radius: 12px;
+            border: 1px solid #e0e6e2;
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #356646;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .checkbox-group label {
+            font-size: 13px;
+            color: #555;
+            font-weight: 400;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+        
+        /* BOUTON & PAIEMENT */
+        .checkout-section {
+            margin-top: 20px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e6e2;
+            text-align: center;
+        }
+        .fee-notice {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 20px;
+            background: #f0f4f1;
+            padding: 12px;
+            border-radius: 8px;
+        }
+        .fee-notice i {
+            color: #356646;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .submit-btn {
+            background: #356646;
+            color: #fff;
+            border: none;
+            padding: 16px 30px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(53, 102, 70, 0.25);
+        }
+        .submit-btn:hover {
+            background: #295037;
+            box-shadow: 0 12px 25px rgba(53, 102, 70, 0.35);
+            transform: translateY(-2px);
+        }
+        .secure-badges {
+            margin-top: 15px;
+            color: #888;
+            font-size: 13px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* =========================================
+           RÈGLES RESPONSIVE (MOBILES & TABLETTES)
+           ========================================= */
+        @media (max-width: 768px) {
+            body { padding: 20px 15px; }
+            .container { padding: 30px 20px; border-radius: 20px; }
+            
+            /* Ajustement du header pour mobile */
+            .header { margin-bottom: 25px; }
+            .header-nav { margin-bottom: 15px; }
+            .header h1 { font-size: 26px; }
+            .header p { font-size: 14px; }
+            
+            /* Les colonnes passent l'une sous l'autre */
+            .form-row { flex-direction: column; gap: 15px; }
+            .project-form { gap: 15px; }
+            
+            ::file-selector-button {
+                display: block; width: 100%; margin-right: 0; margin-bottom: 10px; text-align: center;
+            }
+            .fee-notice { flex-direction: column; text-align: center; font-size: 13px; }
+            .submit-btn { font-size: 15px; padding: 14px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <!-- LE NOUVEAU BOUTON RETOUR SÉCURISÉ -->
+            <div class="header-nav">
+                <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour</a>
+            </div>
+            
+            <h1>Parlez-moi de votre projet</h1>
+            <p>Afin de pouvoir analyser votre demande avec toute l'attention qu'elle mérite, veuillez remplir ce formulaire. Des frais de dossier de 50€ sont requis pour valider votre soumission.</p>
+        </div>
+
+        <form class="project-form" action="#" method="POST" enctype="multipart/form-data" id="dossierForm">
+            
+            <!-- LIGNE 1 : Identité -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" name="prenom" class="form-control" placeholder="John" required>
+                </div>
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" class="form-control" placeholder="Doe" required>
+                </div>
+            </div>
+
+            <!-- LIGNE 2 : Contact -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Adresse Email</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="john@entreprise.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Numéro de téléphone</label>
+                    <input type="tel" id="phone" name="phone" class="form-control" placeholder="+33 6 12 34 56 78">
+                </div>
+            </div>
+
+            <!-- LIGNE 3 : URL / Entreprise -->
+            <div class="form-group">
+                <label for="website">URL de votre site actuel (ou nom de l'entreprise)</label>
+                <input type="text" id="website" name="website" class="form-control" placeholder="ex: https://www.mon-site.com">
+            </div>
+
+            <!-- LIGNE 4 : Type de projet + Fichier -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="type_projet">Type de projet</label>
+                    <select id="type_projet" name="type_projet" class="form-control" required>
+                        <option value="" disabled selected>Sélectionnez une option...</option>
+                        <option value="vitrine">Site Vitrine (Présentation d'activité)</option>
+                        <option value="ecommerce">Boutique E-Commerce (Vente en ligne)</option>
+                        <option value="sur_mesure">Application Web / Sur-mesure</option>
+                        <option value="refonte">Refonte d'un site existant</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fichier_projet">Cahier des charges (Optionnel)</label>
+                    <input type="file" id="fichier_projet" name="fichier_projet" class="form-control file-input" accept=".pdf,.doc,.docx,.txt,.zip">
+                </div>
+            </div>
+
+            <!-- LIGNE 5 : Budget + Délai -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="budget">Budget estimé</label>
+                    <select id="budget" name="budget" class="form-control" required>
+                        <option value="" disabled selected>Sélectionnez une option...</option>
+                        <option value="moins_1000">Moins de 1 000 €</option>
+                        <option value="1000_3000">Entre 1 000 € et 3 000 €</option>
+                        <option value="3000_5000">Entre 3 000 € et 5 000 €</option>
+                        <option value="plus_5000">Plus de 5 000 €</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="delai">Délai souhaité</label>
+                    <select id="delai" name="delai" class="form-control" required>
+                        <option value="" disabled selected>Sélectionnez une option...</option>
+                        <option value="urgent">Dès que possible (Urgent)</option>
+                        <option value="1_mois">Dans un mois</option>
+                        <option value="3_mois">D'ici 2 à 3 mois</option>
+                        <option value="flexible">Je suis flexible</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- LIGNE 6 : Description -->
+            <div class="form-group">
+                <label for="description">Description détaillée du projet</label>
+                <textarea id="description" name="description" class="form-control" placeholder="Décrivez vos objectifs, vos concurrents, les fonctionnalités attendues..." required></textarea>
+            </div>
+
+            <!-- RGPD -->
+            <div class="checkbox-group">
+                <input type="checkbox" id="rgpd" name="rgpd" required>
+                <label for="rgpd">J'accepte que les informations saisies soient exploitées dans le cadre de ma demande de devis et de la relation commerciale qui peut en découler.</label>
+            </div>
+
+            <!-- ZONE DE PAIEMENT -->
+            <div class="checkout-section">
+                <div class="fee-notice">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Les frais de traitement de dossier (50€) sont déduits pour traiter votre dossier.</span>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    Procéder au paiement - 50,00 € <i class="fas fa-arrow-right"></i>
+                </button>
+                
+                <div class="secure-badges">
+                    <i class="fas fa-lock"></i> Paiement 100% sécurisé.
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('dossierForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            alert("Redirection vers la page de paiement sécurisée (Stripe) en cours...");
+            // Tu peux décommenter la ligne ci-dessous et insérer ton lien Stripe (Payment Link)
+            // window.location.href = "https://buy.stripe.com/VOTRE_LIEN_DE_PAIEMENT";
+        });
+    </script>
+
+</body>
+</html>

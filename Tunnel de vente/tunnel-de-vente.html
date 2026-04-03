@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Offres de création de Tunnels de Vente Haute Conversion par Giovanny Gandonou.">
+  <title>Tunnels de Vente - Giovanny Gandonou</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      background: linear-gradient(135deg, #e6ece8, #ffffff);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+      color: #333;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1000px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 50px rgba(53, 102, 70, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .back-btn {
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #356646;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      background: #f0f4f1;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #356646;
+      color: #fff;
+    }
+
+    .header h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
+
+    .header p {
+      color: #555;
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* GRID DES OFFRES */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    /* CARTES D'OFFRES */
+    .pricing-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      border: 1px solid #f0f4f1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(53, 102, 70, 0.15);
+    }
+
+    .pricing-card.popular {
+      border: 2px solid #356646;
+      transform: scale(1.03);
+      box-shadow: 0 15px 40px rgba(53, 102, 70, 0.15);
+    }
+
+    .pricing-card.popular:hover {
+      transform: scale(1.03) translateY(-5px);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #356646;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 15px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .plan-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 5px;
+    }
+
+    .plan-desc {
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 20px;
+      min-height: 40px;
+    }
+
+    .plan-price {
+      font-size: 32px;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+    }
+
+    .plan-price span {
+      font-size: 14px;
+      font-weight: 500;
+      color: #666;
+    }
+
+    /* LISTE DES FONCTIONNALITÉS */
+    .features {
+      list-style: none;
+      margin-bottom: 30px;
+      flex: 1;
+    }
+
+    .features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 15px;
+      line-height: 1.4;
+    }
+
+    .features li i {
+      color: #356646;
+      font-size: 14px;
+      margin-top: 3px;
+    }
+
+    /* BOUTONS */
+    .cta-btn {
+      display: block;
+      text-align: center;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .cta-btn.outline {
+      background: transparent;
+      color: #356646;
+      border: 2px solid #356646;
+    }
+
+    .cta-btn.outline:hover {
+      background: #f0f4f1;
+    }
+
+    .cta-btn.solid {
+      background: #356646;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(53, 102, 70, 0.25);
+    }
+
+    .cta-btn.solid:hover {
+      background: #295037;
+      box-shadow: 0 12px 25px rgba(53, 102, 70, 0.35);
+    }
+
+    /* RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 768px) {
+      .container { padding: 30px 20px; }
+      .header h1 { font-size: 26px; margin-top: 40px; }
+      .back-btn { top: -10px; }
+      .pricing-card.popular { transform: none; }
+      .pricing-card.popular:hover { transform: translateY(-5px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <div class="header">
+      <!-- LIEN VERS TA PAGE PRINCIPALE -->
+      <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour</a>
+      <h1>Tunnels de Vente Haute Conversion</h1>
+      <p>Transformez vos visiteurs en clients qualifiés grâce à un système d'acquisition automatisé et optimisé pour votre business.</p>
+    </div>
+
+    <div class="pricing-grid">
+      
+      <!-- OFFRE 1 : ESSENTIEL -->
+      <div class="pricing-card">
+        <h3 class="plan-name">Essentiel</h3>
+        <p class="plan-desc">Idéal pour capturer des prospects et lancer un premier produit (Lead Magnet).</p>
+        <div class="plan-price">497€ <span>/ projet</span></div>
+        
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> Page de capture (Opt-in) optimisée</li>
+          <li><i class="fas fa-check-circle"></i> Page de remerciement personnalisée</li>
+          <li><i class="fas fa-check-circle"></i> Intégration auto-répondeur (Email)</li>
+          <li><i class="fas fa-check-circle"></i> Design 100% responsive (Mobile & PC)</li>
+          <li><i class="fas fa-check-circle"></i> Livraison en 5 jours ouvrés</li>
+        </ul>
+        
+        <a href="https://calendly.com/ton-lien" target="_blank" class="cta-btn outline">Réserver un appel</a>
+      </div>
+
+      <!-- OFFRE 2 : BUSINESS (Mise en avant) -->
+      <div class="pricing-card popular">
+        <div class="popular-badge">Le plus choisi</div>
+        <h3 class="plan-name">Business</h3>
+        <p class="plan-desc">Le système complet pour vendre un produit ou service en automatique.</p>
+        <div class="plan-price">1 197€ <span>/ projet</span></div>
+        
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> Tout ce qui est inclus dans Essentiel</li>
+          <li><i class="fas fa-check-circle"></i> Page de vente longue (Copywriting inclus)</li>
+          <li><i class="fas fa-check-circle"></i> Bon de commande avec Order Bump</li>
+          <li><i class="fas fa-check-circle"></i> 1 Page d'Upsell / Downsell</li>
+          <li><i class="fas fa-check-circle"></i> Séquence de 3 emails automatisés</li>
+          <li><i class="fas fa-check-circle"></i> Connexion au processeur de paiement (Stripe/PayPal)</li>
+        </ul>
+        
+        <a href="https://calendly.com/ton-lien" target="_blank" class="cta-btn solid">Réserver un appel</a>
+      </div>
+
+      <!-- OFFRE 3 : ÉLITE -->
+      <div class="pricing-card">
+        <h3 class="plan-name">Élite</h3>
+        <p class="plan-desc">Écosystème sur-mesure pour les gros lancements et webinaires.</p>
+        <div class="plan-price">Sur devis</div>
+        
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> Tunnel Webinaire / Lancement complet</li>
+          <li><i class="fas fa-check-circle"></i> Stratégie d'acquisition de A à Z</li>
+          <li><i class="fas fa-check-circle"></i> Séquence email avancée (7+ emails)</li>
+          <li><i class="fas fa-check-circle"></i> Installation des Pixels de tracking (Meta, Google)</li>
+          <li><i class="fas fa-check-circle"></i> A/B Testing sur les pages clés</li>
+          <li><i class="fas fa-check-circle"></i> Suivi et optimisation pendant 30 jours</li>
+        </ul>
+        
+        <a href="https://calendly.com/ton-lien" target="_blank" class="cta-btn outline">Demander un devis</a>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

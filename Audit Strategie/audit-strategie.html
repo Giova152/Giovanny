@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Audit de vos tunnels de vente et conseil en stratégie digitale pour exploser vos conversions.">
+  <title>Audit & Stratégie - Giovanny Gandonou</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      background: linear-gradient(135deg, #e6ece8, #ffffff);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+      color: #333;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1000px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 50px rgba(53, 102, 70, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    /* HEADER OPTIMISÉ POUR MOBILE (Nouveau) */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    /* Conteneur dédié pour le bouton retour */
+    .header-nav {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .back-btn {
+      color: #356646;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      background: #f0f4f1;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #356646;
+      color: #fff;
+    }
+
+    .header h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
+
+    .header p {
+      color: #555;
+      font-size: 16px;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* GRID DES OFFRES */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    /* CARTES D'OFFRES */
+    .pricing-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      border: 1px solid #f0f4f1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(53, 102, 70, 0.15);
+    }
+
+    .pricing-card.popular {
+      border: 2px solid #356646;
+      transform: scale(1.03);
+      box-shadow: 0 15px 40px rgba(53, 102, 70, 0.15);
+    }
+
+    .pricing-card.popular:hover {
+      transform: scale(1.03) translateY(-5px);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #356646;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 15px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .plan-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 5px;
+    }
+
+    .plan-desc {
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 20px;
+      min-height: 40px;
+    }
+
+    .plan-price {
+      font-size: 32px;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+    }
+
+    .plan-price span {
+      font-size: 14px;
+      font-weight: 500;
+      color: #666;
+    }
+
+    /* LISTE DES FONCTIONNALITÉS */
+    .features {
+      list-style: none;
+      margin-bottom: 30px;
+      flex: 1;
+    }
+
+    .features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 15px;
+      line-height: 1.4;
+    }
+
+    .features li i {
+      color: #356646;
+      font-size: 14px;
+      margin-top: 3px;
+    }
+
+    /* BOUTONS */
+    .cta-btn {
+      display: block;
+      text-align: center;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .cta-btn.outline {
+      background: transparent;
+      color: #356646;
+      border: 2px solid #356646;
+    }
+
+    .cta-btn.outline:hover {
+      background: #f0f4f1;
+    }
+
+    .cta-btn.solid {
+      background: #356646;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(53, 102, 70, 0.25);
+    }
+
+    .cta-btn.solid:hover {
+      background: #295037;
+      box-shadow: 0 12px 25px rgba(53, 102, 70, 0.35);
+    }
+
+    /* RESPONSIVE MIS À JOUR */
+    @media (max-width: 768px) {
+      .container { padding: 30px 20px; }
+      
+      /* Sur mobile, on centre le bouton retour ou on le laisse à gauche, mais il a sa propre ligne */
+      .header-nav { margin-bottom: 15px; }
+      
+      .header h1 { font-size: 26px; }
+      .pricing-card.popular { transform: none; }
+      .pricing-card.popular:hover { transform: translateY(-5px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <div class="header">
+      <!-- LE NOUVEAU BOUTON RETOUR RESPONSIVE -->
+      <div class="header-nav">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour</a>
+      </div>
+      
+      <h1>Audit & Stratégie Digitale</h1>
+      <p>Vous avez du trafic mais peu de ventes ? Identifions les points de blocage et mettons en place un plan d'action rentable.</p>
+    </div>
+
+    <div class="pricing-grid">
+      
+      <!-- OFFRE 1 -->
+      <div class="pricing-card">
+        <h3 class="plan-name">Audit Vidéo Express</h3>
+        <p class="plan-desc">Une analyse rapide et chirurgicale de votre site pour trouver les fuites de clients.</p>
+        <div class="plan-price">149€ <span>/ audit</span></div>
+        <ul class="features">
+          <li><i class="fas fa-video"></i> Vidéo personnalisée de 15-20 min</li>
+          <li><i class="fas fa-search"></i> Analyse de l'expérience utilisateur</li>
+          <li><i class="fas fa-pen-nib"></i> Retour critique sur le Copywriting</li>
+          <li><i class="fas fa-bolt"></i> 3 actions correctives immédiates</li>
+        </ul>
+        <a href="#" class="cta-btn outline">Demander mon audit</a>
+      </div>
+
+      <!-- OFFRE 2 -->
+      <div class="pricing-card popular">
+        <div class="popular-badge">Recommandé</div>
+        <h3 class="plan-name">Workshop Stratégique</h3>
+        <p class="plan-desc">Une session intense pour créer un système d'acquisition prédictible.</p>
+        <div class="plan-price">397€ <span>/ session</span></div>
+        <ul class="features">
+          <li><i class="fas fa-handshake"></i> Appel visio interactif de 1h30</li>
+          <li><i class="fas fa-tags"></i> Restructuration de l'Offre</li>
+          <li><i class="fas fa-project-diagram"></i> Dessin de votre Tunnel de vente</li>
+          <li><i class="fas fa-file-pdf"></i> Plan d'action étape par étape PDF</li>
+        </ul>
+        <a href="#" class="cta-btn solid">Réserver ma session</a>
+      </div>
+
+      <!-- OFFRE 3 -->
+      <div class="pricing-card">
+        <h3 class="plan-name">Mentoring Mensuel</h3>
+        <p class="plan-desc">Je deviens votre partenaire de croissance pour optimiser vos ventes au quotidien.</p>
+        <div class="plan-price">Sur devis</div>
+        <ul class="features">
+          <li><i class="fas fa-chart-pie"></i> Analyse des KPIs et conversions</li>
+          <li><i class="fas fa-vials"></i> Mise en place de tests A/B</li>
+          <li><i class="fas fa-comments"></i> Support WhatsApp prioritaire</li>
+          <li><i class="fas fa-calendar-check"></i> 2 points stratégiques par mois</li>
+        </ul>
+        <a href="#" class="cta-btn outline">Postuler au mentoring</a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
