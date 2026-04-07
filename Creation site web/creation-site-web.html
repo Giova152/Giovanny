@@ -576,47 +576,52 @@
         // ============================================
         // INITIALISATION CHARIOW AVEC METADATA
         // ============================================
-        function initChariowWithMetadata() {
-            console.log('🔧 Initialisation du widget Chariow...');
-            console.log('📦 Données à envoyer:', formData);
-            
-            const widgetWrapper = document.getElementById('chariow-widget-wrapper');
-            
-            // Recréer complètement le widget pour forcer le chargement
-            widgetWrapper.innerHTML = `
-                <div id="chariow-widget"
-                     data-product-id="prd_y24kpy"
-                     data-store-domain="enfancience-academy.mychariow.shop"
-                     data-style="frame"
-                     data-border-style="rounded"
-                     data-cta-width="xs"
-                     data-cta-animation="none"
-                     data-locale="fr"
-                     data-primary-color="#295037"
-                     data-background-color="#FFFFFF"
-                     data-metadata='${JSON.stringify(formData)}'>
-                </div>
-            `;
-            
-            // Réinitialiser Chariow Snap
+       function initChariowWithMetadata() {
+    console.log('🔧 Initialisation du widget Chariow...');
+    
+    const widgetWrapper = document.getElementById('chariow-widget-wrapper');
+    
+    // 1. On vide le conteneur existant
+    widgetWrapper.innerHTML = '';
+    
+    // 2. On crée l'élément proprement pour éviter les conflits de caractères
+    const widget = document.createElement('div');
+    widget.id = 'chariow-widget';
+    widget.dataset.productId = 'prd_y24kpy';
+    widget.dataset.storeDomain = 'enfancience-academy.mychariow.shop';
+    widget.dataset.style = 'frame';
+    widget.dataset.borderStyle = 'rounded';
+    widget.dataset.ctaWidth = 'xs';
+    widget.dataset.ctaAnimation = 'none';
+    widget.dataset.locale = 'fr';
+    widget.dataset.primaryColor = '#295037';
+    widget.dataset.backgroundColor = '#FFFFFF';
+    
+    // L'API dataset gère le JSON en toute sécurité, peu importe les apostrophes
+    widget.dataset.metadata = JSON.stringify(formData); 
+    
+    // 3. On intègre le widget reconstruit dans la page
+    widgetWrapper.appendChild(widget);
+    
+    // 4. On lance l'initialisation de Chariow Snap
+    if (window.ChariowSnap) {
+        console.log('✅ ChariowSnap détecté, initialisation...');
+        window.ChariowSnap.init();
+        console.log('✅ Widget Chariow initialisé !');
+    } else {
+        console.error('❌ ChariowSnap non trouvé');
+        const script = document.createElement('script');
+        script.src = 'https://cdn.chariow.com/snap/chariow-snap.js';
+        script.onload = () => {
+            console.log('✅ Script Chariow rechargé');
             if (window.ChariowSnap) {
-                console.log('✅ ChariowSnap détecté, initialisation...');
                 window.ChariowSnap.init();
-                console.log('✅ Widget Chariow initialisé !');
-            } else {
-                console.error('❌ ChariowSnap non trouvé');
-                // Essayer de recharger le script
-                const script = document.createElement('script');
-                script.src = 'https://cdn.chariow.com/snap/chariow-snap.js';
-                script.onload = () => {
-                    console.log('✅ Script Chariow rechargé');
-                    if (window.ChariowSnap) {
-                        window.ChariowSnap.init();
-                    }
-                };
-                document.body.appendChild(script);
             }
-        }
+        };
+        document.body.appendChild(script);
+    }
+}
+
         
         // ============================================
         // ÉCOUTER LES ÉVÉNEMENTS CHARIOW
