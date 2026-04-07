@@ -509,6 +509,13 @@
         let formData = null;
         
         // ============================================
+        // ATTENDRE QUE CHARIOW SOIT CHARGÉ
+        // ============================================
+        window.addEventListener('load', function() {
+            console.log('Page chargée, Chariow prêt');
+        });
+        
+        // ============================================
         // GESTION DU FORMULAIRE
         // ============================================
         document.getElementById('dossierForm').addEventListener('submit', (e) => {
@@ -540,13 +547,17 @@
             // Afficher la zone de paiement
             document.getElementById('payment-section').classList.add('visible');
             
-            // Scroll vers le paiement
-            document.getElementById('payment-section').scrollIntoView({ 
-                behavior: 'smooth' 
-            });
+            // Scroll vers le paiement avec un petit délai
+            setTimeout(() => {
+                document.getElementById('payment-section').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            }, 300);
             
-            // Initialiser Chariow avec metadata
-            initChariowWithMetadata();
+            // Initialiser Chariow avec metadata (avec délai pour laisser le temps à l'affichage)
+            setTimeout(() => {
+                initChariowWithMetadata();
+            }, 500);
         });
         
         // ============================================
@@ -566,15 +577,44 @@
         // INITIALISATION CHARIOW AVEC METADATA
         // ============================================
         function initChariowWithMetadata() {
-            const widget = document.getElementById('chariow-widget');
+            console.log('🔧 Initialisation du widget Chariow...');
+            console.log('📦 Données à envoyer:', formData);
             
-            // Ajouter les metadata au widget
-            // Ces données seront envoyées au webhook Google Apps Script
-            widget.setAttribute('data-metadata', JSON.stringify(formData));
+            const widgetWrapper = document.getElementById('chariow-widget-wrapper');
             
-            // Réinitialiser le widget Chariow
+            // Recréer complètement le widget pour forcer le chargement
+            widgetWrapper.innerHTML = `
+                <div id="chariow-widget"
+                     data-product-id="prd_y24kpy"
+                     data-store-domain="enfancience-academy.mychariow.shop"
+                     data-style="frame"
+                     data-border-style="rounded"
+                     data-cta-width="xs"
+                     data-cta-animation="none"
+                     data-locale="fr"
+                     data-primary-color="#295037"
+                     data-background-color="#FFFFFF"
+                     data-metadata='${JSON.stringify(formData)}'>
+                </div>
+            `;
+            
+            // Réinitialiser Chariow Snap
             if (window.ChariowSnap) {
+                console.log('✅ ChariowSnap détecté, initialisation...');
                 window.ChariowSnap.init();
+                console.log('✅ Widget Chariow initialisé !');
+            } else {
+                console.error('❌ ChariowSnap non trouvé');
+                // Essayer de recharger le script
+                const script = document.createElement('script');
+                script.src = 'https://cdn.chariow.com/snap/chariow-snap.js';
+                script.onload = () => {
+                    console.log('✅ Script Chariow rechargé');
+                    if (window.ChariowSnap) {
+                        window.ChariowSnap.init();
+                    }
+                };
+                document.body.appendChild(script);
             }
         }
         
@@ -589,6 +629,10 @@
         window.addEventListener('chariow:payment:failed', (event) => {
             console.log('❌ Paiement échoué', event.detail);
             alert('Le paiement a échoué. Veuillez réessayer.');
+        });
+        
+        window.addEventListener('chariow:payment:cancelled', (event) => {
+            console.log('⚠️ Paiement annulé', event.detail);
         });
     </script>
 </body>
