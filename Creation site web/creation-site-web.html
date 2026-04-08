@@ -199,24 +199,6 @@
             text-align: center;
         }
         
-        .fee-notice {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            color: #555;
-            font-size: 14px;
-            margin-bottom: 20px;
-            background: #f0f4f1;
-            padding: 12px;
-            border-radius: 8px;
-        }
-        
-        .fee-notice i {
-            color: #356646;
-            font-size: 18px;
-        }
-        
         .validate-btn {
             background: #356646;
             color: #fff;
@@ -240,132 +222,111 @@
             transform: translateY(-2px);
             box-shadow: 0 12px 25px rgba(53,102,70,.35);
         }
-        
-        .validate-btn:disabled {
-            opacity: .7;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        #payment-section {
-            display: none;
-            margin-top: 32px;
-            padding-top: 32px;
-            border-top: 2px dashed #b2d4bc;
-            animation: slideDown .45s ease;
-        }
-        
-        #payment-section.visible {
-            display: block;
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .payment-header {
+
+        /* =========================================
+           STYLES DE LA FENÊTRE MODALE (POPUP)
+           ========================================= */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
             display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 20px;
-        }
-        
-        .payment-badge {
-            background: #356646;
-            color: #fff;
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            flex-shrink: 0;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
-        
-        .payment-header h2 {
-            font-size: 18px;
-            font-weight: 700;
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: #fff;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            transform: translateY(30px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #888;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal-btn:hover {
             color: #1a1a1a;
         }
-        
-        .payment-header p {
-            font-size: 13px;
-            color: #777;
-            margin-top: 2px;
+
+        .payment-header {
+            text-align: center;
+            margin-bottom: 20px;
         }
-        
+
+        .payment-header h2 {
+            font-size: 20px;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .payment-header p {
+            font-size: 14px;
+            color: #666;
+        }
+
         .client-recap {
             background: #f0f4f1;
             border-radius: 12px;
-            padding: 16px 20px;
+            padding: 15px;
             margin-bottom: 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px 24px;
-        }
-        
-        .recap-item {
             font-size: 13px;
             color: #555;
+            text-align: center;
         }
         
-        .recap-item strong {
+        .client-recap strong {
             color: #1a1a1a;
-            font-weight: 600;
         }
-        
+
         #chariow-widget-wrapper {
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 24px rgba(53,102,70,.1);
             border: 1px solid #e0e6e2;
-            min-height: 300px;
-            padding: 20px;
-            background: white;
+            min-height: 350px;
         }
-        
-        .secure-badges {
-            margin-top: 16px;
-            color: #888;
-            font-size: 13px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-        }
-        
+
         @media (max-width: 768px) {
-            body {
-                padding: 20px 15px;
-            }
-            
-            .container {
-                padding: 28px 18px;
-                border-radius: 20px;
-            }
-            
-            .header h1 {
-                font-size: 24px;
-            }
-            
             .form-row {
                 flex-direction: column;
                 gap: 15px;
             }
-            
-            .project-form {
-                gap: 15px;
-            }
-            
-            .client-recap {
-                grid-template-columns: 1fr;
+            .modal-content {
+                width: 95%;
+                padding: 20px;
             }
         }
     </style>
@@ -377,7 +338,7 @@
                 <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour</a>
             </div>
             <h1>Parlez-moi de votre projet</h1>
-            <p>Remplissez ce formulaire. Les frais de dossier de <strong>50€</strong> seront réglés directement en bas via Mobile Money ou carte bancaire.</p>
+            <p>Remplissez ce formulaire pour valider votre demande.</p>
         </div>
         
         <form class="project-form" id="dossierForm" novalidate>
@@ -420,91 +381,63 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="fichier_projet">Cahier des charges (optionnel)</label>
-                    <input type="file" id="fichier_projet" name="fichier_projet" class="form-control file-input" accept=".pdf,.doc,.docx,.txt,.zip">
-                </div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
                     <label for="budget">Budget estimé *</label>
                     <select id="budget" name="budget" class="form-control" required>
                         <option value="" disabled selected>Sélectionnez…</option>
                         <option value="Moins de 1 000 €">Moins de 1 000 €</option>
                         <option value="1 000 € – 3 000 €">1 000 € – 3 000 €</option>
-                        <option value="3 000 € – 5 000 €">3 000 € – 5 000 €</option>
-                        <option value="Plus de 5 000 €">Plus de 5 000 €</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="delai">Délai souhaité *</label>
-                    <select id="delai" name="delai" class="form-control" required>
-                        <option value="" disabled selected>Sélectionnez…</option>
-                        <option value="Urgent (dès que possible)">Urgent (dès que possible)</option>
-                        <option value="Dans un mois">Dans un mois</option>
-                        <option value="2 à 3 mois">2 à 3 mois</option>
-                        <option value="Flexible">Flexible</option>
+                        <option value="Plus de 3 000 €">Plus de 3 000 €</option>
                     </select>
                 </div>
             </div>
             
             <div class="form-group">
-                <label for="description">Description détaillée du projet *</label>
-                <textarea id="description" name="description" class="form-control" placeholder="Décrivez vos objectifs, vos concurrents, les fonctionnalités attendues…" required></textarea>
+                <label for="description">Description détaillée *</label>
+                <textarea id="description" name="description" class="form-control" required></textarea>
             </div>
             
             <div class="checkbox-group">
                 <input type="checkbox" id="rgpd" name="rgpd" required>
-                <label for="rgpd">J'accepte que les informations saisies soient utilisées dans le cadre de ma demande de devis et de la relation commerciale qui peut en découler.</label>
+                <label for="rgpd">J'accepte que les informations soient utilisées pour ma demande.</label>
             </div>
             
             <div class="validate-section">
-                <div class="fee-notice">
-                    <i class="fas fa-info-circle"></i>
-                    <span>Des frais de dossier de <strong>50€</strong> sont requis. Le paiement apparaîtra juste en dessous après validation.</span>
-                </div>
                 <button type="submit" class="validate-btn" id="validateBtn">
-                    <i class="fas fa-check-circle"></i>
-                    Valider et accéder au paiement
+                    <i class="fas fa-lock"></i>
+                    Valider et procéder au paiement (50€)
                 </button>
             </div>
         </form>
-        
-        <!-- ZONE PAIEMENT CHARIOW -->
-        <div id="payment-section">
-            <div class="payment-header">
-                <div class="payment-badge"><i class="fas fa-lock" style="font-size:13px;"></i></div>
-                <div>
-                    <h2>Étape 2 — Paiement sécurisé</h2>
-                    <p>Réglez les frais de dossier (50€) via Mobile Money ou carte bancaire</p>
-                </div>
-            </div>
+    </div>
+    
+    <div id="paymentModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal-btn" id="closeModal">&times;</button>
             
-            <div class="client-recap" id="clientRecap"></div>
+            <div class="payment-header">
+                <h2>Paiement Sécurisé</h2>
+                <p>Règlement des frais de dossier</p>
+            </div>
+
+            <div class="client-recap" id="clientRecap">
+                </div>
             
             <div id="chariow-widget-wrapper">
-                <!-- Chariow Widget -->
                 <div id="chariow-widget" 
-                     data-product-id="prd_y24kpy"
-                     data-store-domain="enfancience-academy.mychariow.shop"
-                     data-style="tap"
-                     data-border-style="rounded"
-                     data-cta-width="xs"
-                     data-background-color="#FFFFFF"
-                     data-cta-animation="none"
-                     data-locale="fr"
-                     data-primary-color="#008F51">
+                    data-product-id="prd_y24kpy"
+                    data-store-domain="enfancience-academy.mychariow.shop"
+                    data-style="frame"
+                    data-border-style="rounded"
+                    data-cta-width="xs"
+                    data-cta-animation="none"
+                    data-locale="en"
+                    data-primary-color="#008F51"
+                    data-background-color="#FFFFFF">
                 </div>
-            </div>
-            
-            <div class="secure-badges">
-                <i class="fas fa-lock"></i>
-                Paiement sécurisé par Chariow — Mobile Money &amp; Carte bancaire acceptés
             </div>
         </div>
     </div>
     
-    <!-- Chariow Script - DOIT ÊTRE CHARGÉ EN PREMIER -->
     <script>
     (function() {
       var script = document.createElement('script');
@@ -518,114 +451,61 @@
     })();
     </script>
     
-    <!-- Script Principal -->
     <script>
         let formData = null;
+        const modal = document.getElementById('paymentModal');
+        const closeModalBtn = document.getElementById('closeModal');
         
-        // ============================================
-        // GESTION DU FORMULAIRE
-        // ============================================
+        // Fermer la modale
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Gestion de la soumission du formulaire
         document.getElementById('dossierForm').addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Validation
             const form = e.target;
             if (!form.checkValidity()) {
-                alert('Veuillez remplir tous les champs obligatoires');
+                // Déclenche l'affichage natif des erreurs HTML5
+                form.reportValidity();
                 return;
             }
             
-            // Collecter les données
+            // Collecte des données
             formData = {
                 prenom: document.getElementById('prenom').value,
                 nom: document.getElementById('nom').value,
                 email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                website: document.getElementById('website').value,
-                type_projet: document.getElementById('type_projet').value,
-                budget: document.getElementById('budget').value,
-                delai: document.getElementById('delai').value,
-                description: document.getElementById('description').value,
+                type_projet: document.getElementById('type_projet').value
             };
             
-            console.log('📋 Données du formulaire:', formData);
+            // Afficher le petit récapitulatif dans la modale
+            document.getElementById('clientRecap').innerHTML = `
+                Dossier de : <strong>${formData.prenom} ${formData.nom}</strong><br>
+                Projet : <strong>${formData.type_projet}</strong>
+            `;
             
-            // Afficher le récapitulatif
-            displayRecap();
+            // Attacher les données au widget pour le suivi marchand
+            const widget = document.getElementById('chariow-widget');
+            if (widget) {
+                widget.setAttribute('data-metadata', JSON.stringify(formData));
+            }
             
-            // Ajouter les metadata au widget AVANT de l'afficher
-            addMetadataToWidget();
-            
-            // Afficher la zone de paiement
-            document.getElementById('payment-section').classList.add('visible');
-            
-            // Scroll vers le paiement
-            setTimeout(() => {
-                document.getElementById('payment-section').scrollIntoView({ 
-                    behavior: 'smooth' 
-                });
-            }, 300);
+            // AFFICHER LA MODALE (le popup)
+            modal.classList.add('active');
         });
         
-        // ============================================
-        // AFFICHAGE DU RÉCAPITULATIF
-        // ============================================
-        function displayRecap() {
-            const recap = document.getElementById('clientRecap');
-            recap.innerHTML = `
-                <div class="recap-item"><strong>Nom :</strong> ${formData.prenom} ${formData.nom}</div>
-                <div class="recap-item"><strong>Email :</strong> ${formData.email}</div>
-                <div class="recap-item"><strong>Type :</strong> ${formData.type_projet}</div>
-                <div class="recap-item"><strong>Budget :</strong> ${formData.budget}</div>
-            `;
-        }
-        
-        // ============================================
-        // AJOUTER LES METADATA AU WIDGET
-        // ============================================
-        function addMetadataToWidget() {
-            console.log('🔧 Ajout des metadata au widget Chariow...');
-            
-            const widget = document.getElementById('chariow-widget');
-            
-            if (widget) {
-                // Ajouter les metadata comme attribut data
-                widget.setAttribute('data-metadata', JSON.stringify(formData));
-                console.log('✅ Metadata ajoutées au widget Chariow');
-                console.log('📦 Metadata:', formData);
-            } else {
-                console.error('❌ Widget Chariow non trouvé dans le DOM');
-            }
-        }
-        
-        // ============================================
-        // ÉCOUTER LES ÉVÉNEMENTS CHARIOW
-        // ============================================
+        // Écouteurs de succès/échec du paiement
         window.addEventListener('chariow:payment:success', (event) => {
-            console.log('✅ Paiement réussi !', event.detail);
-            alert('🎉 Paiement confirmé ! Vous recevrez un email de confirmation sous peu.');
+            modal.classList.remove('active');
+            alert('🎉 Paiement confirmé ! Votre dossier est en cours de traitement.');
+            // Optionnel : rediriger vers une page de remerciement
+            // window.location.href = "merci.html";
         });
         
         window.addEventListener('chariow:payment:failed', (event) => {
-            console.log('❌ Paiement échoué', event.detail);
-            alert('Le paiement a échoué. Veuillez réessayer.');
-        });
-        
-        window.addEventListener('chariow:payment:cancelled', (event) => {
-            console.log('⚠️ Paiement annulé', event.detail);
-        });
-        
-        // Debug : Vérifier que le widget est chargé
-        window.addEventListener('load', function() {
-            console.log('✅ Page chargée');
-            setTimeout(() => {
-                const widget = document.getElementById('chariow-widget');
-                if (widget) {
-                    console.log('✅ Widget Chariow trouvé dans le DOM');
-                } else {
-                    console.error('❌ Widget Chariow NON trouvé');
-                }
-            }, 1000);
+            alert('❌ Le paiement a échoué. Veuillez réessayer.');
         });
     </script>
 </body>
