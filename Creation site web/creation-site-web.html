@@ -141,30 +141,6 @@
             padding-right: 40px;
         }
         
-        .file-input {
-            padding: 9px 12px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        
-        ::file-selector-button {
-            background: #e6ece8;
-            border: 1px solid #d1d9d4;
-            border-radius: 8px;
-            padding: 8px 14px;
-            margin-right: 12px;
-            color: #356646;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            cursor: pointer;
-            transition: .3s;
-        }
-        
-        ::file-selector-button:hover {
-            background: #d1d9d4;
-            color: #1a1a1a;
-        }
-        
         .checkbox-group {
             display: flex;
             align-items: flex-start;
@@ -220,12 +196,9 @@
         .validate-btn:hover {
             background: #295037;
             transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(53,102,70,.35);
         }
 
-        /* =========================================
-           STYLES DE LA FENÊTRE MODALE (POPUP)
-           ========================================= */
+        /* MODALE */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -275,27 +248,11 @@
             font-size: 24px;
             color: #888;
             cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .close-modal-btn:hover {
-            color: #1a1a1a;
         }
 
         .payment-header {
             text-align: center;
             margin-bottom: 20px;
-        }
-
-        .payment-header h2 {
-            font-size: 20px;
-            color: #1a1a1a;
-            margin-bottom: 5px;
-        }
-
-        .payment-header p {
-            font-size: 14px;
-            color: #666;
         }
 
         .client-recap {
@@ -307,10 +264,6 @@
             color: #555;
             text-align: center;
         }
-        
-        .client-recap strong {
-            color: #1a1a1a;
-        }
 
         #chariow-widget-wrapper {
             border-radius: 12px;
@@ -320,14 +273,8 @@
         }
 
         @media (max-width: 768px) {
-            .form-row {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .modal-content {
-                width: 95%;
-                padding: 20px;
-            }
+            .form-row { flex-direction: column; gap: 15px; }
+            .modal-content { width: 95%; padding: 20px; }
         }
     </style>
 </head>
@@ -376,8 +323,8 @@
                         <option value="" disabled selected>Sélectionnez…</option>
                         <option value="Site Vitrine">Site Vitrine</option>
                         <option value="Boutique E-Commerce">Boutique E-Commerce</option>
-                        <option value="Application Web / Sur-mesure">Application Web / Sur-mesure</option>
-                        <option value="Refonte de site existant">Refonte de site existant</option>
+                        <option value="Application Web">Application Web</option>
+                        <option value="Refonte de site">Refonte de site</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -390,10 +337,20 @@
                     </select>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label for="delai">Délai souhaité *</label>
+                <select id="delai" name="delai" class="form-control" required>
+                    <option value="" disabled selected>Sélectionnez…</option>
+                    <option value="Urgent (moins de 2 semaines)">Urgent</option>
+                    <option value="1 mois">1 mois</option>
+                    <option value="Pas de date précise">Pas de date précise</option>
+                </select>
+            </div>
             
             <div class="form-group">
                 <label for="description">Description détaillée *</label>
-                <textarea id="description" name="description" class="form-control" required></textarea>
+                <textarea id="description" name="description" class="form-control" required placeholder="Décrivez votre besoin..."></textarea>
             </div>
             
             <div class="checkbox-group">
@@ -413,14 +370,11 @@
     <div id="paymentModal" class="modal-overlay">
         <div class="modal-content">
             <button class="close-modal-btn" id="closeModal">&times;</button>
-            
             <div class="payment-header">
                 <h2>Paiement Sécurisé</h2>
-                <p>Règlement des frais de dossier</p>
+                <p>Frais de traitement du dossier</p>
             </div>
-
-            <div class="client-recap" id="clientRecap">
-                </div>
+            <div class="client-recap" id="clientRecap"></div>
             
             <div id="chariow-widget-wrapper">
                 <div id="chariow-widget" 
@@ -452,60 +406,53 @@
     </script>
     
     <script>
-        let formData = null;
         const modal = document.getElementById('paymentModal');
         const closeModalBtn = document.getElementById('closeModal');
-        
-        // Fermer la modale
-        closeModalBtn.addEventListener('click', () => {
-            modal.classList.remove('active');
-        });
+        const form = document.getElementById('dossierForm');
+        const chariowWidget = document.getElementById('chariow-widget');
 
-        // Gestion de la soumission du formulaire
-        document.getElementById('dossierForm').addEventListener('submit', (e) => {
+        closeModalBtn.addEventListener('click', () => modal.classList.remove('active'));
+
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            const form = e.target;
             if (!form.checkValidity()) {
-                // Déclenche l'affichage natif des erreurs HTML5
                 form.reportValidity();
                 return;
             }
             
-            // Collecte des données
-            formData = {
+            // 1. On récupère TOUTES les données du formulaire
+            const formData = {
                 prenom: document.getElementById('prenom').value,
                 nom: document.getElementById('nom').value,
                 email: document.getElementById('email').value,
-                type_projet: document.getElementById('type_projet').value
+                phone: document.getElementById('phone').value,
+                website: document.getElementById('website').value,
+                type_projet: document.getElementById('type_projet').value,
+                budget: document.getElementById('budget').value,
+                delai: document.getElementById('delai').value,
+                description: document.getElementById('description').value
             };
             
-            // Afficher le petit récapitulatif dans la modale
+            // 2. On prépare l'affichage dans la modale
             document.getElementById('clientRecap').innerHTML = `
-                Dossier de : <strong>${formData.prenom} ${formData.nom}</strong><br>
-                Projet : <strong>${formData.type_projet}</strong>
+                Dossier : <strong>${formData.prenom} ${formData.nom}</strong><br>
+                Service : <strong>${formData.type_projet}</strong>
             `;
             
-            // Attacher les données au widget pour le suivi marchand
-            const widget = document.getElementById('chariow-widget');
-            if (widget) {
-                widget.setAttribute('data-metadata', JSON.stringify(formData));
-            }
+            // 3. ON INJECTE LES DONNÉES DANS LE WIDGET
+            // C'est ce bloc qui permet au Google Sheet de recevoir les infos !
+            chariowWidget.setAttribute('data-metadata', JSON.stringify(formData));
             
-            // AFFICHER LA MODALE (le popup)
+            // 4. On affiche la modale
             modal.classList.add('active');
         });
         
-        // Écouteurs de succès/échec du paiement
+        // Événement après paiement réussi
         window.addEventListener('chariow:payment:success', (event) => {
             modal.classList.remove('active');
-            alert('🎉 Paiement confirmé ! Votre dossier est en cours de traitement.');
-            // Optionnel : rediriger vers une page de remerciement
-            // window.location.href = "merci.html";
-        });
-        
-        window.addEventListener('chariow:payment:failed', (event) => {
-            alert('❌ Le paiement a échoué. Veuillez réessayer.');
+            alert('Félicitations ! Votre paiement a été validé et vos informations ont été enregistrées.');
+            form.reset();
         });
     </script>
 </body>
