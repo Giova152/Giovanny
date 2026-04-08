@@ -327,6 +327,8 @@
             box-shadow: 0 4px 24px rgba(53,102,70,.1);
             border: 1px solid #e0e6e2;
             min-height: 300px;
+            padding: 20px;
+            background: white;
         }
         
         .secure-badges {
@@ -502,7 +504,7 @@
         </div>
     </div>
     
-    <!-- Chariow Script -->
+    <!-- Chariow Script - DOIT ÊTRE CHARGÉ EN PREMIER -->
     <script>
     (function() {
       var script = document.createElement('script');
@@ -516,19 +518,9 @@
     })();
     </script>
     
+    <!-- Script Principal -->
     <script>
         let formData = null;
-        
-        // ============================================
-        // ATTENDRE QUE CHARIOW SOIT CHARGÉ
-        // ============================================
-        window.addEventListener('load', function() {
-            console.log('✅ Page chargée');
-            // Attendre un peu que le widget Chariow soit prêt
-            setTimeout(() => {
-                console.log('✅ Chariow devrait être prêt');
-            }, 1000);
-        });
         
         // ============================================
         // GESTION DU FORMULAIRE
@@ -556,25 +548,23 @@
                 description: document.getElementById('description').value,
             };
             
-            console.log('📝 Formulaire validé avec les données:', formData);
+            console.log('📋 Données du formulaire:', formData);
             
             // Afficher le récapitulatif
             displayRecap();
             
+            // Ajouter les metadata au widget AVANT de l'afficher
+            addMetadataToWidget();
+            
             // Afficher la zone de paiement
             document.getElementById('payment-section').classList.add('visible');
             
-            // Scroll vers le paiement avec un petit délai
+            // Scroll vers le paiement
             setTimeout(() => {
                 document.getElementById('payment-section').scrollIntoView({ 
                     behavior: 'smooth' 
                 });
             }, 300);
-            
-            // Ajouter les metadata au widget Chariow
-            setTimeout(() => {
-                addMetadataToWidget();
-            }, 500);
         });
         
         // ============================================
@@ -601,14 +591,15 @@
             if (widget) {
                 // Ajouter les metadata comme attribut data
                 widget.setAttribute('data-metadata', JSON.stringify(formData));
-                console.log('✅ Metadata ajoutées:', formData);
+                console.log('✅ Metadata ajoutées au widget Chariow');
+                console.log('📦 Metadata:', formData);
             } else {
-                console.error('❌ Widget Chariow non trouvé');
+                console.error('❌ Widget Chariow non trouvé dans le DOM');
             }
         }
         
         // ============================================
-        // ÉCOUTER LES ÉVÉNEMENTS CHARIOW (si disponibles)
+        // ÉCOUTER LES ÉVÉNEMENTS CHARIOW
         // ============================================
         window.addEventListener('chariow:payment:success', (event) => {
             console.log('✅ Paiement réussi !', event.detail);
@@ -622,6 +613,19 @@
         
         window.addEventListener('chariow:payment:cancelled', (event) => {
             console.log('⚠️ Paiement annulé', event.detail);
+        });
+        
+        // Debug : Vérifier que le widget est chargé
+        window.addEventListener('load', function() {
+            console.log('✅ Page chargée');
+            setTimeout(() => {
+                const widget = document.getElementById('chariow-widget');
+                if (widget) {
+                    console.log('✅ Widget Chariow trouvé dans le DOM');
+                } else {
+                    console.error('❌ Widget Chariow NON trouvé');
+                }
+            }, 1000);
         });
     </script>
 </body>
