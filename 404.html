@@ -3,6 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Page non trouvée | infosweb.io</title>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MM6839JT');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/pl.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { font-family: 'Inter', sans-serif; background: #f0f4f1; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; text-align: center; color: #356646; }
@@ -13,10 +24,26 @@
   </style>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM6839JT"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   <div class="container">
     <h1>404</h1>
     <p>Oups ! Le tunnel semble bouché.</p>
     <a href="index.html" class="btn">Retour à l'accueil</a>
   </div>
+
+  <footer>
+    <p>&copy; <span id="current-year"></span> infosweb.io - Tous droits réservés</p>
+    <p style="margin-top: 8px;">
+      <a href="mentions-legales.html">Mentions Légales</a> | <a href="politique-de-confidentialite.html">Politique de Confidentialité</a>
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

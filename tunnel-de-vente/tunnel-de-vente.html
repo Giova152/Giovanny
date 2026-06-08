@@ -4,6 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MM6839JT');</script>
+  <!-- End Google Tag Manager -->
+
   <meta name="description" content="Offres de création de Tunnels de Vente Haute Conversion par Giovanny Gandonou.">
   <title>Tunnels de Vente - Giovanny Gandonou</title>
 
@@ -20,12 +29,11 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       background: linear-gradient(135deg, #e6ece8, #ffffff);
       font-family: 'Inter', sans-serif;
       display: flex;
-      justify-content: center;
+      flex-direction: column; /* Aligne les éléments verticalement */
       align-items: center;
       min-height: 100vh;
       padding: 40px 20px;
@@ -41,6 +49,7 @@
       padding: 40px;
       box-shadow: 0 20px 50px rgba(53, 102, 70, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.5);
+      margin: auto 0; /* Pousse le container au centre verticalement */
     }
 
     /* HEADER */
@@ -305,6 +314,10 @@
 </head>
 
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM6839JT"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <div class="container">
 
@@ -401,6 +414,17 @@
     </div>
 
   </div>
+
+  <footer>
+    <p>&copy; <span id="current-year"></span> infosweb.io - Tous droits réservés</p>
+    <p style="margin-top: 8px;">
+      <a href="../mentions-legales.html">Mentions Légales</a> | <a href="../politique-de-confidentialite.html">Politique de Confidentialité</a>
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
 
 </body>
 
