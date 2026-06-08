@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Création de sites web professionnels, rapides et optimisés pour la conversion par Giovanny Gandonou.">
+    <title>Création Site Web - Giovanny Gandonou</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../images/pl.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e6ece8, #ffffff);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(53, 102, 70, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            color: #356646;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            background: #f0f4f1;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #356646;
+            color: #fff;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .header p {
+            color: #555;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid #f0f4f1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(53, 102, 70, 0.15);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid #356646;
+            transform: scale(1.03);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #356646;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 15px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .plan-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .plan-desc {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 20px;
+            min-height: 40px;
+        }
+
+        .plan-price {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+
+        .plan-price span {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 30px;
+            flex: 1;
+        }
+
+        .features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        .features li i {
+            color: #356646;
+            margin-top: 3px;
+        }
+
+        .cta-btn {
+            display: block;
+            text-align: center;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .cta-btn.outline {
+            background: transparent;
+            border: 2px solid #356646;
+            color: #356646;
+        }
+
+        .cta-btn.outline:hover {
+            background: #f0f4f1;
+        }
+
+        .cta-btn.solid {
+            background: #356646;
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(53, 102, 70, 0.25);
+        }
+
+        .cta-btn.solid:hover {
+            background: #295037;
+            box-shadow: 0 12px 25px rgba(53, 102, 70, 0.35);
+        }
+
+        .process-section {
+            margin-top: 60px;
+            border-top: 1px solid #eee;
+            padding-top: 40px;
+        }
+
+        .process-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 22px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            background: #356646;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 26px;
+            }
+
+            .pricing-card.popular {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-nav">
+                <a href="../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour</a>
+            </div>
+            <h1>Sites Web Modernes & Performants</h1>
+            <p>Plus qu'un simple design, je crée des outils business rapides, sécurisés et conçus pour convertir vos
+                visiteurs.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- PACK VITRINE -->
+            <div class="pricing-card">
+                <h3 class="plan-name">Pack Vitrine</h3>
+                <p class="plan-desc">Présentez votre activité avec élégance et professionnalisme.</p>
+                <div class="plan-price">Visibilité Premium</div>
+                <ul class="features">
+                    <li><i class="fas fa-check-circle"></i> Design personnalisé (One-page)</li>
+                    <li><i class="fas fa-check-circle"></i> Optimisation SEO de base</li>
+                    <li><i class="fas fa-check-circle"></i> Formulaire de contact & Map</li>
+                    <li><i class="fas fa-check-circle"></i> Liaison réseaux sociaux</li>
+                    <li><i class="fas fa-check-circle"></i> Site ultra-rapide & Responsive</li>
+                </ul>
+                <a href="mailto:midogiova@gmail.com?subject=Projet%20Site%20Vitrine" class="cta-btn outline">Analyser
+                    mon
+                    projet</a>
+            </div>
+
+            <!-- PACK BUSINESS -->
+            <div class="pricing-card popular">
+                <div class="popular-badge">Recommandé</div>
+                <h3 class="plan-name">Pack Business</h3>
+                <p class="plan-desc">La solution complète pour les entreprises en croissance.</p>
+                <div class="plan-price">Performance Business</div>
+                <ul class="features">
+                    <li><i class="fas fa-check-circle"></i> Jusqu'à 5 pages personnalisées</li>
+                    <li><i class="fas fa-check-circle"></i> Blog ou Catalogue produits</li>
+                    <li><i class="fas fa-check-circle"></i> Optimisation SEO avancée</li>
+                    <li><i class="fas fa-check-circle"></i> Installation outils Analytics</li>
+                    <li><i class="fas fa-check-circle"></i> Formation prise en main (1h)</li>
+                </ul>
+                <a href="mailto:midogiova@gmail.com?subject=Demande%20Pack%20Business%20Web"
+                    class="cta-btn solid">Obtenir une
+                    proposition</a>
+            </div>
+
+            <!-- PACK SUR-MESURE -->
+            <div class="pricing-card">
+                <h3 class="plan-name">Sur-Mesure</h3>
+                <p class="plan-desc">Besoin spécifique : E-commerce, plateforme ou web app.</p>
+                <div class="plan-price">Sur Devis</div>
+                <ul class="features">
+                    <li><i class="fas fa-check-circle"></i> Boutique en ligne (Stripe/Paypal)</li>
+                    <li><i class="fas fa-check-circle"></i> Fonctionnalités complexes</li>
+                    <li><i class="fas fa-check-circle"></i> Espace membre / Réservations</li>
+                    <li><i class="fas fa-check-circle"></i> Maintenance technique incluse</li>
+                    <li><i class="fas fa-check-circle"></i> Accompagnement stratégique</li>
+                </ul>
+                <a href="mailto:midogiova@gmail.com?subject=Devis%20Site%20Sur-Mesure" class="cta-btn outline">Demander
+                    un
+                    devis</a>
+            </div>
+        </div>
+
+        <div class="process-section">
+            <h2>Comment nous allons travailler ensemble</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Brief & Maquettage</h4>
+                    <p>Nous définissons vos objectifs et la structure visuelle du site.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Développement</h4>
+                    <p>Codage du site avec les meilleures technologies pour la vitesse.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Optimisation & Mise en ligne</h4>
+                    <p>Tests finaux, SEO et lancement officiel de votre site.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

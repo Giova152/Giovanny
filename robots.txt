@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Empêcher l'indexation des fichiers de documentation technique
+Disallow: /README.md
+
+# Optimisation pour les ressources statiques
+Allow: /images/
+
+# Lien vers le plan du site
+Sitemap: https://infosweb.io/sitemap.xml
