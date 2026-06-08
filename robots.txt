@@ -4,6 +4,9 @@ Allow: /
 # Empêcher l'indexation des fichiers de documentation technique
 Disallow: /README.md
 
+# Ne pas indexer la page d'erreur
+Disallow: /404.html
+
 # Optimisation pour les ressources statiques
 Allow: /images/
 
