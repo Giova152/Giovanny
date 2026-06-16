@@ -35,7 +35,7 @@
             background: linear-gradient(135deg, #e6ece8, #ffffff);
             font-family: 'Inter', sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
             padding: 40px 20px;
@@ -51,6 +51,7 @@
             padding: 40px;
             box-shadow: 0 20px 50px rgba(53, 102, 70, 0.12);
             border: 1px solid rgba(255, 255, 255, 0.5);
+            margin: auto 0;
         }
 
         .header {
@@ -271,10 +272,28 @@
                 transform: none;
             }
         }
+
+        /* Footer style */
+        footer {
+            text-align: center;
+            margin-top: auto;
+            padding: 30px 0 20px;
+            font-size: 11px;
+            color: #999;
+        }
+        footer a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 8px;
+        }
     </style>
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM6839JT"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <div class="container">
         <div class="header">
@@ -361,6 +380,17 @@
             </div>
         </div>
     </div>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> infosweb.io - Tous droits réservés</p>
+        <p style="margin-top: 8px;">
+            <a href="../mentions-legales.html">Mentions Légales</a> | <a href="../politique-de-confidentialite.html">Politique de Confidentialité</a>
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>
