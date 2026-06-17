@@ -1,19 +1,10 @@
-<<<<<<< HEAD
-document.addEventListener("DOMContentLoaded", function() {
-=======
 document.addEventListener("DOMContentLoaded", function () {
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
     // Configuration
     const user = "midogiova";
     const domain = "gmail.com";
     const email = `${user}@${domain}`;
-<<<<<<< HEAD
-    
-    // 1. Mise à jour de l'année
-=======
 
     // 1. Mise à jour de l'année dans le footer
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
     const yearSpan = document.getElementById('current-year');
     if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
@@ -21,11 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const contactLinks = document.querySelectorAll('[id^="contact-link"], .js-obfuscated-email');
     contactLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-<<<<<<< HEAD
-            const subject = link.dataset.subject || "Demande de projet";
-            const body = link.dataset.body || "Bonjour Giovanny,";
-            link.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-=======
             e.preventDefault();
 
             let subject = "Demande de projet"; // Default subject
@@ -58,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const copyBtn = document.getElementById('copy-email-btn');
     if (copyBtn) {
 <<<<<<< HEAD
-        copyBtn.addEventListener('click', function() {
+        copyBtn.addEventListener('click', function () {
 =======
         copyBtn.addEventListener('click', function () {
 >>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
@@ -78,10 +64,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // 4. Gestion générique des formulaires (Mailto fallback)
     const contactForm = document.getElementById("contact-form");
     if (contactForm) {
-        contactForm.addEventListener("submit", function(e) {
+        contactForm.addEventListener("submit", function (e) {
             const botCheck = document.getElementsByName("_gotcha")[0]?.value;
             if (botCheck) { e.preventDefault(); return; }
-            
+
             // Si on utilise Mailto par défaut
             if (!contactForm.action || contactForm.action === window.location.href) {
                 e.preventDefault();
