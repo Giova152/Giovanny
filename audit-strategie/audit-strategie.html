@@ -23,13 +23,14 @@
   <meta property="og:url" content="https://infosweb.io/audit-strategie/audit-strategie.html">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://infosweb.io/images/pl.png">
+  <meta property="og:image:alt" content="Portrait de Giovanny Gandonou, expert en audit stratégique">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="../images/pl.png">
+  <link rel="icon" type="image/webp" href="../images/pl.webp">
 
   <style>
     * {
@@ -247,6 +248,54 @@
       box-shadow: 0 12px 25px rgba(53, 102, 70, 0.35);
     }
 
+    /* SECTION FORMULAIRE DE CONTACT (NOUVEAU) */
+    .contact-section {
+      margin-top: 60px;
+      border-top: 1px solid #eee;
+      padding-top: 40px;
+      text-align: center;
+    }
+
+    .contact-form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid #f0f4f1;
+      max-width: 600px;
+      margin: 30px auto 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1a1a1a;
+    }
+
+    .form-group input, 
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus, 
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #356646;
+    }
+
     /* RESPONSIVE MIS À JOUR */
     @media (max-width: 768px) {
       .container {
@@ -315,8 +364,7 @@
           <li><i class="fas fa-pen-nib"></i> Retour critique sur le Copywriting</li>
           <li><i class="fas fa-bolt"></i> 3 actions correctives immédiates</li>
         </ul>
-        <a href="mailto:midogiova@gmail.com?subject=Demande%20d'Audit%20Vidéo%20Express&body=Bonjour%20Giovanny%2C%20je%20souhaiterais%20un%20audit%20pour%20mon%20site%20%3A%20(insérer%20URL)"
-          class="cta-btn outline">Demander mon analyse</a>
+        <a href="#" class="cta-btn outline js-obfuscated-email" data-type="audit-video">Demander mon analyse</a>
         <p style="text-align:center; font-size:11px; color:#888; margin-top:10px;">Sans engagement</p>
       </div>
 
@@ -332,8 +380,7 @@
           <li><i class="fas fa-project-diagram"></i> Dessin de votre Tunnel de vente</li>
           <li><i class="fas fa-file-pdf"></i> Plan d'action étape par étape PDF</li>
         </ul>
-        <a href="mailto:midogiova@gmail.com?subject=Réservation%20Workshop%20Stratégique&body=Bonjour%20Giovanny%2C%20je%20souhaite%20réserver%20un%20workshop%20pour%20mon%20projet."
-          class="cta-btn solid">Réserver ma session</a>
+        <a href="#" class="cta-btn solid js-obfuscated-email" data-type="workshop">Réserver ma session</a>
         <p style="text-align:center; font-size:11px; color:#888; margin-top:10px;">Disponibilités limitées</p>
       </div>
 
@@ -348,8 +395,7 @@
           <li><i class="fas fa-comments"></i> Support WhatsApp prioritaire</li>
           <li><i class="fas fa-calendar-check"></i> 2 points stratégiques par mois</li>
         </ul>
-        <a href="mailto:midogiova@gmail.com?subject=Candidature%20Mentoring%20Mensuel" class="cta-btn outline">Postuler
-          au mentoring</a>
+        <a href="#" class="cta-btn outline js-obfuscated-email" data-type="mentoring">Postuler au mentoring</a>
       </div>
 
     </div>
@@ -359,7 +405,7 @@
       <h2>Envoyez-moi les détails de votre projet</h2>
       <p style="font-size: 14px; color: #666; margin-top: 10px;">Je reviendrai vers vous sous 24h à 48h.</p>
       
-      <form action="https://formspree.io/f/votre_id_ici" method="POST" class="contact-form">
+      <form id="contact-form" class="contact-form">
         <div class="form-group">
           <label for="full-name">Nom complet</label>
           <input type="text" name="name" id="full-name" placeholder="Jean Dupont" required>
@@ -383,9 +429,16 @@
         <!-- Honeypot pour éviter le spam -->
         <input type="text" name="_gotcha" style="display:none">
 
-        <button type="submit" class="cta-btn solid" style="border: none; cursor: pointer; width: 100%;">
+        <button type="submit" id="submit-btn" class="cta-btn solid" style="border: none; cursor: pointer; width: 100%;">
           Envoyer ma demande d'audit
         </button>
+        <p style="margin-top: 15px; font-size: 13px; color: #777;">
+          Préfèreriez-vous écrire manuellement ? 
+          <button type="button" id="copy-email-btn" style="background: none; border: none; color: #356646; font-weight: 600; cursor: pointer; text-decoration: underline; padding: 0; font-family: inherit;">
+            Copier mon email
+          </button>
+        </p>
+        <p id="form-status" style="margin-top:15px; font-size:14px; display:none;"></p>
       </form>
     </div>
 
@@ -400,6 +453,66 @@
 
   <script>
     document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    const user = "midogiova";
+    const domain = "gmail.com";
+    const email = `${user}@${domain}`;
+
+    // Gestion des liens directs dans les cartes
+    document.querySelectorAll('.js-obfuscated-email').forEach(link => {
+      const type = link.getAttribute('data-type');
+      let subject = "", body = "";
+      
+      if(type === 'audit-video') {
+        subject = "Demande d'Audit Vidéo Express";
+        body = "Bonjour Giovanny, je souhaiterais un audit pour mon site : (insérer URL)";
+      } else if(type === 'workshop') {
+        subject = "Réservation Workshop Stratégique";
+        body = "Bonjour Giovanny, je souhaite réserver un workshop pour mon projet.";
+      } else if(type === 'mentoring') {
+        subject = "Candidature Mentoring Mensuel";
+      }
+
+      link.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+
+    // Gestion de la copie
+    document.getElementById('copy-email-btn').addEventListener('click', function() {
+      navigator.clipboard.writeText(email).then(() => {
+        const originalText = this.innerText;
+        this.innerText = "Email copié !";
+        this.style.color = "#22c55e";
+        setTimeout(() => {
+          this.innerText = originalText;
+          this.style.color = "#356646";
+        }, 2000);
+      });
+    });
+
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("form-status");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      // Vérification du Honeypot (le champ doit être vide)
+      const botCheck = document.getElementsByName("_gotcha")[0].value;
+      if (botCheck !== "") return;
+
+      const clientName = document.getElementById("full-name").value;
+      const clientEmail = document.getElementById("email-address").value;
+      const website = document.getElementById("website").value || "Non précisé";
+      const message = document.getElementById("message").value;
+
+      const subject = "Demande d'Audit & Stratégie Digitale";
+      const body = `Nom : ${clientName}\nEmail : ${clientEmail}\nSite actuel : ${website}\n\nMessage :\n${message}`;
+
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      status.innerHTML = "✅ Votre application de messagerie va s'ouvrir pour finaliser l'envoi.";
+      status.style.color = "#356646";
+      status.style.display = "block";
+    });
   </script>
 
 </body>

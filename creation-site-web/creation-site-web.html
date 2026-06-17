@@ -16,13 +16,22 @@
     <meta name="description"
         content="Création de sites web professionnels, rapides et optimisés pour la conversion par Giovanny Gandonou.">
     <title>Création Site Web - Giovanny Gandonou</title>
+    <link rel="canonical" href="https://infosweb.io/creation-site-web/creation-site-web.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Création de Sites Web Modernes & Performants | Giovanny Gandonou">
+    <meta property="og:description" content="Des outils business rapides, sécurisés et conçus pour convertir vos visiteurs.">
+    <meta property="og:url" content="https://infosweb.io/creation-site-web/creation-site-web.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://infosweb.io/images/pl.png">
+    <meta property="og:image:alt" content="Aperçu des services de création web">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../images/pl.png">
+    <link rel="icon" type="image/webp" href="../images/pl.webp">
 
     <style>
         * {
@@ -223,6 +232,54 @@
             box-shadow: 0 12px 25px rgba(53, 102, 70, 0.35);
         }
 
+        /* SECTION FORMULAIRE DE CONTACT */
+        .contact-section {
+            margin-top: 60px;
+            border-top: 1px solid #eee;
+            padding-top: 40px;
+            text-align: center;
+        }
+
+        .contact-form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #f0f4f1;
+            max-width: 600px;
+            margin: 30px auto 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #356646;
+        }
+
         .process-section {
             margin-top: 60px;
             border-top: 1px solid #eee;
@@ -318,11 +375,7 @@
                     <li><i class="fas fa-check-circle"></i> Liaison réseaux sociaux</li>
                     <li><i class="fas fa-check-circle"></i> Site ultra-rapide & Responsive</li>
                 </ul>
-                <a href="mailto:midogiova@gmail.com?subject=Projet%20Site%20Vitrine" class="cta-btn outline">Analyser
-                    mon
-                    projet</a>
-            </div>
-
+                <a href="#contact" class="cta-btn outline">Analyser mon projet</a>            </div>
             <!-- PACK BUSINESS -->
             <div class="pricing-card popular">
                 <div class="popular-badge">Recommandé</div>
@@ -335,10 +388,7 @@
                     <li><i class="fas fa-check-circle"></i> Optimisation SEO avancée</li>
                     <li><i class="fas fa-check-circle"></i> Installation outils Analytics</li>
                     <li><i class="fas fa-check-circle"></i> Formation prise en main (1h)</li>
-                </ul>
-                <a href="mailto:midogiova@gmail.com?subject=Demande%20Pack%20Business%20Web"
-                    class="cta-btn solid">Obtenir une
-                    proposition</a>
+                </ul>                <a href="#contact" class="cta-btn solid">Obtenir une                    proposition</a>
             </div>
 
             <!-- PACK SUR-MESURE -->
@@ -352,10 +402,7 @@
                     <li><i class="fas fa-check-circle"></i> Espace membre / Réservations</li>
                     <li><i class="fas fa-check-circle"></i> Maintenance technique incluse</li>
                     <li><i class="fas fa-check-circle"></i> Accompagnement stratégique</li>
-                </ul>
-                <a href="mailto:midogiova@gmail.com?subject=Devis%20Site%20Sur-Mesure" class="cta-btn outline">Demander
-                    un
-                    devis</a>
+                </ul>                <a href="#contact" class="cta-btn outline">Demander un                    devis</a>
             </div>
         </div>
 
@@ -379,6 +426,43 @@
                 </div>
             </div>
         </div>
+
+        <!-- SECTION FORMULAIRE DE CONTACT -->
+        <div id="contact" class="contact-section">
+            <h2>Discutons de votre futur site web</h2>
+            <p style="font-size: 14px; color: #666; margin-top: 10px;">Je vous réponds avec une proposition concrète sous 24h.</p>
+            
+            <form id="contact-form" class="contact-form">
+                <div class="form-group">
+                    <label for="full-name">Nom complet</label>
+                    <input type="text" name="name" id="full-name" placeholder="Jean Dupont" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email-address">Adresse Email</label>
+                    <input type="email" name="_replyto" id="email-address" placeholder="jean@exemple.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Quels sont les objectifs de votre site ?</label>
+                    <textarea name="message" id="message" rows="5" placeholder="Je souhaite un site pour présenter mon cabinet de conseil..." required></textarea>
+                </div>
+
+                <!-- Honeypot -->
+                <input type="text" name="_gotcha" style="display:none">
+
+                <button type="submit" id="submit-btn" class="cta-btn solid" style="border: none; cursor: pointer; width: 100%;">
+                    Demander mon devis gratuit
+                </button>
+                <p style="margin-top: 15px; font-size: 13px; color: #777;">
+                    Préfèreriez-vous écrire manuellement ? 
+                    <button type="button" id="copy-email-btn" style="background: none; border: none; color: #356646; font-weight: 600; cursor: pointer; text-decoration: underline; padding: 0; font-family: inherit;">
+                        Copier mon email
+                    </button>
+                </p>
+                <p id="form-status" style="margin-top:15px; font-size:14px; display:none;"></p>
+            </form>
+        </div>
     </div>
 
     <footer>
@@ -390,6 +474,48 @@
 
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const form = document.getElementById("contact-form");
+        const status = document.getElementById("form-status");
+        const btn = document.getElementById("submit-btn");
+
+        const user = "midogiova";
+        const domain = "gmail.com";
+        const email = `${user}@${domain}`;
+
+        // Gestion de la copie
+        document.getElementById('copy-email-btn').addEventListener('click', function() {
+            navigator.clipboard.writeText(email).then(() => {
+                const originalText = this.innerText;
+                this.innerText = "Email copié !";
+                this.style.color = "#22c55e";
+                setTimeout(() => {
+                    this.innerText = originalText;
+                    this.style.color = "#356646";
+                }, 2000);
+            });
+        });
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            // Vérification du Honeypot
+            const botCheck = document.getElementsByName("_gotcha")[0].value;
+            if (botCheck !== "") return;
+
+            const clientName = document.getElementById("full-name").value;
+            const clientEmail = document.getElementById("email-address").value;
+            const message = document.getElementById("message").value;
+
+            const subject = "Nouveau Projet : Création Site Web";
+            const body = `Nom : ${clientName}\nEmail : ${clientEmail}\n\nObjectifs du site :\n${message}`;
+
+            window.location.href = `mailto:${user}@${domain}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            status.innerHTML = "✅ Votre application de messagerie va s'ouvrir pour finaliser l'envoi.";
+            status.style.color = "#356646";
+            status.style.display = "block";
+        });
     </script>
 </body>
 

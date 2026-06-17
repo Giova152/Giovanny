@@ -1,0 +1,142 @@
+/* Variables & Base */
+:root {
+    --primary: #356646;
+    --primary-dark: #295037;
+    --bg-gradient: linear-gradient(135deg, #e6ece8, #ffffff);
+    --white: rgba(255, 255, 255, 0.95);
+    --shadow: 0 20px 50px rgba(53, 102, 70, 0.12);
+    --transition: all 0.3s ease;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: var(--bg-gradient);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.container, .card {
+    width: 100%;
+    background: var(--white);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 35px 25px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    margin: auto 0;
+}
+
+.container { max-width: 1000px; padding: 40px; }
+.card { max-width: 380px; }
+
+/* Header & Navigation */
+.header { text-align: center; margin-bottom: 40px; }
+.header-nav { display: flex; justify-content: flex-start; margin-bottom: 20px; }
+
+.back-btn {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    background: #f0f4f1;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: var(--transition);
+}
+
+.back-btn:hover { background: var(--primary); color: #fff; }
+
+h1 { font-size: 32px; font-weight: 800; color: #1a1a1a; margin-bottom: 10px; letter-spacing: -1px; }
+
+/* Buttons */
+.cta-btn, .main-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+}
+
+.cta-btn.solid, .main-cta {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(53, 102, 70, 0.25);
+}
+
+.cta-btn.solid:hover, .main-cta:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(53, 102, 70, 0.35);
+}
+
+.cta-btn.outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.cta-btn.outline:hover { background: #f0f4f1; }
+
+/* Form Styles */
+.contact-form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #f0f4f1;
+    max-width: 600px;
+    margin: 30px auto 0;
+}
+
+.form-group { margin-bottom: 20px; text-align: left; }
+.form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+.form-group input, .form-group textarea {
+    width: 100%; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px;
+    font-family: inherit; font-size: 14px; transition: border-color 0.3s;
+}
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); }
+
+/* Pricing & Services Grid */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.pricing-card {
+    background: #fff; border-radius: 20px; padding: 30px;
+    border: 1px solid #f0f4f1; display: flex; flex-direction: column;
+    position: relative; transition: var(--transition);
+}
+
+.pricing-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(53, 102, 70, 0.15); }
+.pricing-card.popular { border: 2px solid var(--primary); transform: scale(1.03); }
+
+.features { list-style: none; margin-bottom: 30px; flex: 1; }
+.features li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; margin-bottom: 15px; }
+.features li i { color: var(--primary); margin-top: 3px; }
+
+/* Footer */
+footer { text-align: center; margin-top: auto; padding: 30px 0 20px; font-size: 11px; color: #999; }
+footer a { color: #666; text-decoration: none; margin: 0 8px; }
+
+@media (max-width: 768px) {
+    .container { padding: 30px 20px; }
+    h1 { font-size: 26px; }
+    .pricing-card.popular { transform: none; }
+}

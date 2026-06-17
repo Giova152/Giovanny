@@ -24,13 +24,15 @@
   <meta property="og:url" content="https://infosweb.io/">
   <meta property="og:title" content="Giovanny Gandonou | Expert Tunnels de Vente & Développeur Web">
   <meta property="og:description" content="Transformez votre trafic en clients avec des tunnels de vente haute conversion.">
-  <meta property="og:image" content="https://infosweb.io/images/pl.png">
+  <meta property="og:image" content="https://infosweb.io/images/pl.webp">
+  <meta property="og:image:alt" content="Portrait de Giovanny Gandonou, consultant expert en tunnels de vente et développeur web">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Giovanny Gandonou | Expert Tunnels de Vente">
   <meta name="twitter:description" content="Générez des clients en continu avec des systèmes automatisés.">
-  <meta name="twitter:image" content="https://infosweb.io/images/pl.png">
+  <meta name="twitter:image" content="https://infosweb.io/images/pl.webp">
+  <meta name="twitter:image:alt" content="Portrait de Giovanny Gandonou, consultant expert en tunnels de vente et développeur web">
 
   <title>Giovanny Gandonou | Expert Tunnels de Vente & Développeur Web</title>
 
@@ -41,8 +43,8 @@
     "@type": "Person",
     "name": "Giovanny Gandonou",
     "jobTitle": "Consultant Tunnels de Vente & Développeur Web",
-    "url": "https://infosweb.io/",
-    "image": "https://infosweb.io/images/pl.png",
+    "url": "https://infosweb.io/", 
+    "image": "https://infosweb.io/images/pl.webp",
     "description": "Consultant spécialisé en création de tunnels de vente haute conversion et développement web.",
     "sameAs": [
       "https://www.facebook.com/Midogiova229",
@@ -56,43 +58,15 @@
   <!-- Polices et Icônes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
   <!-- Favicon : Utilise ta photo de profil -->
-  <link rel="icon" type="image/png" href="images/pl.png">
+  <link rel="icon" type="image/webp" href="images/pl.webp">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: linear-gradient(135deg, #e6ece8, #ffffff);
-      font-family: 'Inter', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-      color: #333;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 380px;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      border-radius: 24px;
-      padding: 35px 25px;
-      box-shadow: 0 20px 50px rgba(53, 102, 70, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      margin: auto 0;
-    }
-
     /* AVATAR OPTIMISÉ POUR IMAGE */
     .avatar {
-      width: 105px;
+      width: 105px; /* Taille d'affichage */
       height: 105px;
       border-radius: 50%;
       margin: 0 auto 15px auto;
@@ -102,7 +76,7 @@
     }
 
     .avatar img {
-      width: 100%;
+      width: 100%; /* L'image doit être redimensionnée à 105px ou 210px max */
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
@@ -170,231 +144,6 @@
       color: #555;
       margin-bottom: 25px;
       line-height: 1.5;
-    }
-
-    /* CTA PRINCIPAL */
-    .main-cta {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      padding: 14px;
-      background: #356646;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 15px;
-      margin-bottom: 25px;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(53, 102, 70, 0.25);
-    }
-
-    .main-cta:hover {
-      transform: translateY(-2px);
-      background: #295037;
-      box-shadow: 0 12px 25px rgba(53, 102, 70, 0.35);
-    }
-
-    /* SOCIALS */
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-
-    .social {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: #f0f4f1;
-      color: #356646;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .social:hover {
-      transform: translateY(-3px);
-      background: #356646;
-      color: #fff;
-      box-shadow: 0 8px 15px rgba(53, 102, 70, 0.2);
-    }
-
-    /* TABS */
-    .tabs {
-      display: flex;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #f0f4f1;
-      margin-bottom: 20px;
-      padding: 4px;
-    }
-
-    .tab {
-      flex: 1;
-      padding: 12px;
-      text-align: center;
-      font-size: 14px;
-      font-weight: 600;
-      color: #666;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .tab.active {
-      background: #fff;
-      color: #356646;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    }
-
-    .section {
-      display: none;
-      animation: fadeIn 0.4s ease forwards;
-    }
-
-    .section.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(5px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* ABOUT CARD */
-    .about {
-      background: #fff;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-      border: 1px solid #f9f9f9;
-    }
-
-    .about h3 {
-      font-size: 15px;
-      color: #1a1a1a;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .about h3 i {
-      color: #356646;
-    }
-
-    .about p {
-      font-size: 13.5px;
-      color: #555;
-      line-height: 1.6;
-      margin-bottom: 18px;
-    }
-
-    /* COMPÉTENCES */
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .skill-badge {
-      background: #f0f4f1;
-      color: #356646;
-      font-size: 11.5px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 20px;
-      transition: 0.3s;
-      cursor: default;
-    }
-
-    .skill-badge:hover {
-      background: #356646;
-      color: #fff;
-    }
-
-    /* SERVICES CARDS */
-    .service {
-      display: flex;
-      align-items: center;
-      padding: 18px 16px;
-      border-radius: 16px;
-      background: #fff;
-      margin-bottom: 12px;
-      text-decoration: none;
-      color: #333;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
-      border: 1px solid #f0f4f1;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .service:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(53, 102, 70, 0.1);
-      border-color: rgba(53, 102, 70, 0.2);
-    }
-
-    .service-icon {
-      width: 42px;
-      height: 42px;
-      background: #f0f4f1;
-      color: #356646;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      margin-right: 15px;
-      flex-shrink: 0;
-      transition: 0.3s;
-    }
-
-    .service:hover .service-icon {
-      background: #356646;
-      color: #fff;
-    }
-
-    .service-content {
-      flex: 1;
-    }
-
-    .service-content h4 {
-      font-size: 14.5px;
-      color: #1a1a1a;
-      margin-bottom: 4px;
-    }
-
-    .service-content p {
-      font-size: 12.5px;
-      color: #777;
-      line-height: 1.4;
-    }
-
-    .service-arrow {
-      color: #356646;
-      font-size: 14px;
-      opacity: 0.3;
-      transition: 0.3s;
-    }
-
-    .service:hover .service-arrow {
-      opacity: 1;
-      transform: translateX(4px);
     }
 
     /* Styles pour les témoignages centralisés */
@@ -517,19 +266,6 @@
       background: #356646;
       color: #fff;
     }
-    /* Footer pour toutes les pages */
-    footer {
-      text-align: center;
-      margin-top: auto; /* Pousse le footer vers le bas */
-      padding: 30px 0 20px;
-      font-size: 11px;
-      color: #999;
-    }
-    footer a {
-      color: #666;
-      text-decoration: none;
-      margin: 0 8px;
-    }
   </style>
 </head>
 
@@ -540,9 +276,9 @@
   <!-- End Google Tag Manager (noscript) -->
 
   <div class="card">
-    <!-- PHOTO DE PROFIL -->
+    <!-- PHOTO DE PROFIL (Optimisée en WebP) -->
     <div class="avatar">
-      <img src="images/pl.png" alt="Giovanny Gandonou - Consultant Expert Tunnels de Vente">
+      <img src="images/pl.webp" alt="Portrait de Giovanny Gandonou, consultant expert en tunnels de vente et développeur web">
       <div class="status-badge" title="Disponible pour de nouveaux projets"></div>
     </div>
 
@@ -574,8 +310,7 @@
     </div>
 
     <!-- BOUTON CTA PRINCIPAL : EMAIL -->
-    <a href="mailto:midogiova@gmail.com?subject=Demande%20de%20projet%20-%20Consultation&body=Bonjour%20Giovanny%2C%0A%0AJe%20souhaiterais%20discuter%20d'un%20projet%20avec%20vous.%0A%0AType%20de%20projet%20%3A%20(Tunnel%20de%20vente%20%2F%20Site%20Web%20%2F%20Audit%20%2F%20Autre)%0AObjectif%20%3A%20%0ASite%20actuel%20(si%20existant)%20%3A%20%0A%0AMerci."
-      class="main-cta">
+    <a href="#" id="contact-link" class="main-cta">
       <i class="fas fa-envelope"></i> Discuter de votre projet par Email
     </a>
 
@@ -611,7 +346,7 @@
         <div id="certificat-section" class="project-card active"
           style="width: 100%; min-width: unset; height: 180px; padding: 0; overflow: hidden; cursor: pointer; margin-bottom: 25px; background: #000; display: block;"
           onclick="openModal('images/certificate.png')" title="Cliquez pour agrandir">
-          <img src="images/certificate.png" alt="Certificat"
+          <img src="images/certificate.png" alt="Certificat d'Expert en Stratégie de Tunnels de Vente délivré à Giovanny Gandonou"
             style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
           <div
             style="position: absolute; bottom: 0; left: 0; right: 0; height: 60%; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); display: flex; align-items: flex-end; padding: 15px;">
@@ -747,13 +482,14 @@
     <span
       style="position: absolute; top: 20px; right: 30px; color: #fff; font-size: 35px; font-weight: bold; cursor: pointer;">&times;</span>
     <img id="imgModal"
+      alt="Vue agrandie du certificat d'expertise de Giovanny Gandonou"
       style="max-width: 90%; max-height: 85vh; border-radius: 12px; box-shadow: 0 0 40px rgba(0,0,0,0.5); cursor: default;"
       onclick="event.stopPropagation()">
   </div>
 
+  <script src="script.js"></script>
   <script>
     let currentProject = 0;
-
     function switchTab(tabId, event) {
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
@@ -776,9 +512,6 @@
       const offset = currentProject * -(cardWidth + gap);
       track.style.transform = `translate3d(${offset}px, 0, 0)`;
     }
-
-    // Navigation vers le certificat
-    document.getElementById('current-year').textContent = new Date().getFullYear();
 
     function scrollToCertificate() {
       const tab = document.querySelector('.tab[onclick*="profil"]');
