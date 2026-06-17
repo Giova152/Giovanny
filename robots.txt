@@ -7,6 +7,9 @@ Disallow: /README.md
 # Ne pas indexer la page d'erreur
 Disallow: /404.html
 
+# Empêcher l'indexation de la page de confirmation de formulaire
+Disallow: /merci.html
+
 # Optimisation pour les ressources statiques
 Allow: /images/
 

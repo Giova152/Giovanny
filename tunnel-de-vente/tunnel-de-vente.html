@@ -6,11 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-MM6839JT');</script>
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-MM6839JT');</script>
   <!-- End Google Tag Manager -->
 
   <meta name="description" content="Offres de création de Tunnels de Vente Haute Conversion par Giovanny Gandonou.">
@@ -21,302 +24,15 @@
     rel="stylesheet">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="../images/pl.png">
+  <link rel="icon" type="image/webp" href="../images/pl.webp">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      background: linear-gradient(135deg, #e6ece8, #ffffff);
-      font-family: 'Inter', sans-serif;
-      display: flex;
-      flex-direction: column; /* Aligne les éléments verticalement */
-      align-items: center;
-      min-height: 100vh;
-      padding: 40px 20px;
-      color: #333;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1000px;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      border-radius: 24px;
-      padding: 40px;
-      box-shadow: 0 20px 50px rgba(53, 102, 70, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      margin: auto 0; /* Pousse le container au centre verticalement */
-    }
-
-    /* HEADER */
-    .header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .header-nav {
-      display: flex;
-      justify-content: flex-start;
-      margin-bottom: 20px;
-    }
-
-    .back-btn {
-      color: #356646;
-      text-decoration: none;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      background: #f0f4f1;
-      padding: 8px 16px;
-      border-radius: 20px;
-      transition: 0.3s;
-    }
-
-    .back-btn:hover {
-      background: #356646;
-      color: #fff;
-    }
-
-    .header h1 {
-      font-size: 32px;
-      font-weight: 800;
-      color: #1a1a1a;
-      margin-bottom: 10px;
-      letter-spacing: -1px;
-    }
-
-    .header p {
-      color: #555;
-      font-size: 16px;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.5;
-    }
-
-    /* GRID DES OFFRES */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      align-items: stretch;
-    }
-
-    /* CARTES D'OFFRES */
-    .pricing-card {
-      background: #fff;
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-      border: 1px solid #f0f4f1;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      transition: all 0.3s ease;
-    }
-
-    .pricing-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(53, 102, 70, 0.15);
-    }
-
-    .pricing-card.popular {
-      border: 2px solid #356646;
-      transform: scale(1.03);
-      box-shadow: 0 15px 40px rgba(53, 102, 70, 0.15);
-    }
-
-    .pricing-card.popular:hover {
-      transform: scale(1.03) translateY(-5px);
-    }
-
-    .popular-badge {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #356646;
-      color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 6px 15px;
-      border-radius: 20px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .plan-name {
-      font-size: 18px;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 5px;
-    }
-
-    .plan-desc {
-      font-size: 13px;
-      color: #777;
-      margin-bottom: 20px;
-      min-height: 40px;
-    }
-
-    .plan-price {
-      font-size: 32px;
-      font-weight: 800;
-      color: #1a1a1a;
-      margin-bottom: 25px;
-      display: flex;
-      align-items: baseline;
-      gap: 5px;
-    }
-
-    .plan-price span {
-      font-size: 14px;
-      font-weight: 500;
-      color: #666;
-    }
-
-    /* LISTE DES FONCTIONNALITÉS */
-    .features {
-      list-style: none;
-      margin-bottom: 30px;
-      flex: 1;
-    }
-
-    .features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 14px;
-      color: #444;
-      margin-bottom: 15px;
-      line-height: 1.4;
-    }
-
-    .features li i {
-      color: #356646;
-      font-size: 14px;
-      margin-top: 3px;
-    }
-
-    /* BOUTONS */
-    .cta-btn {
-      display: block;
-      text-align: center;
-      padding: 14px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 15px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      width: 100%;
-    }
-
-    .cta-btn.outline {
-      background: transparent;
-      color: #356646;
-      border: 2px solid #356646;
-    }
-
-    .cta-btn.outline:hover {
-      background: #f0f4f1;
-    }
-
-    .cta-btn.solid {
-      background: #356646;
-      color: #fff;
-      box-shadow: 0 8px 20px rgba(53, 102, 70, 0.25);
-    }
-
-    .cta-btn.solid:hover {
-      background: #295037;
-      box-shadow: 0 12px 25px rgba(53, 102, 70, 0.35);
-    }
-
-    /* RESPONSIVE MEDIA QUERIES */
-    @media (max-width: 768px) {
-      .container {
-        padding: 30px 20px;
-      }
-
-      .header h1 {
-        font-size: 26px;
-      }
-
-      .header-nav {
-        margin-bottom: 15px;
-      }
-
-      .pricing-card.popular {
-        transform: none;
-      }
-
-      .pricing-card.popular:hover {
-        transform: translateY(-5px);
-      }
-    }
-
-    /* SECTION PROCESSUS */
-    .process-section {
-      margin-top: 60px;
-      border-top: 1px solid #eee;
-      padding-top: 40px;
-    }
-
-    .process-section h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 22px;
-      color: #1a1a1a;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-
-    .step {
-      text-align: center;
-      padding: 15px;
-    }
-
-    .step-number {
-      width: 36px;
-      height: 36px;
-      background: #356646;
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 15px;
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .step h4 {
-      margin-bottom: 8px;
-      font-size: 15px;
-      color: #1a1a1a;
-    }
-
-    .step p {
-      font-size: 13px;
-      color: #666;
-      line-height: 1.5;
-    }
-  </style>
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM6839JT"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM6839JT" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
   <div class="container">
@@ -346,8 +62,7 @@
           <li><i class="fas fa-check-circle"></i> Livraison en 5 jours ouvrés</li>
         </ul>
 
-        <a href="mailto:midogiova@gmail.com?subject=Projet%20Tunnel%20Essentiel" class="cta-btn outline">Discuter de mon
-          tunnel</a>
+        <a href="#contact" class="cta-btn outline">Discuter de mon tunnel</a>
       </div>
 
       <!-- OFFRE 2 : BUSINESS (Mise en avant) -->
@@ -366,8 +81,7 @@
           <li><i class="fas fa-check-circle"></i> Connexion au processeur de paiement (Stripe/PayPal)</li>
         </ul>
 
-        <a href="mailto:midogiova@gmail.com?subject=Mise%20en%20place%20Tunnel%20Business"
-          class="cta-btn solid">Automatiser mes ventes</a>
+        <a href="#contact" class="cta-btn solid">Automatiser mes ventes</a>
       </div>
 
       <!-- OFFRE 3 : ÉLITE -->
@@ -385,8 +99,7 @@
           <li><i class="fas fa-check-circle"></i> Suivi et optimisation pendant 30 jours</li>
         </ul>
 
-        <a href="mailto:midogiova@gmail.com?subject=Devis%20Tunnel%20Elite" class="cta-btn outline">Demander un
-          devis</a>
+        <a href="#contact" class="cta-btn outline">Demander un devis</a>
       </div>
 
     </div>
@@ -413,18 +126,77 @@
       </div>
     </div>
 
+    <!-- SECTION FORMULAIRE DE CONTACT -->
+    <div id="contact" class="contact-section">
+      <h2>Lancez votre projet de Tunnel</h2>
+      <p style="font-size: 14px; color: #666; margin-top: 10px;">Décrivez-moi votre offre, je vous recontacte sous 24h.
+      </p>
+
+      <form id="contact-form" class="contact-form" data-form-type="tunnel">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="full-name">Nom complet</label>
+            <div class="input-with-icon">
+              <input type="text" name="name" id="full-name" placeholder="Jean Dupont" required>
+              <i class="fas fa-user"></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email-address">Adresse Email</label>
+            <div class="input-with-icon">
+              <input type="email" name="_replyto" id="email-address" placeholder="jean@exemple.com" required>
+              <i class="fas fa-envelope"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="whatsapp-number">Numéro WhatsApp (optionnel)</label>
+          <div class="input-with-icon">
+            <input type="tel" name="whatsapp" id="whatsapp-number" placeholder="+229 01 02 03 04"
+              pattern="^\+?[0-9\s\-]{7,20}$" title="Veuillez entrer un numéro valide (ex: +229 01 02 03 04)">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Parlez-moi de votre produit ou service</label>
+          <div class="input-with-icon">
+            <textarea name="message" id="message" rows="5" placeholder="Je vends une formation de coaching..."
+              required></textarea>
+            <i class="fas fa-comment-dots"></i>
+          </div>
+        </div>
+
+        <!-- Honeypot -->
+        <input type="text" name="_gotcha" style="display:none">
+
+        <button type="submit" id="submit-btn" class="cta-btn solid" style="border: none; cursor: pointer; width: 100%;">
+          Envoyer ma demande
+        </button>
+        <p style="margin-top: 15px; font-size: 13px; color: #777;">
+          Préfèreriez-vous écrire manuellement ?
+          <button type="button" id="copy-email-btn"
+            style="background: none; border: none; color: #356646; font-weight: 600; cursor: pointer; text-decoration: underline; padding: 0; font-family: inherit;">
+            Copier mon email
+          </button>
+        </p>
+        <p id="form-status" style="margin-top:15px; font-size:14px; display:none;"></p>
+      </form>
+    </div>
+
   </div>
 
   <footer>
     <p>&copy; <span id="current-year"></span> infosweb.io - Tous droits réservés</p>
     <p style="margin-top: 8px;">
-      <a href="../mentions-legales.html">Mentions Légales</a> | <a href="../politique-de-confidentialite.html">Politique de Confidentialité</a>
+      <a href="../mentions-legales.html">Mentions Légales</a> | <a href="../politique-de-confidentialite.html">Politique
+        de Confidentialité</a>
     </p>
   </footer>
 
-  <script>
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-  </script>
+  <script src="../script.js"></script>
 
 </body>
 
