@@ -20,20 +20,11 @@
     <title>Création Site Web - Giovanny Gandonou</title>
     <link rel="canonical" href="https://infosweb.io/creation-site-web/creation-site-web.html">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Création de Sites Web Modernes & Performants | Giovanny Gandonou">
-<<<<<<< HEAD
-    <meta property="og:description" content="Des outils business rapides, sécurisés et conçus pour convertir vos visiteurs.">
-    <meta property="og:url" content="https://infosweb.io/creation-site-web/creation-site-web.html">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://infosweb.io/images/pl.png">
-=======
     <meta property="og:description"
         content="Des outils business rapides, sécurisés et conçus pour convertir vos visiteurs.">
     <meta property="og:url" content="https://infosweb.io/creation-site-web/creation-site-web.html">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://infosweb.io/images/pl.webp">
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
     <meta property="og:image:alt" content="Aperçu des services de création web">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -45,320 +36,6 @@
     <!-- Favicon -->
     <link rel="icon" type="image/webp" href="../images/pl.webp">
 
-<<<<<<< HEAD
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: linear-gradient(135deg, #e6ece8, #ffffff);
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 40px 20px;
-            color: #333;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1000px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 20px 50px rgba(53, 102, 70, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            margin: auto 0;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .header-nav {
-            display: flex;
-            justify-content: flex-start;
-            margin-bottom: 20px;
-        }
-
-        .back-btn {
-            color: #356646;
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            background: #f0f4f1;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: 0.3s;
-        }
-
-        .back-btn:hover {
-            background: #356646;
-            color: #fff;
-        }
-
-        .header h1 {
-            font-size: 32px;
-            font-weight: 800;
-            color: #1a1a1a;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-
-        .header p {
-            color: #555;
-            font-size: 16px;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.5;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            align-items: stretch;
-        }
-
-        .pricing-card {
-            background: #fff;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-            border: 1px solid #f0f4f1;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(53, 102, 70, 0.15);
-        }
-
-        .pricing-card.popular {
-            border: 2px solid #356646;
-            transform: scale(1.03);
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #356646;
-            color: #fff;
-            font-size: 12px;
-            font-weight: 700;
-            padding: 6px 15px;
-            border-radius: 20px;
-            text-transform: uppercase;
-        }
-
-        .plan-name {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .plan-desc {
-            font-size: 13px;
-            color: #777;
-            margin-bottom: 20px;
-            min-height: 40px;
-        }
-
-        .plan-price {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: baseline;
-            gap: 5px;
-        }
-
-        .plan-price span {
-            font-size: 14px;
-            color: #666;
-        }
-
-        .features {
-            list-style: none;
-            margin-bottom: 30px;
-            flex: 1;
-        }
-
-        .features li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            font-size: 14px;
-            color: #444;
-            margin-bottom: 15px;
-        }
-
-        .features li i {
-            color: #356646;
-            margin-top: 3px;
-        }
-
-        .cta-btn {
-            display: block;
-            text-align: center;
-            padding: 14px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 15px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .cta-btn.outline {
-            background: transparent;
-            border: 2px solid #356646;
-            color: #356646;
-        }
-
-        .cta-btn.outline:hover {
-            background: #f0f4f1;
-        }
-
-        .cta-btn.solid {
-            background: #356646;
-            color: #fff;
-            box-shadow: 0 8px 20px rgba(53, 102, 70, 0.25);
-        }
-
-        .cta-btn.solid:hover {
-            background: #295037;
-            box-shadow: 0 12px 25px rgba(53, 102, 70, 0.35);
-        }
-
-        /* SECTION FORMULAIRE DE CONTACT */
-        .contact-section {
-            margin-top: 60px;
-            border-top: 1px solid #eee;
-            padding-top: 40px;
-            text-align: center;
-        }
-
-        .contact-form {
-            background: #fff;
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid #f0f4f1;
-            max-width: 600px;
-            margin: 30px auto 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #1a1a1a;
-        }
-
-        .form-group input, 
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus, 
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #356646;
-        }
-
-        .process-section {
-            margin-top: 60px;
-            border-top: 1px solid #eee;
-            padding-top: 40px;
-        }
-
-        .process-section h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 22px;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .step {
-            text-align: center;
-            padding: 15px;
-        }
-
-        .step-number {
-            width: 36px;
-            height: 36px;
-            background: #356646;
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            font-weight: 700;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 30px 20px;
-            }
-
-            .header h1 {
-                font-size: 26px;
-            }
-
-            .pricing-card.popular {
-                transform: none;
-            }
-        }
-
-        /* Footer style */
-        footer {
-            text-align: center;
-            margin-top: auto;
-            padding: 30px 0 20px;
-            font-size: 11px;
-            color: #999;
-        }
-        footer a {
-            color: #666;
-            text-decoration: none;
-            margin: 0 8px;
-        }
-    </style>
-=======
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
 </head>
 
 <body>
@@ -390,12 +67,8 @@
                     <li><i class="fas fa-check-circle"></i> Liaison réseaux sociaux</li>
                     <li><i class="fas fa-check-circle"></i> Site ultra-rapide & Responsive</li>
                 </ul>
-<<<<<<< HEAD
-                <a href="#contact" class="cta-btn outline">Analyser mon projet</a>            </div>
-=======
                 <a href="#contact" class="cta-btn outline">Analyser mon projet</a>
             </div>
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
             <!-- PACK BUSINESS -->
             <div class="pricing-card popular">
                 <div class="popular-badge">Recommandé</div>
@@ -408,11 +81,7 @@
                     <li><i class="fas fa-check-circle"></i> Optimisation SEO avancée</li>
                     <li><i class="fas fa-check-circle"></i> Installation outils Analytics</li>
                     <li><i class="fas fa-check-circle"></i> Formation prise en main (1h)</li>
-<<<<<<< HEAD
-                </ul>                <a href="#contact" class="cta-btn solid">Obtenir une                    proposition</a>
-=======
                 </ul> <a href="#contact" class="cta-btn solid">Obtenir une proposition</a>
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
             </div>
 
             <!-- PACK SUR-MESURE -->
@@ -425,12 +94,7 @@
                     <li><i class="fas fa-check-circle"></i> Fonctionnalités complexes</li>
                     <li><i class="fas fa-check-circle"></i> Espace membre / Réservations</li>
                     <li><i class="fas fa-check-circle"></i> Maintenance technique incluse</li>
-                    <li><i class="fas fa-check-circle"></i> Accompagnement stratégique</li>
-<<<<<<< HEAD
-                </ul>                <a href="#contact" class="cta-btn outline">Demander un                    devis</a>
-=======
                 </ul> <a href="#contact" class="cta-btn outline">Demander un devis</a>
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
             </div>
         </div>
 
@@ -458,19 +122,6 @@
         <!-- SECTION FORMULAIRE DE CONTACT -->
         <div id="contact" class="contact-section">
             <h2>Discutons de votre futur site web</h2>
-<<<<<<< HEAD
-            <p style="font-size: 14px; color: #666; margin-top: 10px;">Je vous réponds avec une proposition concrète sous 24h.</p>
-            
-            <form id="contact-form" class="contact-form">
-                <div class="form-group">
-                    <label for="full-name">Nom complet</label>
-                    <input type="text" name="name" id="full-name" placeholder="Jean Dupont" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email-address">Adresse Email</label>
-                    <input type="email" name="_replyto" id="email-address" placeholder="jean@exemple.com" required>
-=======
             <p style="font-size: 14px; color: #666; margin-top: 10px;">Je vous réponds avec une proposition concrète
                 sous 24h.</p>
 
@@ -501,107 +152,34 @@
                             title="Veuillez entrer un numéro valide (ex: +229 01 02 03 04)">
                         <i class="fab fa-whatsapp"></i>
                     </div>
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
                 </div>
 
                 <div class="form-group">
                     <label for="message">Quels sont les objectifs de votre site ?</label>
-<<<<<<< HEAD
-                    <textarea name="message" id="message" rows="5" placeholder="Je souhaite un site pour présenter mon cabinet de conseil..." required></textarea>
-=======
                     <div class="input-with-icon">
                         <textarea name="message" id="message" rows="5" placeholder="Décrivez votre projet ici..."
                             required></textarea>
                         <i class="fas fa-comment-dots"></i>
                     </div>
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
                 </div>
 
                 <!-- Honeypot -->
                 <input type="text" name="_gotcha" style="display:none">
 
-<<<<<<< HEAD
-                <button type="submit" id="submit-btn" class="cta-btn solid" style="border: none; cursor: pointer; width: 100%;">
-                    Demander mon devis gratuit
-                </button>
-                <p style="margin-top: 15px; font-size: 13px; color: #777;">
-                    Préfèreriez-vous écrire manuellement ? 
-                    <button type="button" id="copy-email-btn" style="background: none; border: none; color: #356646; font-weight: 600; cursor: pointer; text-decoration: underline; padding: 0; font-family: inherit;">
-=======
                 <button type="submit" id="submit-btn" class="cta-btn solid"
                     style="border: none; cursor: pointer; width: 100%;">
                     Demander mon devis gratuit
                 </button>
-                <p style="margin-top: 15px; font-size: 13px; color: #777;">
-                    Préfèreriez-vous écrire manuellement ?
-                    <button type="button" id="copy-email-btn"
-                        style="background: none; border: none; color: #356646; font-weight: 600; cursor: pointer; text-decoration: underline; padding: 0; font-family: inherit;">
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
-                        Copier mon email
-                    </button>
-                </p>
-                <p id="form-status" style="margin-top:15px; font-size:14px; display:none;"></p>
-            </form>
-        </div>
-    </div>
 
-    <footer>
-        <p>&copy; <span id="current-year"></span> infosweb.io - Tous droits réservés</p>
-        <p style="margin-top: 8px;">
-            <a href="../mentions-legales.html">Mentions Légales</a> | <a
-                href="../politique-de-confidentialite.html">Politique de Confidentialité</a>
-        </p>
-    </footer>
+                <footer>
+                    <p>&copy; <span id="current-year"></span> infosweb.io - Tous droits réservés</p>
+                    <p style="margin-top: 8px;">
+                        <a href="../mentions-legales.html">Mentions Légales</a> | <a
+                            href="../politique-de-confidentialite.html">Politique de Confidentialité</a>
+                    </p>
+                </footer>
 
-<<<<<<< HEAD
-    <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        const form = document.getElementById("contact-form");
-        const status = document.getElementById("form-status");
-        const btn = document.getElementById("submit-btn");
-
-        const user = "midogiova";
-        const domain = "gmail.com";
-        const email = `${user}@${domain}`;
-
-        // Gestion de la copie
-        document.getElementById('copy-email-btn').addEventListener('click', function() {
-            navigator.clipboard.writeText(email).then(() => {
-                const originalText = this.innerText;
-                this.innerText = "Email copié !";
-                this.style.color = "#22c55e";
-                setTimeout(() => {
-                    this.innerText = originalText;
-                    this.style.color = "#356646";
-                }, 2000);
-            });
-        });
-
-        form.addEventListener("submit", function(event) {
-            event.preventDefault();
-            
-            // Vérification du Honeypot
-            const botCheck = document.getElementsByName("_gotcha")[0].value;
-            if (botCheck !== "") return;
-
-            const clientName = document.getElementById("full-name").value;
-            const clientEmail = document.getElementById("email-address").value;
-            const message = document.getElementById("message").value;
-
-            const subject = "Nouveau Projet : Création Site Web";
-            const body = `Nom : ${clientName}\nEmail : ${clientEmail}\n\nObjectifs du site :\n${message}`;
-
-            window.location.href = `mailto:${user}@${domain}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            status.innerHTML = "✅ Votre application de messagerie va s'ouvrir pour finaliser l'envoi.";
-            status.style.color = "#356646";
-            status.style.display = "block";
-        });
-    </script>
-=======
-    <script src="../script.js"></script>
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
+                <script src="../script.js"></script>
 </body>
 
 </html>

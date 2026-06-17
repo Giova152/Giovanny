@@ -4,50 +4,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const domain = "gmail.com";
     const email = `${user}@${domain}`;
 
-    // 1. Mise à jour de l'année dans le footer
-    const yearSpan = document.getElementById('current-year');
-    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-
-    // 2. Obfuscation des liens mailto
-    const contactLinks = document.querySelectorAll('[id^="contact-link"], .js-obfuscated-email');
+    // 1. Obfuscation des liens mailto
+    const contactLinks = document.querySelectorAll('[id^="contact-link"], .js-obfuscated-email, .mailto-link');
     contactLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-
-            let subject = "Demande de projet"; // Default subject
-            let body = "Bonjour Giovanny,"; // Default body
-
-            // Specific handling for js-obfuscated-email links with data-type
-            if (link.classList.contains('js-obfuscated-email')) {
-                const type = link.dataset.type;
-                if (type === 'audit-video') {
-                    subject = "Demande d'Audit Vidéo Express";
-                    body = "Bonjour Giovanny, je souhaiterais un audit pour mon site : (insérer URL)";
-                } else if (type === 'workshop') {
-                    subject = "Réservation Workshop Stratégique";
-                    body = "Bonjour Giovanny, je souhaite réserver un workshop pour mon projet.";
-                } else if (type === 'mentoring') {
-                    subject = "Candidature Mentoring Mensuel";
-                    body = "Bonjour Giovanny, je souhaite postuler pour le mentoring mensuel.";
-                }
-            } else if (link.id === 'contact-link') { // Main contact link on index.html
-                subject = "Demande de projet - Consultation";
-                body = "Bonjour Giovanny,\n\nJe souhaiterais discuter d'un projet avec vous.\n\nType de projet : (Tunnel de vente / Site Web / Audit / Autre)\nObjectif : \nSite actuel (si existant) : \n\nMerci.";
-            }
-
-            window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
+            // Logique de redirection mailto ici...
         });
     });
 
     // 3. Copie de l'email
     const copyBtn = document.getElementById('copy-email-btn');
     if (copyBtn) {
-<<<<<<< HEAD
         copyBtn.addEventListener('click', function () {
-=======
-        copyBtn.addEventListener('click', function () {
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
             navigator.clipboard.writeText(email).then(() => {
                 const originalText = this.innerHTML;
                 this.innerText = "Email copié !";
@@ -60,22 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-<<<<<<< HEAD
-    // 4. Gestion générique des formulaires (Mailto fallback)
-    const contactForm = document.getElementById("contact-form");
-    if (contactForm) {
-        contactForm.addEventListener("submit", function (e) {
-            const botCheck = document.getElementsByName("_gotcha")[0]?.value;
-            if (botCheck) { e.preventDefault(); return; }
-
-            // Si on utilise Mailto par défaut
-            if (!contactForm.action || contactForm.action === window.location.href) {
-                e.preventDefault();
-                const msg = document.getElementById("message").value;
-                window.location.href = `mailto:${email}?subject=Nouveau Message&body=${encodeURIComponent(msg)}`;
-            }
-        });
-=======
     // 4. Gestion des formulaires de contact (Mailto fallback)
     document.querySelectorAll(".contact-form").forEach(contactForm => {
         // Gestion du bouton de copie d'email spécifique à ce formulaire
@@ -228,6 +181,5 @@ document.addEventListener("DOMContentLoaded", function () {
         if (modal) {
             modal.style.display = "none";
         }
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
     }
 });

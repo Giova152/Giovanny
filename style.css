@@ -1,11 +1,8 @@
 /* Variables & Base */
-<<<<<<< HEAD
-=======
 html {
     scroll-behavior: smooth;
 }
 
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
 :root {
     --primary: #356646;
     --primary-dark: #295037;
@@ -15,15 +12,11 @@ html {
     --transition: all 0.3s ease;
 }
 
-<<<<<<< HEAD
-* { margin: 0; padding: 0; box-sizing: border-box; }
-=======
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
 
 body {
     background: var(--bg-gradient);
@@ -32,112 +25,9 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
-<<<<<<< HEAD
     color: #333;
 }
 
-.container, .card {
-=======
-    /* Padding par défaut, peut être surchargé */
-    color: #333;
-}
-
-.legal-page {
-    /* Styles spécifiques aux pages légales */
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    background: #f9fbf9;
-    align-items: flex-start;
-    /* Pour que le contenu ne soit pas centré verticalement */
-}
-
-.container,
-.card {
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
-    width: 100%;
-    background: var(--white);
-    backdrop-filter: blur(20px);
-    border-radius: 24px;
-<<<<<<< HEAD
-    padding: 35px 25px;
-=======
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
-    box-shadow: var(--shadow);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    margin: auto 0;
-}
-
-<<<<<<< HEAD
-.container { max-width: 1000px; padding: 40px; }
-.card { max-width: 380px; }
-
-/* Header & Navigation */
-.header { text-align: center; margin-bottom: 40px; }
-.header-nav { display: flex; justify-content: flex-start; margin-bottom: 20px; }
-=======
-.container {
-    max-width: 1000px;
-    padding: 40px;
-}
-
-.card {
-    max-width: 380px;
-    padding: 35px 25px;
-}
-
-/* Header & Navigation */
-.header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.header-nav {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 20px;
-}
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
-
-.back-btn {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    background: #f0f4f1;
-    padding: 8px 16px;
-    border-radius: 20px;
-    transition: var(--transition);
-}
-
-<<<<<<< HEAD
-.back-btn:hover { background: var(--primary); color: #fff; }
-
-h1 { font-size: 32px; font-weight: 800; color: #1a1a1a; margin-bottom: 10px; letter-spacing: -1px; }
-
-/* Buttons */
-.cta-btn, .main-cta {
-=======
-.back-btn:hover {
-    background: var(--primary);
-    color: #fff;
-}
-
-/* Styles génériques pour les titres H1 */
-h1 {
-    font-size: 32px;
-    font-weight: 800;
-    color: #1a1a1a;
-    margin-bottom: 10px;
-    letter-spacing: -1px;
-    text-align: center;
-}
-
-/* Styles spécifiques pour les pages légales */
 .legal-page h1.legal-title {
     color: var(--primary);
     border-bottom: 2px solid var(--primary);
@@ -158,10 +48,63 @@ h1 {
     text-align: left;
 }
 
+.container {
+    max-width: 1000px;
+    padding: 40px;
+}
+
+.card {
+    width: 100%;
+    max-width: 380px;
+    background: var(--white);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 35px 25px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    margin: auto 0;
+}
+
+.back-btn {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    background: #f0f4f1;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: var(--transition);
+}
+
+.back-btn:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+    text-align: center;
+}
+
+/* Pages Légales (Regroupées) */
+.legal-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: #f9fbf9;
+    align-items: flex-start;
+}
+
 /* Buttons */
 .cta-btn,
 .main-cta {
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
     display: flex;
     align-items: center;
     justify-content: center;
@@ -176,23 +119,21 @@ h1 {
     border: none;
 }
 
-<<<<<<< HEAD
-.cta-btn.solid, .main-cta {
-=======
+/* .cta-btn.solid, .main-cta { */
+/* } */
+
 .cta-btn.solid,
 .main-cta {
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
     background: var(--primary);
     color: #fff;
     box-shadow: 0 8px 20px rgba(53, 102, 70, 0.25);
 }
 
-<<<<<<< HEAD
-.cta-btn.solid:hover, .main-cta:hover {
-=======
+/* .cta-btn.solid:hover, .main-cta:hover { */
+/* } */
+
 .cta-btn.solid:hover,
 .main-cta:hover {
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
     background: var(--primary-dark);
     transform: translateY(-2px);
     box-shadow: 0 12px 25px rgba(53, 102, 70, 0.35);
@@ -204,13 +145,9 @@ h1 {
     color: var(--primary);
 }
 
-<<<<<<< HEAD
-.cta-btn.outline:hover { background: #f0f4f1; }
-=======
 .cta-btn.outline:hover {
     background: #f0f4f1;
 }
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
 
 /* Form Styles */
 .contact-form {
@@ -220,17 +157,6 @@ h1 {
     border: 1px solid #f0f4f1;
     max-width: 600px;
     margin: 30px auto 0;
-<<<<<<< HEAD
-}
-
-.form-group { margin-bottom: 20px; text-align: left; }
-.form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
-.form-group input, .form-group textarea {
-    width: 100%; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px;
-    font-family: inherit; font-size: 14px; transition: border-color 0.3s;
-}
-.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); }
-=======
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
 
@@ -313,7 +239,6 @@ h1 {
     opacity: 1;
     color: var(--primary);
 }
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
 
 /* Pricing & Services Grid */
 .pricing-grid {
@@ -323,28 +248,6 @@ h1 {
 }
 
 .pricing-card {
-<<<<<<< HEAD
-    background: #fff; border-radius: 20px; padding: 30px;
-    border: 1px solid #f0f4f1; display: flex; flex-direction: column;
-    position: relative; transition: var(--transition);
-}
-
-.pricing-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(53, 102, 70, 0.15); }
-.pricing-card.popular { border: 2px solid var(--primary); transform: scale(1.03); }
-
-.features { list-style: none; margin-bottom: 30px; flex: 1; }
-.features li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; margin-bottom: 15px; }
-.features li i { color: var(--primary); margin-top: 3px; }
-
-/* Footer */
-footer { text-align: center; margin-top: auto; padding: 30px 0 20px; font-size: 11px; color: #999; }
-footer a { color: #666; text-decoration: none; margin: 0 8px; }
-
-@media (max-width: 768px) {
-    .container { padding: 30px 20px; }
-    h1 { font-size: 26px; }
-    .pricing-card.popular { transform: none; }
-=======
     background: #fff;
     border-radius: 20px;
     padding: 30px;
@@ -1045,5 +948,4 @@ footer a {
     .pricing-card.popular {
         transform: none;
     }
->>>>>>> 73c99ac (feat: ajustement des couleurs SVG pour thème sombre et correction App.jsx)
 }
