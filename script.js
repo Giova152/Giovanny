@@ -125,7 +125,19 @@ document.addEventListener("DOMContentLoaded", function () {
                             window.location.href = "/merci.html";
                         }, 1500);
                     } else {
-                        return response.json().then(data => { throw new Error(data.error || "Erreur serveur"); });
+                        // On récupère le texte d'abord pour éviter l'erreur de parsing JSON si c'est du HTML
+                        return response.text().then(text => {
+                            // LOG DE DÉBOGAGE : Affiche ce que le serveur a réellement envoyé
+                            console.warn("Réponse brute du serveur (non-JSON):", text);
+                            let errorMessage = "Erreur serveur";
+                            try {
+                                const data = JSON.parse(text);
+                                errorMessage = data.error || errorMessage;
+                            } catch (e) {
+                                // Si ce n'est pas du JSON, on reste sur le message par défaut
+                            }
+                            throw new Error(errorMessage);
+                        });
                     }
                 })
                 .catch((error) => {

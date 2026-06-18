@@ -1,0 +1,46 @@
+import { Resend } from 'resend';
+
+// Initialisation sécurisée
+const apiKey = process.env.RESEND_API_KEY;
+const resend = apiKey ? new Resend(apiKey) : null;
+
+export default async function handler(req, res) {
+  if (!resend) {
+    return res.status(500).json({ error: "La clé API Resend n'est pas configurée sur Vercel." });
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Méthode non autorisée' });
+  }
+
+  const { name, email, whatsapp, message, formType, website, _gotcha } = req.body;
+
+  // Sécurité Honeypot
+  if (_gotcha) return res.status(400).json({ error: 'Bot detected' });
+
+  try {
+    await resend.emails.send({
+      from: 'Contact InfosWeb <onboarding@resend.dev>',
+      to: ['midogiova@gmail.com'],
+      reply_to: email,
+      subject: `[${formType.toUpperCase()}] Nouveau message de ${name}`,
+      html: `
+        <div style="font-family: sans-serif; color: #333; max-width: 600px; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+          <h2 style="color: #356646;">Nouveau contact : ${formType}</h2>
+          <p><strong>Nom :</strong> ${name}</p>
+          <p><strong>Email :</strong> ${email}</p>
+          <p><strong>WhatsApp :</strong> ${whatsapp || 'Non renseigné'}</p>
+          ${website ? `<p><strong>Site à auditer :</strong> ${website}</p>` : ''}
+          <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+          <p><strong>Message :</strong></p>
+          <p style="white-space: pre-wrap;">${message}</p>
+        </div>
+      `,
+    });
+
+    return res.status(200).json({ success: true });
+  } catch (error) {
+    console.error("Erreur Resend:", error);
+    return res.status(500).json({ success: false, error: error.message });
+  }
+}
