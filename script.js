@@ -31,37 +31,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 4. Gestion des formulaires de contact (Mailto fallback)
     document.querySelectorAll(".contact-form").forEach(contactForm => {
-        // Gestion du bouton de copie d'email spécifique à ce formulaire
-        const copyBtn = contactForm.querySelector('#copy-email-btn');
-        if (copyBtn) {
-            copyBtn.addEventListener('click', function () {
-                navigator.clipboard.writeText(email).then(() => {
-                    const originalText = this.innerHTML;
-                    this.innerText = "Email copié !";
-                    this.style.color = "#22c55e";
-                    setTimeout(() => {
-                        this.innerHTML = originalText;
-                        this.style.color = ""; // Réinitialise la couleur
-                    }, 2000);
-                });
-            });
-        }
-
         // Gestion de la soumission du formulaire
         contactForm.addEventListener("submit", function (e) {
             e.preventDefault(); // Empêche l'envoi par défaut du formulaire
 
-            const botCheck = contactForm.querySelector('input[name="_gotcha"]')?.value;
-            if (botCheck) { // Si le champ honeypot est rempli, c'est un bot
-                console.log("Bot detected (honeypot filled). Form submission blocked.");
+            // Capture robuste des données du formulaire
+            const formData = new FormData(contactForm);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // Vérification du Honeypot (Sécurité bot)
+            const botValue = data._gotcha || "";
+            if (botValue) {
+                console.log("Bot detected. Submission blocked.");
                 return;
             }
 
-            const clientName = contactForm.querySelector('#full-name')?.value || "";
-            const clientEmail = contactForm.querySelector('#email-address')?.value || "";
-            const whatsappInput = contactForm.querySelector('#whatsapp-number');
-            const whatsappNumber = whatsappInput?.value || "";
-            const message = contactForm.querySelector('#message')?.value || "";
+            const clientName = data.name || "";
+            const clientEmail = data.email || data._replyto || "";
+            const whatsappNumber = data.whatsapp || "";
+            const message = data.message || "";
+            const website = data.website || "";
             const statusElement = contactForm.querySelector("#form-status");
 
             // Validation Email (RegEx standard)
@@ -89,9 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             const formType = contactForm.dataset.formType; // Récupère le type de formulaire
-            let subject = "Nouveau Message";
-            let body = "";
-            let website = formType === "audit" ? (contactForm.querySelector('#website')?.value || "") : "";
 
             // Animation du bouton pendant l'envoi
             const submitBtn = contactForm.querySelector('button[type="submit"]');
@@ -111,7 +100,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     whatsapp: whatsappNumber,
                     message: message,
                     formType: formType,
-                    website: website
+                    website: website,
+                    _gotcha: botValue
                 })
             })
                 .then(response => {
@@ -166,6 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.moveCarousel = function (direction) {
         const track = document.getElementById('carouselTrack');
         const cards = document.querySelectorAll('.project-card');
+        const dots = document.querySelectorAll('.dot');
         if (!track || cards.length === 0) return;
 
         currentProject = (currentProject + direction + cards.length) % cards.length;
@@ -174,10 +165,53 @@ document.addEventListener("DOMContentLoaded", function () {
             card.classList.toggle('active', index === currentProject);
         });
 
+        // Mise à jour des points de pagination
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentProject);
+        });
+
         const cardWidth = cards[0].offsetWidth;
         const gap = 15;
         const offset = currentProject * -(cardWidth + gap);
         track.style.transform = `translate3d(${offset}px, 0, 0)`;
+    }
+
+    // Initialisation dynamique des points de pagination
+    const dotsContainer = document.getElementById('carouselDots');
+    const projects = document.querySelectorAll('.project-card');
+    if (dotsContainer && projects.length > 0) {
+        projects.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                const diff = index - currentProject;
+                window.moveCarousel(diff);
+            });
+            dotsContainer.appendChild(dot);
+        });
+    }
+
+    // Support du Swipe pour mobile
+    const track = document.getElementById('carouselTrack');
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    if (track) {
+        track.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        track.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+    }
+
+    function handleSwipe() {
+        const swipeThreshold = 50; // Sensibilité du swipe
+        if (touchStartX - touchEndX > swipeThreshold) window.moveCarousel(1); // Swipe gauche -> suivant
+        if (touchEndX - touchStartX > swipeThreshold) window.moveCarousel(-1); // Swipe droite -> précédent
     }
 
     window.switchTab = function (tabId, event) {
