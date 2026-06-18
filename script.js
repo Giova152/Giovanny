@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     contactLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            // Logique de redirection mailto ici...
+            window.location.href = `mailto:${email}`;
         });
     });
 
@@ -67,9 +67,11 @@ document.addEventListener("DOMContentLoaded", function () {
             // Validation Email (RegEx standard)
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(clientEmail)) {
-                statusElement.innerHTML = "❌ Veuillez entrer une adresse email valide.";
-                statusElement.style.color = "#ef4444";
-                statusElement.style.display = "block";
+                if (statusElement) {
+                    statusElement.innerHTML = "❌ Veuillez entrer une adresse email valide.";
+                    statusElement.style.color = "#ef4444";
+                    statusElement.style.display = "block";
+                }
                 return;
             }
 
@@ -78,9 +80,11 @@ document.addEventListener("DOMContentLoaded", function () {
             const phoneClean = whatsappNumber.replace(/[\s\-]/g, '');
             const phoneRegex = /^\+?[1-9]\d{6,14}$/;
             if (whatsappNumber.trim() !== "" && !phoneRegex.test(phoneClean)) {
-                statusElement.innerHTML = "❌ Format téléphone invalide. Utilisez le format international (ex: +229...)";
-                statusElement.style.color = "#ef4444";
-                statusElement.style.display = "block";
+                if (statusElement) {
+                    statusElement.innerHTML = "❌ Format téléphone invalide. Utilisez le format international (ex: +229...)";
+                    statusElement.style.color = "#ef4444";
+                    statusElement.style.display = "block";
+                }
                 return;
             }
 
@@ -91,9 +95,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Animation du bouton pendant l'envoi
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerHTML;
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+            let originalBtnText = "";
+            if (submitBtn) {
+                originalBtnText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+            }
 
             fetch('/api/contact', {
                 method: 'POST',
@@ -109,21 +116,32 @@ document.addEventListener("DOMContentLoaded", function () {
             })
                 .then(response => {
                     if (response.ok) {
-                        statusElement.innerHTML = "✅ Message envoyé avec succès ! Vérifiez votre boîte mail.";
-                        statusElement.style.color = "#356646";
+                        if (statusElement) {
+                            statusElement.innerHTML = "✅ Message envoyé avec succès ! Vérifiez votre boîte mail.";
+                            statusElement.style.color = "#356646";
+                        }
                         contactForm.reset();
+                        setTimeout(() => {
+                            window.location.href = "/merci.html";
+                        }, 1500);
                     } else {
                         throw new Error();
                     }
                 })
                 .catch(() => {
-                    statusElement.innerHTML = "⚠️ Une erreur est survenue, mais un mail d'explication vous a été envoyé.";
-                    statusElement.style.color = "#ef4444";
+                    if (statusElement) {
+                        statusElement.innerHTML = "⚠️ Une erreur est survenue, mais un mail d'explication vous a été envoyé.";
+                        statusElement.style.color = "#ef4444";
+                    }
                 })
                 .finally(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnText;
-                    statusElement.style.display = "block";
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnText;
+                    }
+                    if (statusElement) {
+                        statusElement.style.display = "block";
+                    }
                 });
 
         });
@@ -154,7 +172,10 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
 
         event.currentTarget.classList.add('active');
-        document.getElementById(tabId).classList.add('active');
+        const section = document.getElementById(tabId);
+        if (section) {
+            section.classList.add('active');
+        }
     }
 
     window.scrollToCertificate = function () {
