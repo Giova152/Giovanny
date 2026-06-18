@@ -192,13 +192,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     window.scrollToCertificate = function () {
-        const tab = document.querySelector('.tab[onclick*="profil"]');
-        if (tab) {
-            window.switchTab('profil', { currentTarget: tab });
-            setTimeout(() => {
-                document.getElementById('certificat-section')?.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-        }
+        // Ouvre la modale du certificat au lieu de scroller vers une section inexistante
+        // Assurez-vous que l'image du certificat est passée à openModal si nécessaire
+        // Pour l'instant, on ouvre la modale sans image spécifique, à adapter si tu as une image de certificat
+        window.openModal('/images/pl.webp'); // Utilise l'image de ton profil comme exemple
     }
 
     window.openModal = function (src) {
