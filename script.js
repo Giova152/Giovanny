@@ -125,12 +125,13 @@ document.addEventListener("DOMContentLoaded", function () {
                             window.location.href = "/merci.html";
                         }, 1500);
                     } else {
-                        throw new Error();
+                        return response.json().then(data => { throw new Error(data.error || "Erreur serveur"); });
                     }
                 })
-                .catch(() => {
+                .catch((error) => {
+                    console.error("Erreur lors de la soumission:", error);
                     if (statusElement) {
-                        statusElement.innerHTML = "⚠️ Une erreur est survenue, mais un mail d'explication vous a été envoyé.";
+                        statusElement.innerHTML = "⚠️ Une erreur est survenue lors de l'envoi. Veuillez réessayer ou me contacter directement.";
                         statusElement.style.color = "#ef4444";
                     }
                 })

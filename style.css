@@ -53,6 +53,16 @@ body {
     padding: 40px;
 }
 
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: flex-start;
+}
+
 .card {
     width: 100%;
     max-width: 380px;
@@ -62,7 +72,14 @@ body {
     padding: 35px 25px;
     box-shadow: var(--shadow);
     border: 1px solid rgba(255, 255, 255, 0.5);
-    margin: 40px 0;
+    margin: auto 0;
+}
+
+@media (max-width: 350px) {
+    .card {
+        padding: 25px 15px;
+        /* Réduit le padding interne sur les écrans très étroits */
+    }
 }
 
 .back-btn {
@@ -93,6 +110,13 @@ h1 {
     text-align: center;
 }
 
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+        /* Ajuste la taille des titres H1 pour les très petits écrans */
+    }
+}
+
 /* Pages Légales (Regroupées) */
 .legal-page {
     max-width: 800px;
@@ -105,7 +129,7 @@ h1 {
 }
 
 .legal-page .back-btn {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 /* Buttons */
@@ -249,8 +273,11 @@ h1 {
 /* Pricing & Services Grid */
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 35px;
+    margin-bottom: 60px;
+    padding: 15px 0;
+    /* Espace pour le scale(1.03) de la carte populaire */
 }
 
 .pricing-card {
@@ -262,6 +289,13 @@ h1 {
     flex-direction: column;
     position: relative;
     transition: var(--transition);
+    height: 100%;
+}
+
+.pricing-card .cta-btn {
+    width: 100%;
+    margin-top: auto;
+    /* Pousse le bouton vers le bas de la carte */
 }
 
 .pricing-card:hover {
@@ -272,6 +306,8 @@ h1 {
 .pricing-card.popular {
     border: 2px solid var(--primary);
     transform: scale(1.03);
+    /* Ombre externe accentuée et ombre interne (inset) pour un effet de profondeur */
+    box-shadow: 0 20px 40px rgba(53, 102, 70, 0.2), inset 0 0 25px rgba(53, 102, 70, 0.05);
 }
 
 /* Index UI Components (Avatar, Socials, Tabs) */
@@ -710,6 +746,14 @@ h1 {
     flex-shrink: 0;
 }
 
+@media (max-width: 400px) {
+    .project-card {
+        min-width: 200px;
+        /* Réduit la largeur minimale des cartes du carousel sur petit mobile */
+        height: 130px;
+    }
+}
+
 .project-card.active {
     transform: scale(1);
     opacity: 1;
@@ -912,6 +956,7 @@ h1 {
     list-style: none;
     margin-bottom: 30px;
     flex: 1;
+    /* Permet à la liste de prendre tout l'espace disponible */
 }
 
 .features li {
@@ -944,7 +989,8 @@ footer a {
 
 @media (max-width: 768px) {
     .container {
-        padding: 30px 20px;
+        padding: 20px 15px;
+        /* Plus d'espace pour le contenu sur tablette/mobile */
     }
 
     h1 {
@@ -955,10 +1001,24 @@ footer a {
         transform: none;
     }
 
-    .back-btn {
-        padding: 12px 20px;
-        background: #fff;
-        border: 1px solid #e0e7e1;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    /* Ajustements spécifiques pour les pages 404 et Merci sur mobile */
+    .error-code {
+        font-size: 60px;
+        /* Réduit la taille du code d'erreur 404 */
+    }
+
+    .error-message {
+        font-size: 18px;
+        /* Réduit la taille du message d'erreur */
+    }
+
+    .thank-you-title {
+        font-size: 24px;
+        /* Réduit la taille du titre de remerciement */
+    }
+
+    .merci-message {
+        font-size: 14px;
+        /* Réduit la taille du message de remerciement */
     }
 }
