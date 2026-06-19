@@ -573,6 +573,51 @@ h1 {
     margin-bottom: 18px;
 }
 
+.cert-card {
+    background: #f9fbf9;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid #e8eee9;
+    text-align: center;
+    position: relative;
+}
+
+.cert-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    z-index: 1;
+}
+
+.cert-img {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: block;
+    margin: 0 auto;
+}
+
+.cert-img:hover {
+    opacity: 0.85;
+    transform: scale(1.02);
+}
+
+.cert-label {
+    font-size: 11px;
+    color: #999;
+    margin-top: 8px;
+}
+
 .skills {
     display: flex;
     flex-wrap: wrap;
