@@ -62,6 +62,38 @@ export default async function handler(req, res) {
 
         await transporter.sendMail(mailOptions);
 
+        // Email de confirmation au client
+        if (email) {
+            const serviceLabels = {
+                'tunnel': 'Tunnels de vente Haute Conversion',
+                'audit': 'Audit & Stratégie Digitale',
+                'creation-site': 'Développement Site Web'
+            };
+            const serviceLabel = serviceLabels[formType] || 'demande';
+
+            const confirmOptions = {
+                from: `"Giovanny Gandonou" <${process.env.SMTP_USER}>`,
+                to: email,
+                subject: `Confirmation de votre ${serviceLabel}`,
+                html: `
+                    <div style="font-family: sans-serif; color: #333; max-width: 600px; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+                        <h2 style="color: #356646;">Merci ${name} !</h2>
+                        <p>J'ai bien reçu votre message concernant <strong>${serviceLabel}</strong>.</p>
+                        <p>Je vous répondrai dans les plus brefs délais (généralement sous 24h).</p>
+                        <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+                        <p style="font-size: 13px; color: #888;">Si vous avez des informations supplémentaires à ajouter, répondez simplement à cet email.</p>
+                        <p style="font-size: 13px; color: #888;">À très bientôt,<br><strong>Giovanny Gandonou</strong></p>
+                    </div>
+                `,
+            };
+
+            try {
+                await transporter.sendMail(confirmOptions);
+            } catch (confirmErr) {
+                console.error("Erreur envoi confirmation client:", confirmErr);
+            }
+        }
+
         return res.status(200).json({ success: true });
     } catch (error) {
         console.error("Erreur SMTP:", error);
