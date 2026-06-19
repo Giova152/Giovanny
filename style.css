@@ -76,10 +76,32 @@ body {
     margin: auto 0;
 }
 
-@media (max-width: 350px) {
+@media (max-width: 360px) {
     .card {
         padding: 25px 15px;
-        /* Réduit le padding interne sur les écrans très étroits */
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 10px 0;
+    }
+
+    .pricing-card {
+        padding: 20px;
+    }
+
+    .plan-price {
+        font-size: 26px;
+    }
+
+    .features li {
+        font-size: 13px;
+    }
+
+    .main-cta, .cta-btn.solid {
+        font-size: 13px;
+        padding: 12px;
     }
 }
 
@@ -444,56 +466,6 @@ h1 {
     background: var(--primary);
     color: #fff;
     box-shadow: 0 5px 15px rgba(53, 102, 70, 0.1);
-}
-
-/* Enhanced Certificate Card */
-.cert-card {
-    position: relative;
-    width: 100%;
-    height: 180px;
-    border-radius: 16px;
-    overflow: hidden;
-    cursor: pointer;
-    margin-bottom: 25px;
-    background: #000;
-}
-
-.cert-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.75;
-    transition: var(--transition);
-}
-
-.cert-card:hover img {
-    opacity: 0.95;
-    transform: scale(1.05);
-}
-
-.cert-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 60%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-    display: flex;
-    align-items: flex-end;
-    padding: 15px;
-}
-
-.cert-overlay h4 {
-    margin: 0;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-}
-
-.cert-overlay h4 i {
-    color: #f59e0b;
-    margin-right: 8px;
 }
 
 .tabs {
@@ -1053,7 +1025,10 @@ footer a {
 @media (max-width: 768px) {
     .container {
         padding: 20px 15px;
-        /* Plus d'espace pour le contenu sur tablette/mobile */
+    }
+
+    .legal-page {
+        padding: 20px 15px;
     }
 
     h1 {
