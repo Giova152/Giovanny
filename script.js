@@ -226,10 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     window.scrollToCertificate = function () {
-        // Ouvre la modale du certificat au lieu de scroller vers une section inexistante
-        // Assurez-vous que l'image du certificat est passée à openModal si nécessaire
-        // Pour l'instant, on ouvre la modale sans image spécifique, à adapter si tu as une image de certificat
-        window.openModal('/images/pl.webp'); // Utilise l'image de ton profil comme exemple
+        window.openModal('/images/certificate.png');
     }
 
     window.openModal = function (src) {
@@ -246,5 +243,18 @@ document.addEventListener("DOMContentLoaded", function () {
         if (modal) {
             modal.style.display = "none";
         }
+    }
+
+    // 6. Défilement automatique du carousel (Toutes les 5 secondes)
+    let autoScrollInterval = setInterval(() => {
+        if (typeof window.moveCarousel === 'function') window.moveCarousel(1);
+    }, 5000);
+
+    const carouselWrapper = document.querySelector('.carousel-wrapper');
+    if (carouselWrapper) {
+        carouselWrapper.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
+        carouselWrapper.addEventListener('mouseleave', () => {
+            autoScrollInterval = setInterval(() => window.moveCarousel(1), 5000);
+        });
     }
 });

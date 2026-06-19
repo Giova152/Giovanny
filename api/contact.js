@@ -1,7 +1,15 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
-// Initialisation de Resend avec la clé configurée dans les variables d'environnement de Vercel
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Configuration du transporteur SMTP (ex: Gmail, Outlook, Hostinger)
+const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT) || 587,
+    secure: process.env.SMTP_PORT === "465", // true pour 465, false pour les autres ports
+    auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+    },
+});
 
 export default async function handler(req, res) {
     // On n'autorise que les requêtes POST (celles envoyées par ton formulaire)
@@ -27,16 +35,16 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: 'Bot detected' });
     }
 
-    // Vérification que la clé API est bien présente sur Vercel
-    if (!process.env.RESEND_API_KEY) {
-        return res.status(500).json({ error: "La clé API Resend n'est pas configurée dans Vercel." });
+    // Vérification de la configuration SMTP
+    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+        return res.status(500).json({ error: "La configuration SMTP est manquante dans Vercel." });
     }
 
     try {
-        await resend.emails.send({
-            from: 'Contact InfosWeb <contact@infosweb.io>',
-            to: ['midogiova@gmail.com'],
-            reply_to: email,
+        const mailOptions = {
+            from: `"Contact InfosWeb" <${process.env.SMTP_USER}>`,
+            to: process.env.CONTACT_RECEIVER || process.env.SMTP_USER,
+            replyTo: email,
             subject: `[${formType.toUpperCase()}] Nouveau message de ${name || 'Inconnu'}`,
             html: `
                 <div style="font-family: sans-serif; color: #333; max-width: 600px; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
@@ -50,11 +58,13 @@ export default async function handler(req, res) {
                     <div style="background: #f4f7f5; padding: 15px; border-radius: 8px; white-space: pre-wrap; font-style: italic;">${message || 'Aucun message fourni.'}</div>
                 </div>
             `,
-        });
+        };
+
+        await transporter.sendMail(mailOptions);
 
         return res.status(200).json({ success: true });
     } catch (error) {
-        console.error("Erreur Resend:", error);
+        console.error("Erreur SMTP:", error);
         return res.status(500).json({ success: false, error: error.message });
     }
 }
