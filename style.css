@@ -47,6 +47,9 @@ body {
 .legal-page p {
     margin-bottom: 15px;
     text-align: left;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #444;
 }
 
 .container {
@@ -142,6 +145,7 @@ h1 {
 
 /* Pages Légales (Regroupées) */
 .legal-page {
+    width: 100%;
     max-width: 800px;
     margin: 0 auto;
     padding: 40px 20px;
@@ -153,6 +157,28 @@ h1 {
 
 .legal-page .back-btn {
     margin-bottom: 25px;
+}
+
+.legal-page ul {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.legal-page ul li {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.legal-title {
+    font-size: 28px;
+}
+
+@media (max-width: 480px) {
+    .legal-title {
+        font-size: 22px;
+    }
 }
 
 /* Buttons */
