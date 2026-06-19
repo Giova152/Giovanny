@@ -154,6 +154,7 @@ h1 {
 .main-cta {
     background: #25D366;
     color: #fff;
+    white-space: nowrap;
     box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
 }
 
