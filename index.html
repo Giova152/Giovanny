@@ -5,44 +5,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-MM6839JT');</script>
-  <!-- End Google Tag Manager -->
-
   <!-- SEO & Partage Social -->
-  <meta name="description"
+  <meta name="description" data-i18n="meta.description"
     content="Consultant Expert en Tunnels de Vente et Développeur Web. Giovanny Gandonou crée des systèmes d'acquisition automatisés pour exploser votre conversion et générer des clients qualifiés.">
-  <meta name="keywords"
+  <meta name="keywords" data-i18n="meta.keywords"
     content="consultant tunnel de vente, expert conversion, développeur web, acquisition client, automatisation marketing, Giovanny Gandonou">
   <meta name="author" content="Giovanny Gandonou">
   <link rel="canonical" href="https://infosweb.io/">
+  <link rel="alternate" href="https://infosweb.io/" hreflang="x-default">
+  <link rel="alternate" href="https://infosweb.io/" hreflang="fr">
+  <link rel="alternate" href="https://infosweb.io/" hreflang="en">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://infosweb.io/">
-  <meta property="og:title" content="Giovanny Gandonou | Expert Tunnels de Vente & Développeur Web">
-  <meta property="og:description"
+  <meta property="og:title" data-i18n="og.title"
+    content="Giovanny Gandonou | Expert Tunnels de Vente & Développeur Web">
+  <meta property="og:description" data-i18n="og.description"
     content="Transformez votre trafic en clients avec des tunnels de vente haute conversion.">
   <meta property="og:image" content="https://infosweb.io/images/pl.webp">
-  <meta property="og:image:alt"
+  <meta property="og:image:alt" data-i18n="avatar.alt"
     content="Portrait de Giovanny Gandonou, consultant expert en tunnels de vente et développeur web">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Giovanny Gandonou | Expert Tunnels de Vente">
-  <meta name="twitter:description" content="Générez des clients en continu avec des systèmes automatisés.">
+  <meta name="twitter:title" data-i18n="twitter.title" content="Giovanny Gandonou | Expert Tunnels de Vente">
+  <meta name="twitter:description" data-i18n="twitter.description"
+    content="Générez des clients en continu avec des systèmes automatisés.">
   <meta name="twitter:image" content="https://infosweb.io/images/pl.webp">
-  <meta name="twitter:image:alt"
+  <meta name="twitter:image:alt" data-i18n="avatar.alt"
     content="Portrait de Giovanny Gandonou, consultant expert en tunnels de vente et développeur web">
 
-  <title>Giovanny Gandonou | Expert Tunnels de Vente & Développeur Web</title>
+  <title data-i18n="page.title">Giovanny Gandonou | Expert Tunnels de Vente & Développeur Web</title>
 
   <!-- Données structurées JSON-LD -->
   <script type="application/ld+json">
@@ -50,16 +44,16 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Giovanny Gandonou",
-    "jobTitle": "Consultant Tunnels de Vente & Développeur Web",
+    "jobTitle": "AI Consultant & Sales Funnel Expert",
     "url": "https://infosweb.io/",
     "image": "https://infosweb.io/images/pl.webp",
-    "description": "Consultant spécialisé en création de tunnels de vente haute conversion et développement web.",
+    "description": "Consultant en intelligence artificielle et expert en tunnels de vente IA, développement web et mobile, automation.",
     "sameAs": [
       "https://www.facebook.com/Midogiova229",
       "https://www.youtube.com/@giovaofficiel",
       "https://t.me/GiovaOfficiel"
     ],
-    "knowsAbout": ["Tunnels de vente", "Conversion Rate Optimization", "Web Development", "Marketing Automation"]
+    "knowsAbout": ["Intelligence Artificielle", "Tunnels de vente IA", "Conversion Rate Optimization", "Web Development", "Mobile Development", "Marketing Automation", "Claude AI"]
   }
   </script>
 
@@ -70,38 +64,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Favicon : Utilise ta photo de profil -->
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/webp" href="/images/pl.webp">
-  <link rel="apple-touch-icon" href="/images/pl.webp">
+  <link rel="apple-touch-icon" href="/favicon.ico">
+  <script src="/i18n.js" defer></script>
 </head>
 
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM6839JT" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
 
   <div class="card">
-    <!-- PHOTO DE PROFIL (Optimisée en WebP) -->
+    <button class="lang-toggle" onclick="i18n.switch(i18n.lang === 'fr' ? 'en' : 'fr')">EN</button>
+
+    <!-- PHOTO DE PROFIL -->
     <div class="avatar">
-      <img src="/images/pl.webp"
+      <img src="/images/pl.webp" width="105" height="105" loading="lazy" data-i18n-alt="avatar.alt"
         alt="Portrait de Giovanny Gandonou, consultant expert en tunnels de vente et développeur web">
-      <div class="status-badge" title="Disponible pour de nouveaux projets"></div>
+      <div class="status-badge" data-i18n-title="status.title" title="Disponible pour de nouveaux projets"></div>
     </div>
 
-    <h1 class="main-title">Giovanny Gandonou</h1>
-    <div class="role">CONSULTANT TUNNELS · DÉVELOPPEUR WEB</div>
+    <h1 class="main-title" data-i18n="main.title">Giovanny Gandonou</h1>
+    <div class="role" data-i18n="role">CONSULTANT IA · TUNNELS DE VENTE · DÉVELOPPEUR WEB</div>
 
     <!-- PREUVE SOCIALE -->
     <div class="social-proof">
       <a href="javascript:void(0)" onclick="scrollToCertificate()">
         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
           class="fas fa-star"></i>
-        <span>(Consultant certifié <i class="fas fa-chevron-down" style="font-size: 10px;"></i>)</span>
+        <span>(<span data-i18n="social.proof">Consultant certifié</span> <i class="fas fa-chevron-down"
+            style="font-size: 10px;"></i>)</span>
       </a>
     </div>
-    <div class="desc">Je crée des systèmes automatisés qui génèrent des clients qualifiés en continu pour votre
-      business.</div>
+    <div class="desc" data-i18n="desc">Je crée des systèmes IA automatisés qui génèrent des clients qualifiés en continu
+      pour votre business — web, mobile et automation.</div>
 
     <!-- RESEAUX SOCIAUX -->
     <div class="socials">
@@ -117,46 +112,69 @@
 
     <!-- BOUTON CTA PRINCIPAL : WHATSAPP -->
     <a href="https://wa.me/2290198054347" target="_blank" rel="noopener noreferrer" class="main-cta">
-      <i class="fab fa-whatsapp"></i> Discuter de votre projet par WhatsApp
+      <i class="fab fa-whatsapp"></i> <span data-i18n="cta.whatsapp">Discuter de votre projet par WhatsApp</span>
     </a>
 
     <!-- COMMUNAUTÉ PAYANTE (VIP) -->
     <div class="vip-banner">
-      <p class="vip-label">Accès exclusif aux stratégies avancées</p>
+      <p class="vip-label" data-i18n="vip.label">Accès exclusif aux stratégies avancées</p>
       <a href="https://t.me/+kopQHl2y8j4zMGQ0" target="_blank" rel="noopener noreferrer" class="vip-btn">
-        <i class="fas fa-crown"></i> Rejoindre le Cercle des Bâtisseurs
+        <i class="fas fa-crown"></i> <span data-i18n="vip.btn">Rejoindre le Cercle des Bâtisseurs</span>
       </a>
     </div>
 
     <!-- ONGLETS -->
     <div class="tabs">
-      <div class="tab active" onclick="switchTab('profil', event)">Profil</div>
-      <div class="tab" onclick="switchTab('services', event)">Services</div>
-      <div class="tab" onclick="switchTab('avis', event)">Réussites</div>
+      <div class="tab active" data-i18n="tab.profil" onclick="switchTab('profil', event)">Profil</div>
+      <div class="tab" data-i18n="tab.services" onclick="switchTab('services', event)">Services</div>
+      <div class="tab" data-i18n="tab.reussites" onclick="switchTab('avis', event)">Réussites</div>
     </div>
 
     <!-- SECTION 1 : PROFIL -->
     <div id="profil" class="section active">
       <div class="about">
-        <h3><i class="fas fa-user-tie"></i> À propos</h3>
-        <p>Passionné par le digital, j'accompagne les entreprises et les entrepreneurs à exploser leurs ventes grâce à
-          des tunnels performants. Développeur web et consultant stratégique, je conçois des écosystèmes sur-mesure
-          optimisés pour la conversion.</p>
+        <h3><i class="fas fa-user-tie"></i> <span data-i18n="about.title">À propos</span></h3>
+        <p data-i18n="about.text">Passionné par l'IA et le digital, j'accompagne les entreprises à exploser leurs ventes
+          grâce à des tunnels intelligents et systèmes automatisés. Consultant IA, développeur web et mobile, stratège
+          digital : je conçois des écosystèmes sur-mesure optimisés pour la conversion avec les dernières technologies
+          d'intelligence artificielle et d'automatisation.</p>
 
-        <h3 style="margin-top: 25px;"><i class="fas fa-certificate"></i> Certification</h3>
+        <h3 style="margin-top: 25px;"><i class="fas fa-certificate"></i> <span
+            data-i18n="cert.title">Certification</span></h3>
         <div class="cert-card">
-          <div class="cert-badge">Certifié</div>
-          <img src="/images/certificate.png" alt="Certificat d'expertise de Giovanny Gandonou" class="cert-img" onclick="openModal('/images/certificate.png')">
-          <p class="cert-label">Cliquez pour agrandir</p>
+          <div class="cert-badge" data-i18n="cert.badge">Certifié</div>
+          <img src="/images/certificate.webp" width="280" height="198" loading="lazy" data-i18n-alt="cert.alt"
+            alt="Certificat d'expertise de Giovanny Gandonou" class="cert-img"
+            onclick="openModal('/images/certificate.webp')">
+          <p class="cert-label" data-i18n="cert.label">Cliquez pour agrandir</p>
         </div>
 
-        <h3 style="margin-top: 25px;"><i class="fas fa-users"></i> Espace Gratuit</h3>
+        <h3 style="margin-top: 25px;"><i class="fas fa-chart-bar"></i> <span data-i18n="stats.title">Chiffres
+            Clés</span></h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px;">
+          <div style="background: #f0f4f1; border-radius: 12px; padding: 15px; text-align: center;">
+            <div style="font-size: 24px; font-weight: 800; color: var(--primary);">50+</div>
+            <div style="font-size: 11px; color: #666;" data-i18n="stats.tunnels">Tunnels livrés</div>
+          </div>
+          <div style="background: #f0f4f1; border-radius: 12px; padding: 15px; text-align: center;">
+            <div style="font-size: 24px; font-weight: 800; color: var(--primary);">98%</div>
+            <div style="font-size: 11px; color: #666;" data-i18n="stats.clients">Clients satisfaits</div>
+          </div>
+          <div style="background: #f0f4f1; border-radius: 12px; padding: 15px; text-align: center;">
+            <div style="font-size: 24px; font-weight: 800; color: var(--primary);">3x</div>
+            <div style="font-size: 11px; color: #666;" data-i18n="stats.roi">ROI moyen</div>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 25px;"><i class="fas fa-users"></i> <span data-i18n="gratuit.title">Espace Gratuit</span>
+        </h3>
         <a href="https://whatsapp.com/channel/0029Vb7VnvT4tRryWzBA4I2a" target="_blank" rel="noopener noreferrer"
           class="service">
           <div class="service-icon"><i class="fas fa-gift"></i></div>
           <div class="service-content">
-            <h4>La Forge des Entrepreneurs <span class="badge-offert">OFFERT</span></h4>
-            <p>Astuces quotidiennes et ressources offertes pour débuter.</p>
+            <h4><span data-i18n="gratuit.name">La Forge des Entrepreneurs</span> <span class="badge-offert"
+                data-i18n="gratuit.badge">OFFERT</span></h4>
+            <p data-i18n="gratuit.desc">Astuces quotidiennes et ressources offertes pour débuter.</p>
           </div>
           <div class="service-arrow"><i class="fas fa-chevron-right"></i></div>
         </a>
@@ -168,8 +186,9 @@
       <a href="tunnel-de-vente/tunnel-de-vente.html" class="service">
         <div class="service-icon"><i class="fas fa-filter"></i></div>
         <div class="service-content">
-          <h4>Tunnels de vente Haute Conversion</h4>
-          <p>Création de systèmes d'acquisition automatisés de A à Z.</p>
+          <h4 data-i18n="service.tunnel">Tunnels de Vente IA & Automation</h4>
+          <p data-i18n="service.tunnel_desc">Systèmes d'acquisition automatisés par IA, tunnels haute conversion, lead
+            generation intelligente.</p>
         </div>
         <div class="service-arrow"><i class="fas fa-chevron-right"></i></div>
       </a>
@@ -177,8 +196,9 @@
       <a href="creation-site-web/creation-site-web.html" class="service">
         <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
         <div class="service-content">
-          <h4>Développement Site Web</h4>
-          <p>Sites vitrines et e-commerce rapides, responsives et modernes.</p>
+          <h4 data-i18n="service.web">Développement Web & Mobile</h4>
+          <p data-i18n="service.web_desc">Sites web, apps mobiles, e-commerce, plateformes sur-mesure — modernes,
+            rapides et responsives.</p>
         </div>
         <div class="service-arrow"><i class="fas fa-chevron-right"></i></div>
       </a>
@@ -186,34 +206,38 @@
       <a href="audit-strategie/audit-strategie.html" class="service">
         <div class="service-icon"><i class="fas fa-chart-line"></i></div>
         <div class="service-content">
-          <h4>Audit & Stratégie Digitale</h4>
-          <p>Analyse de tes offres actuelles et plan d'action personnalisé.</p>
+          <h4 data-i18n="service.audit">Audit & Stratégie Digitale IA</h4>
+          <p data-i18n="service.audit_desc">Analyse IA de tes offres, audit tunnel de vente, plan d'action personnalisé
+            et automation.</p>
         </div>
         <div class="service-arrow"><i class="fas fa-chevron-right"></i></div>
       </a>
     </div>
 
-    <!-- SECTION 3 : RÉUSSITES (Réalisations + Avis) -->
+    <!-- SECTION 3 : RÉUSSITES -->
     <div id="avis" class="section">
       <div class="about">
-        <h3><i class="fas fa-rocket"></i> Réalisations</h3>
+        <h3><i class="fas fa-rocket"></i> <span data-i18n="realisations.title">Réalisations</span></h3>
 
         <div class="carousel-wrapper">
           <div class="carousel-track" id="carouselTrack">
-            <!-- Projet 1 -->
             <div class="project-card active"
-              style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80');">
-              <h4>Tunnel E-com Haute Conversion</h4>
+              style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('/images/projet-ecom.webp');">
+              <h4 data-i18n="projet1.title">Tunnel E-com Haute Conversion</h4>
+              <p style="color: rgba(255,255,255,0.8); font-size: 11px; position: relative; z-index: 2; margin-top: 4px;"
+                data-i18n="projet1.desc">+150% de conversion en 30 jours</p>
             </div>
-            <!-- Projet 2 -->
             <div class="project-card"
-              style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80');">
-              <h4>Plateforme SaaS Sur-Mesure</h4>
+              style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('/images/projet-saas.webp');">
+              <h4 data-i18n="projet2.title">Plateforme SaaS Sur-Mesure</h4>
+              <p style="color: rgba(255,255,255,0.8); font-size: 11px; position: relative; z-index: 2; margin-top: 4px;"
+                data-i18n="projet2.desc">Architecture cloud scalable</p>
             </div>
-            <!-- Projet 3 -->
             <div class="project-card"
-              style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=400&q=80');">
-              <h4>Site Vitrine Coach Business</h4>
+              style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('/images/projet-coach.webp');">
+              <h4 data-i18n="projet3.title">Site Vitrine Coach Business</h4>
+              <p style="color: rgba(255,255,255,0.8); font-size: 11px; position: relative; z-index: 2; margin-top: 4px;"
+                data-i18n="projet3.desc">Design premium + SEO</p>
             </div>
           </div>
 
@@ -226,28 +250,30 @@
 
         <hr style="border: 0; border-top: 1px solid #f0f4f1; margin: 25px 0;">
 
-        <h3><i class="fas fa-heart"></i> Mots de mes clients</h3>
+        <h3><i class="fas fa-heart"></i> <span data-i18n="testimonials.title">Mots de mes clients</span></h3>
 
-        <!-- Témoignage 1 -->
         <div class="testimonial">
           <div class="stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
               class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
-          <p class="testimonial-text">"Giovanny a complètement transformé notre système d'acquisition. Depuis que nous
-            avons lancé le nouveau tunnel, nos ventes ont fait x3 !"</p>
-          <div class="testimonial-author">Marc D. <span>— E-commerçant</span></div>
+          <p class="testimonial-text" data-i18n="testimonial1.text">"Giovanny a complètement transformé notre système
+            d'acquisition. Depuis que nous avons lancé le nouveau tunnel, nos ventes ont fait x3 en 2 mois. Un
+            investissement rentabilisé en moins de 3 semaines."</p>
+          <div class="testimonial-author"><span data-i18n="testimonial1.author">Marc D.</span> <span
+              data-i18n="testimonial1.role">— E-commerçant, 150k€/mois</span></div>
         </div>
 
-        <!-- Témoignage 2 -->
         <div class="testimonial">
           <div class="stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
               class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
-          <p class="testimonial-text">"Un accompagnement ultra professionnel. Il a compris exactement mon besoin et a
-            livré un site hyper rapide et optimisé."</p>
-          <div class="testimonial-author">Sophie L. <span>— Coach</span></div>
+          <p class="testimonial-text" data-i18n="testimonial2.text">"Un accompagnement ultra professionnel. Il a compris
+            exactement mon besoin et a livré un site hyper rapide et optimisé. Mon trafic organique a augmenté de 200%."
+          </p>
+          <div class="testimonial-author"><span data-i18n="testimonial2.author">Sophie L.</span> <span
+              data-i18n="testimonial2.role">— Coach, +200% trafic</span></div>
         </div>
       </div>
     </div>
@@ -255,17 +281,21 @@
   </div>
 
   <footer>
-    <p>&copy; <span id="current-year"></span> infosweb.io - Tous droits réservés</p>
+    <p>&copy; <span id="current-year"></span> infosweb.io - <span data-i18n="footer.rights">Tous droits réservés</span>
+    </p>
     <p style="margin-top: 8px;">
-      <a href="/mentions-legales.html">Mentions Légales</a> | <a href="/politique-de-confidentialite.html">Politique de
-        Confidentialité</a>
+      <a href="/mentions-legales.html" data-i18n="footer.mentions">Mentions Légales</a> | <a
+        href="/politique-de-confidentialite.html" data-i18n="footer.privacy">Politique de Confidentialité</a>
     </p>
   </footer>
 
-  <!-- MODAL VISIONNEUSE (Lightbox) -->
+  <!-- MODAL VISIONNEUSE -->
   <div id="certModal" onclick="closeModal()">
     <span>&times;</span>
-    <img id="imgModal" alt="Vue agrandie du certificat d'expertise de Giovanny Gandonou"
-      onclick="event.stopPropagation()">
+    <img id="imgModal" alt="Certificat d'expertise" onclick="event.stopPropagation()">
   </div>
   <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,10 +1,92 @@
+(function() {
+    const COOKIE_NAME = 'cookie_consent';
+    const GTM_ID = 'GTM-MM6839JT';
+
+    function getCookie(name) {
+        return document.cookie.split('; ').find(r => r.startsWith(name + '='));
+    }
+
+    function setCookie(name, value, days) {
+        const d = new Date();
+        d.setTime(d.getTime() + days * 86400000);
+        document.cookie = name + '=' + value + ';path=/;expires=' + d.toUTCString() + ';SameSite=Lax';
+    }
+
+    function loadGTM() {
+        if (window.gtmLoaded) return;
+        window.gtmLoaded = true;
+        (function(w,d,s,l,i){
+            w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+            var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+            j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+            f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer',GTM_ID);
+    }
+
+    function showBanner() {
+        const banner = document.createElement('div');
+        banner.id = 'cookie-banner';
+        banner.innerHTML = `
+            <p>${i18n.t('cookie.text')} <a href="/politique-de-confidentialite.html">${i18n.t('cookie.link')}</a></p>
+            <div class="cookie-btns">
+                <button class="cookie-btn decline" id="cookie-decline">${i18n.t('cookie.decline')}</button>
+                <button class="cookie-btn accept" id="cookie-accept">${i18n.t('cookie.accept')}</button>
+            </div>
+        `;
+        document.body.appendChild(banner);
+        banner.style.display = 'flex';
+
+        document.getElementById('cookie-accept').addEventListener('click', function() {
+            setCookie(COOKIE_NAME, 'accepted', 365);
+            banner.style.display = 'none';
+            loadGTM();
+        });
+
+        document.getElementById('cookie-decline').addEventListener('click', function() {
+            setCookie(COOKIE_NAME, 'declined', 365);
+            banner.style.display = 'none';
+        });
+    }
+
+    function getStatusText(key) {
+        return i18n.t(key);
+    }
+
+    function applyI18nToFormStatus() {
+        document.querySelectorAll("#form-status").forEach(el => {
+            if (el.dataset.i18nKey) {
+                el.innerHTML = getStatusText(el.dataset.i18nKey);
+            }
+        });
+    }
+
+    const existing = getCookie(COOKIE_NAME);
+    if (!existing) {
+        const initBanner = () => showBanner();
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initBanner);
+        } else {
+            initBanner();
+        }
+    } else if (existing.includes('accepted')) {
+        loadGTM();
+    }
+
+    document.addEventListener('langchange', function() {
+        const banner = document.getElementById('cookie-banner');
+        if (banner) {
+            banner.querySelector('p').innerHTML = `${i18n.t('cookie.text')} <a href="/politique-de-confidentialite.html">${i18n.t('cookie.link')}</a>`;
+            document.getElementById('cookie-accept').textContent = i18n.t('cookie.accept');
+            document.getElementById('cookie-decline').textContent = i18n.t('cookie.decline');
+        }
+    });
+})();
+
 document.addEventListener("DOMContentLoaded", function () {
-    // Configuration
     const user = "midogiova";
     const domain = "gmail.com";
     const email = `${user}@${domain}`;
 
-    // 1. Obfuscation des liens mailto
     const contactLinks = document.querySelectorAll('[id^="contact-link"], .js-obfuscated-email, .mailto-link');
     contactLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -13,13 +95,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // 3. Copie de l'email
     const copyBtn = document.getElementById('copy-email-btn');
     if (copyBtn) {
         copyBtn.addEventListener('click', function () {
             navigator.clipboard.writeText(email).then(() => {
                 const originalText = this.innerHTML;
-                this.innerText = "Email copié !";
+                this.innerText = i18n.t('email.copied');
                 this.style.color = "#22c55e";
                 setTimeout(() => {
                     this.innerHTML = originalText;
@@ -29,20 +110,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // 4. Gestion des formulaires de contact (Mailto fallback)
     document.querySelectorAll(".contact-form").forEach(contactForm => {
-        // Gestion de la soumission du formulaire
         contactForm.addEventListener("submit", function (e) {
-            e.preventDefault(); // Empêche l'envoi par défaut du formulaire
+            e.preventDefault();
 
-            // Capture robuste des données du formulaire
             const formData = new FormData(contactForm);
             const data = {};
             formData.forEach((value, key) => {
                 data[key] = value;
             });
 
-            // Vérification du Honeypot (Sécurité bot)
             const botValue = data._gotcha || "";
             if (botValue) {
                 console.log("Bot detected. Submission blocked.");
@@ -56,58 +133,57 @@ document.addEventListener("DOMContentLoaded", function () {
             const website = data.website || "";
             const statusElement = contactForm.querySelector("#form-status");
 
-            // Validation Email (RegEx standard)
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(clientEmail)) {
                 if (statusElement) {
-                    statusElement.innerHTML = "❌ Veuillez entrer une adresse email valide.";
+                    statusElement.innerHTML = "❌ " + i18n.t('form.email_invalid');
                     statusElement.style.color = "#ef4444";
                     statusElement.style.display = "block";
                 }
                 return;
             }
 
-            // Validation Téléphone International (E.164)
-            // Autorise le format avec ou sans +, suivi de 7 à 15 chiffres.
             const phoneClean = whatsappNumber.replace(/[\s\-]/g, '');
             const phoneRegex = /^\+?[1-9]\d{6,14}$/;
             if (whatsappNumber.trim() !== "" && !phoneRegex.test(phoneClean)) {
                 if (statusElement) {
-                    statusElement.innerHTML = "❌ Format téléphone invalide. Utilisez le format international (ex: +229...)";
+                    statusElement.innerHTML = "❌ " + i18n.t('form.phone_invalid');
                     statusElement.style.color = "#ef4444";
                     statusElement.style.display = "block";
                 }
                 return;
             }
 
-            const formType = contactForm.dataset.formType; // Récupère le type de formulaire
+            const formType = contactForm.dataset.formType;
 
-            // Animation du bouton pendant l'envoi
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             let originalBtnText = "";
             if (submitBtn) {
                 originalBtnText = submitBtn.innerHTML;
                 submitBtn.disabled = true;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + i18n.t('form.sending');
             }
+
+            const payload = {
+                name: clientName,
+                email: clientEmail,
+                whatsapp: whatsappNumber,
+                message: message,
+                formType: formType,
+                website: website,
+                lang: i18n.lang,
+                _gotcha: botValue
+            };
 
             fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    name: clientName,
-                    email: clientEmail,
-                    whatsapp: whatsappNumber,
-                    message: message,
-                    formType: formType,
-                    website: website,
-                    _gotcha: botValue
-                })
+                body: JSON.stringify(payload)
             })
                 .then(response => {
                     if (response.ok) {
                         if (statusElement) {
-                            statusElement.innerHTML = "✅ Message envoyé avec succès ! Vérifiez votre boîte mail.";
+                            statusElement.innerHTML = "✅ " + i18n.t('form.success');
                             statusElement.style.color = "#356646";
                         }
                         contactForm.reset();
@@ -115,17 +191,13 @@ document.addEventListener("DOMContentLoaded", function () {
                             window.location.href = "/merci.html";
                         }, 1500);
                     } else {
-                        // On récupère le texte d'abord pour éviter l'erreur de parsing JSON si c'est du HTML
                         return response.text().then(text => {
-                            // LOG DE DÉBOGAGE : Affiche ce que le serveur a réellement envoyé
-                            console.warn("Réponse brute du serveur (non-JSON):", text);
+                            console.warn("Réponse brute du serveur:", text);
                             let errorMessage = "Erreur serveur";
                             try {
                                 const data = JSON.parse(text);
                                 errorMessage = data.error || errorMessage;
-                            } catch (e) {
-                                // Si ce n'est pas du JSON, on reste sur le message par défaut
-                            }
+                            } catch (e) {}
                             throw new Error(errorMessage);
                         });
                     }
@@ -133,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 .catch((error) => {
                     console.error("Erreur lors de la soumission:", error);
                     if (statusElement) {
-                        statusElement.innerHTML = "⚠️ Une erreur est survenue lors de l'envoi. Veuillez réessayer ou me contacter directement.";
+                        statusElement.innerHTML = "⚠️ " + i18n.t('form.error');
                         statusElement.style.color = "#ef4444";
                     }
                 })
@@ -150,9 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // 5. Fonctions spécifiques à index.html (carousel, tabs, modal)
     let currentProject = 0;
-    // Rendre les fonctions globales pour les appels onclick dans le HTML
     window.moveCarousel = function (direction) {
         const track = document.getElementById('carouselTrack');
         const cards = document.querySelectorAll('.project-card');
@@ -165,7 +235,6 @@ document.addEventListener("DOMContentLoaded", function () {
             card.classList.toggle('active', index === currentProject);
         });
 
-        // Mise à jour des points de pagination
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentProject);
         });
@@ -176,7 +245,6 @@ document.addEventListener("DOMContentLoaded", function () {
         track.style.transform = `translate3d(${offset}px, 0, 0)`;
     }
 
-    // Initialisation dynamique des points de pagination
     const dotsContainer = document.getElementById('carouselDots');
     const projects = document.querySelectorAll('.project-card');
     if (dotsContainer && projects.length > 0) {
@@ -192,7 +260,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Support du Swipe pour mobile
     const track = document.getElementById('carouselTrack');
     let touchStartX = 0;
     let touchEndX = 0;
@@ -209,9 +276,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function handleSwipe() {
-        const swipeThreshold = 50; // Sensibilité du swipe
-        if (touchStartX - touchEndX > swipeThreshold) window.moveCarousel(1); // Swipe gauche -> suivant
-        if (touchEndX - touchStartX > swipeThreshold) window.moveCarousel(-1); // Swipe droite -> précédent
+        const swipeThreshold = 50;
+        if (touchStartX - touchEndX > swipeThreshold) window.moveCarousel(1);
+        if (touchEndX - touchStartX > swipeThreshold) window.moveCarousel(-1);
     }
 
     window.switchTab = function (tabId, event) {
@@ -226,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     window.scrollToCertificate = function () {
-        window.openModal('/images/certificate.png');
+        window.openModal('/images/certificate.webp');
     }
 
     window.openModal = function (src) {
@@ -245,7 +312,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // 6. Défilement automatique du carousel (Toutes les 5 secondes)
     let autoScrollInterval = setInterval(() => {
         if (typeof window.moveCarousel === 'function') window.moveCarousel(1);
     }, 5000);

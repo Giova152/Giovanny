@@ -5,140 +5,150 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-MM6839JT');</script>
-
-  <meta name="description"
+  <meta name="description" data-i18n="tunnel.meta_desc"
     content="Création de tunnels de vente haute conversion pour automatiser votre acquisition client avec Giovanny Gandonou.">
-  <title>Tunnels de Vente - Giovanny Gandonou</title>
+  <title data-i18n="tunnel.title">Tunnels de Vente - Giovanny Gandonou</title>
   <link rel="canonical" href="https://infosweb.io/tunnel-de-vente/tunnel-de-vente.html">
+  <link rel="alternate" href="https://infosweb.io/tunnel-de-vente/tunnel-de-vente.html" hreflang="x-default">
+  <link rel="alternate" href="https://infosweb.io/tunnel-de-vente/tunnel-de-vente.html" hreflang="fr">
+  <link rel="alternate" href="https://infosweb.io/tunnel-de-vente/tunnel-de-vente.html" hreflang="en">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/webp" href="/images/pl.webp">
-  <link rel="apple-touch-icon" href="/images/pl.webp">
+  <link rel="apple-touch-icon" href="/favicon.ico">
+  <script src="/i18n.js" defer></script>
 </head>
 
 <body>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM6839JT" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="container">
     <div class="header">
       <div class="header-nav">
-        <a href="../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour</a>
+        <a href="/" class="back-btn"><i class="fas fa-arrow-left"></i> <span data-i18n="tunnel.back">Retour</span></a>
+        <button class="lang-toggle" style="position:static; margin-left:auto;" onclick="i18n.switch(i18n.lang === 'fr' ? 'en' : 'fr')">EN</button>
       </div>
-      <h1>Tunnels de Vente Haute Conversion</h1>
-      <p>Transformez votre trafic en clients fidèles avec des systèmes d'acquisition automatisés et optimisés.</p>
+      <h1 data-i18n="tunnel.header.title">Tunnels de Vente IA & Automation</h1>
+      <p data-i18n="tunnel.header.desc">Transformez votre trafic en clients fidèles avec des systèmes d'acquisition automatisés par IA, optimisés et intelligents.</p>
     </div>
 
     <div class="pricing-grid">
-      <!-- PACK LANCEMENT -->
       <div class="pricing-card">
-        <h3 class="plan-name">Pack Lancement</h3>
-        <p class="plan-desc">L'essentiel pour commencer à capturer des leads qualifiés.</p>
-        <div class="plan-price">Lead Generation</div>
+        <h3 class="plan-name" data-i18n="tunnel.pack1.name">Pack Lancement</h3>
+        <p class="plan-desc" data-i18n="tunnel.pack1.desc">L'essentiel pour commencer à capturer des leads qualifiés.</p>
+        <div class="plan-price" data-i18n="tunnel.pack1.price">Lead Generation</div>
         <ul class="features">
-          <li><i class="fas fa-check-circle"></i> Page de capture (Opt-in)</li>
-          <li><i class="fas fa-check-circle"></i> Page de remerciement</li>
-          <li><i class="fas fa-check-circle"></i> Connexion Auto-répondeur</li>
-          <li><i class="fas fa-check-circle"></i> Séquence email de bienvenue (3 mails)</li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="tunnel.pack1.f1">Page de capture (Opt-in)</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="tunnel.pack1.f2">Page de remerciement</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="tunnel.pack1.f3">Connexion Auto-répondeur</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="tunnel.pack1.f4">Séquence email de bienvenue (3 mails)</span></li>
         </ul>
-        <a href="#contact" class="cta-btn outline">Lancer mon tunnel</a>
+        <a href="#contact" class="cta-btn outline"><span data-i18n="tunnel.pack1.cta">Lancer mon tunnel</span></a>
       </div>
 
-      <!-- PACK EXPANSION -->
       <div class="pricing-card popular">
-        <div class="popular-badge">Recommandé</div>
-        <h3 class="plan-name">Pack Expansion</h3>
-        <p class="plan-desc">Le tunnel complet pour vendre vos produits ou services en automatique.</p>
-        <div class="plan-price">Ventes Automatisées</div>
+        <div class="popular-badge" data-i18n="tunnel.pack2.badge">Recommandé</div>
+        <h3 class="plan-name" data-i18n="tunnel.pack2.name">Pack Expansion</h3>
+        <p class="plan-desc" data-i18n="tunnel.pack2.desc">Le tunnel complet pour vendre vos produits ou services en automatique.</p>
+        <div class="plan-price" data-i18n="tunnel.pack2.price">Ventes Automatisées</div>
         <ul class="features">
-          <li><i class="fas fa-check-circle"></i> Page de vente (Copywriting inclus)</li>
-          <li><i class="fas fa-check-circle"></i> VSL ou Webinaire pré-enregistré</li>
-          <li><i class="fas fa-check-circle"></i> Système de Checkout & Upsells</li>
-          <li><i class="fas fa-check-circle"></i> Séquence de relance panier abandonné</li>
-        </ul> <a href="#contact" class="cta-btn solid">Booster mes ventes</a>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="tunnel.pack2.f1">Page de vente (Copywriting inclus)</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="tunnel.pack2.f2">VSL ou Webinaire pré-enregistré</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="tunnel.pack2.f3">Système de Checkout & Upsells</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="tunnel.pack2.f4">Séquence de relance panier abandonné</span></li>
+        </ul> <a href="#contact" class="cta-btn solid"><span data-i18n="tunnel.pack2.cta">Booster mes ventes</span></a>
       </div>
 
-      <!-- PACK ÉCOSYSTÈME -->
       <div class="pricing-card">
-        <h3 class="plan-name">Pack Écosystème</h3>
-        <p class="plan-desc">Une infrastructure marketing complète pour dominer votre marché.</p>
-        <div class="plan-price">Architecture Globale</div>
+        <h3 class="plan-name" data-i18n="tunnel.pack3.name">Pack Écosystème</h3>
+        <p class="plan-desc" data-i18n="tunnel.pack3.desc">Une infrastructure marketing complète pour dominer votre marché.</p>
+        <div class="plan-price" data-i18n="tunnel.pack3.price">Architecture Globale</div>
         <ul class="features">
-          <li><i class="fas fa-check-circle"></i> Multiples tunnels interconnectés</li>
-          <li><i class="fas fa-check-circle"></i> Espace membre / Formation</li>
-          <li><i class="fas fa-check-circle"></i> Automation CRM avancée</li>
-          <li><i class="fas fa-check-circle"></i> Tracking complet du ROI</li>
-        </ul> <a href="#contact" class="cta-btn outline">Demander un audit tunnel</a>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="tunnel.pack3.f1">Multiples tunnels interconnectés</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="tunnel.pack3.f2">Espace membre / Formation</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="tunnel.pack3.f3">Automation CRM avancée</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="tunnel.pack3.f4">Tracking complet du ROI</span></li>
+        </ul> <a href="#contact" class="cta-btn outline"><span data-i18n="tunnel.pack3.cta">Demander un audit tunnel</span></a>
       </div>
     </div>
 
     <div class="process-section">
-      <h2>Ma stratégie de conversion</h2>
+      <h2 data-i18n="tunnel.process.title">Ma stratégie de conversion</h2>
       <div class="steps">
         <div class="step">
           <div class="step-number">1</div>
-          <h4>Psychologie & Offre</h4>
-          <p>Analyse de votre avatar client pour créer une offre irrésistible.</p>
+          <h4 data-i18n="tunnel.step1.title">Psychologie & Offre</h4>
+          <p data-i18n="tunnel.step1.desc">Analyse de votre avatar client pour créer une offre irrésistible.</p>
         </div>
         <div class="step">
           <div class="step-number">2</div>
-          <h4>Copywriting & Design</h4>
-          <p>Rédaction de textes persuasifs et création d'une interface qui rassure.</p>
+          <h4 data-i18n="tunnel.step2.title">Copywriting & Design</h4>
+          <p data-i18n="tunnel.step2.desc">Rédaction de textes persuasifs et création d'une interface qui rassure.</p>
         </div>
         <div class="step">
           <div class="step-number">3</div>
-          <h4>Automation & Analytics</h4>
-          <p>Mise en place technique et configuration du suivi pour mesurer chaque euro investi.</p>
+          <h4 data-i18n="tunnel.step3.title">Automation & Analytics</h4>
+          <p data-i18n="tunnel.step3.desc">Mise en place technique et configuration du suivi pour mesurer chaque euro investi.</p>
         </div>
       </div>
     </div>
 
+    <div class="process-section">
+      <h2 data-i18n="tunnel.faq.title">Questions fréquentes</h2>
+      <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+        <details style="background: #fff; border-radius: 12px; padding: 18px; margin-bottom: 12px; border: 1px solid #f0f4f1;">
+          <summary style="font-weight: 600; cursor: pointer; color: #1a1a1a;" data-i18n="tunnel.faq1.q">Combien de temps faut-il pour créer un tunnel ?</summary>
+          <p style="margin-top: 12px; font-size: 14px; color: #555; line-height: 1.6;" data-i18n="tunnel.faq1.a">Comptez 5 à 10 jours ouvrés selon la complexité. Le pack Lancement peut être livré en 72h.</p>
+        </details>
+        <details style="background: #fff; border-radius: 12px; padding: 18px; margin-bottom: 12px; border: 1px solid #f0f4f1;">
+          <summary style="font-weight: 600; cursor: pointer; color: #1a1a1a;" data-i18n="tunnel.faq2.q">Ai-je besoin d'avoir du trafic pour commencer ?</summary>
+          <p style="margin-top: 12px; font-size: 14px; color: #555; line-height: 1.6;" data-i18n="tunnel.faq2.a">Pas nécessairement. Je peux vous conseiller sur les stratégies d'acquisition adaptées à votre budget (SEO, Ads, réseaux sociaux).</p>
+        </details>
+        <details style="background: #fff; border-radius: 12px; padding: 18px; margin-bottom: 12px; border: 1px solid #f0f4f1;">
+          <summary style="font-weight: 600; cursor: pointer; color: #1a1a1a;" data-i18n="tunnel.faq3.q">Proposez-vous un suivi après la livraison ?</summary>
+          <p style="margin-top: 12px; font-size: 14px; color: #555; line-height: 1.6;" data-i18n="tunnel.faq3.a">Oui, un accompagnement est disponible pour optimiser les performances et ajuster la stratégie selon les résultats.</p>
+        </details>
+      </div>
+    </div>
+
     <div id="contact" class="contact-section">
-      <h2>Prêt à automatiser votre croissance ?</h2>
-      <p style="font-size: 14px; color: #666; margin-top: 10px;">Décrivez votre offre et vos objectifs actuels.</p>
+      <h2 data-i18n="tunnel.contact.title">Prêt à automatiser votre croissance ?</h2>
+      <p style="font-size: 14px; color: #666; margin-top: 10px;" data-i18n="tunnel.contact.desc">Décrivez votre offre et vos objectifs actuels.</p>
 
       <form id="tunnel-form" class="contact-form" data-form-type="tunnel">
         <div class="form-row">
           <div class="form-group">
-            <label for="full-name">Nom complet</label>
+            <label for="full-name" data-i18n="form.name">Nom complet</label>
             <div class="input-with-icon">
-              <input type="text" name="name" id="full-name" placeholder="Jean Dupont" required>
+              <input type="text" name="name" id="full-name" data-i18n-placeholder="form.name_placeholder" placeholder="Jean Dupont" required>
               <i class="fas fa-user"></i>
             </div>
           </div>
           <div class="form-group">
-            <label for="email-address">Adresse Email</label>
+            <label for="email-address" data-i18n="form.email">Adresse Email</label>
             <div class="input-with-icon">
-              <input type="email" name="email" id="email-address" placeholder="jean@exemple.com" required>
+              <input type="email" name="email" id="email-address" data-i18n-placeholder="form.email_placeholder" placeholder="jean@exemple.com" required>
               <i class="fas fa-envelope"></i>
             </div>
           </div>
         </div>
 
         <div class="form-group">
-          <label for="whatsapp-number">WhatsApp (optionnel)</label>
+          <label for="whatsapp-number" data-i18n="form.whatsapp">WhatsApp (optionnel)</label>
           <div class="input-with-icon">
-            <input type="tel" name="whatsapp" id="whatsapp-number" placeholder="+229...">
+            <input type="tel" name="whatsapp" id="whatsapp-number" data-i18n-placeholder="form.whatsapp_placeholder" placeholder="+229...">
             <i class="fab fa-whatsapp"></i>
           </div>
         </div>
 
         <div class="form-group">
-          <label for="message">Parlez-moi de votre produit/service</label>
+          <label for="message" data-i18n="form.message_tunnel">Parlez-moi de votre produit/service</label>
           <div class="input-with-icon">
             <textarea name="message" id="message" rows="4"
+              data-i18n-placeholder="form.message_tunnel_placeholder"
               placeholder="Quel est votre prix de vente ? Quel est votre trafic actuel ?..." required></textarea>
             <i class="fas fa-comment-dots"></i>
           </div>
@@ -149,7 +159,7 @@
           style="margin-bottom: 15px; font-weight: 500; display: none; text-align: center; font-size: 14px;"></div>
 
         <button type="submit" class="cta-btn solid" style="border: none; cursor: pointer; width: 100%;">
-          Obtenir mon plan de tunnel
+          <span data-i18n="tunnel.cta_submit">Obtenir mon plan de tunnel</span>
         </button>
       </form>
     </div>

@@ -55,6 +55,7 @@ body {
 .container {
     max-width: 1000px;
     padding: 40px;
+    position: relative;
 }
 
 .header {
@@ -77,6 +78,7 @@ body {
     box-shadow: var(--shadow);
     border: 1px solid rgba(255, 255, 255, 0.5);
     margin: auto 0;
+    position: relative;
 }
 
 @media (max-width: 360px) {
@@ -1033,6 +1035,104 @@ h1 {
 .features li i {
     color: var(--primary);
     margin-top: 3px;
+}
+
+/* Cookie Banner */
+#cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #1a1a1a;
+    color: #eee;
+    padding: 18px 24px;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 13px;
+    line-height: 1.5;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+}
+
+#cookie-banner p {
+    margin: 0;
+    max-width: 700px;
+}
+
+#cookie-banner a {
+    color: #8bc34a;
+    text-decoration: underline;
+}
+
+#cookie-banner .cookie-btns {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+#cookie-banner .cookie-btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#cookie-banner .cookie-btn.accept {
+    background: var(--primary);
+    color: #fff;
+}
+
+#cookie-banner .cookie-btn.accept:hover {
+    background: var(--primary-dark);
+}
+
+#cookie-banner .cookie-btn.decline {
+    background: transparent;
+    color: #aaa;
+    border: 1px solid #444;
+}
+
+#cookie-banner .cookie-btn.decline:hover {
+    background: #333;
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    #cookie-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 16px;
+    }
+}
+
+/* Language Toggle */
+.lang-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #f0f4f1;
+  border: 1px solid #d0dcd2;
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--primary);
+  transition: var(--transition);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.5px;
+  z-index: 10;
+}
+
+.lang-toggle:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
 }
 
 /* Footer */

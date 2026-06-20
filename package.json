@@ -4,7 +4,6 @@
     "type": "module",
     "dependencies": {
         "dotenv": "^17.4.2",
-        "nodemailer": "^9.0.1",
-        "resend": "^3.2.0"
+        "nodemailer": "^9.0.1"
     }
 }

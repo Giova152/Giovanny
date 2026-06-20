@@ -5,150 +5,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-MM6839JT');</script>
-
-    <meta name="description"
+    <meta name="description" data-i18n="web.meta_desc"
         content="Création de sites web professionnels, rapides et optimisés pour la conversion par Giovanny Gandonou.">
-    <title>Création Site Web - Giovanny Gandonou</title>
+    <title data-i18n="web.title">Création Site Web - Giovanny Gandonou</title>
     <link rel="canonical" href="https://infosweb.io/creation-site-web/creation-site-web.html">
+    <link rel="alternate" href="https://infosweb.io/creation-site-web/creation-site-web.html" hreflang="x-default">
+    <link rel="alternate" href="https://infosweb.io/creation-site-web/creation-site-web.html" hreflang="fr">
+    <link rel="alternate" href="https://infosweb.io/creation-site-web/creation-site-web.html" hreflang="en">
 
-    <meta property="og:description"
+    <meta property="og:description" data-i18n="web.og_desc"
         content="Des outils business rapides, sécurisés et conçus pour convertir vos visiteurs.">
     <meta property="og:url" content="https://infosweb.io/creation-site-web/creation-site-web.html">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://infosweb.io/images/pl.webp">
-    <meta property="og:image:alt" content="Aperçu des services de création web">
+    <meta property="og:image:alt" content="Website development services preview">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="../style.css"> <!-- Lien vers le CSS centralisé -->
+    <link rel="stylesheet" href="../style.css">
 
-    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/webp" href="/images/pl.webp">
-    <link rel="apple-touch-icon" href="/images/pl.webp">
+    <link rel="apple-touch-icon" href="/favicon.ico">
+    <script src="/i18n.js" defer></script>
 
 </head>
 
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM6839JT" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
     <div class="container">
         <div class="header">
             <div class="header-nav">
-                <a href="../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour</a>
+                <a href="/" class="back-btn"><i class="fas fa-arrow-left"></i> <span data-i18n="tunnel.back">Retour</span></a>
+                <button class="lang-toggle" style="position:static; margin-left:auto;" onclick="i18n.switch(i18n.lang === 'fr' ? 'en' : 'fr')">EN</button>
             </div>
-            <h1>Sites Web Modernes & Performants</h1>
-            <p>Plus qu'un simple design, je crée des outils business rapides, sécurisés et conçus pour convertir vos
-                visiteurs.</p>
+            <h1 data-i18n="web.header.title">Développement Web & Mobile Sur-Mesure</h1>
+            <p data-i18n="web.header.desc">Plus qu'un simple design, je crée des sites web, apps mobiles et plateformes e-commerce rapides, sécurisés et optimisés IA pour convertir.</p>
         </div>
 
         <div class="pricing-grid">
-            <!-- PACK VITRINE -->
             <div class="pricing-card">
-                <h3 class="plan-name">Pack Vitrine</h3>
-                <p class="plan-desc">Présentez votre activité avec élégance et professionnalisme.</p>
-                <div class="plan-price">Visibilité Premium</div>
+                <h3 class="plan-name" data-i18n="web.pack1.name">Pack Vitrine</h3>
+                <p class="plan-desc" data-i18n="web.pack1.desc">Présentez votre activité avec élégance et professionnalisme.</p>
+                <div class="plan-price" data-i18n="web.pack1.price">Visibilité Premium</div>
                 <ul class="features">
-                    <li><i class="fas fa-check-circle"></i> Design personnalisé (One-page)</li>
-                    <li><i class="fas fa-check-circle"></i> Optimisation SEO de base</li>
-                    <li><i class="fas fa-check-circle"></i> Formulaire de contact & Map</li>
-                    <li><i class="fas fa-check-circle"></i> Liaison réseaux sociaux</li>
-                    <li><i class="fas fa-check-circle"></i> Site ultra-rapide & Responsive</li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="web.pack1.f1">Design personnalisé (One-page)</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="web.pack1.f2">Optimisation SEO de base</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="web.pack1.f3">Formulaire de contact & Map</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="web.pack1.f4">Liaison réseaux sociaux</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="web.pack1.f5">Site ultra-rapide & Responsive</span></li>
                 </ul>
-                <a href="#contact" class="cta-btn outline">Analyser mon projet</a>
+                <a href="#contact" class="cta-btn outline"><span data-i18n="web.pack1.cta">Analyser mon projet</span></a>
             </div>
-            <!-- PACK BUSINESS -->
             <div class="pricing-card popular">
-                <div class="popular-badge">Recommandé</div>
-                <h3 class="plan-name">Pack Business</h3>
-                <p class="plan-desc">La solution complète pour les entreprises en croissance.</p>
-                <div class="plan-price">Performance Business</div>
+                <div class="popular-badge" data-i18n="web.pack2.badge">Recommandé</div>
+                <h3 class="plan-name" data-i18n="web.pack2.name">Pack Business</h3>
+                <p class="plan-desc" data-i18n="web.pack2.desc">La solution complète pour les entreprises en croissance.</p>
+                <div class="plan-price" data-i18n="web.pack2.price">Performance Business</div>
                 <ul class="features">
-                    <li><i class="fas fa-check-circle"></i> Jusqu'à 5 pages personnalisées</li>
-                    <li><i class="fas fa-check-circle"></i> Blog ou Catalogue produits</li>
-                    <li><i class="fas fa-check-circle"></i> Optimisation SEO avancée</li>
-                    <li><i class="fas fa-check-circle"></i> Installation outils Analytics</li>
-                    <li><i class="fas fa-check-circle"></i> Formation prise en main (1h)</li>
-                </ul> <a href="#contact" class="cta-btn solid">Obtenir une proposition</a>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="web.pack2.f1">Jusqu'à 5 pages personnalisées</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="web.pack2.f2">Blog ou Catalogue produits</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="web.pack2.f3">Optimisation SEO avancée</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="web.pack2.f4">Installation outils Analytics</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="web.pack2.f5">Formation prise en main (1h)</span></li>
+                </ul> <a href="#contact" class="cta-btn solid"><span data-i18n="web.pack2.cta">Obtenir une proposition</span></a>
             </div>
 
-            <!-- PACK SUR-MESURE -->
             <div class="pricing-card">
-                <h3 class="plan-name">Sur-Mesure</h3>
-                <p class="plan-desc">Besoin spécifique : E-commerce, plateforme ou web app.</p>
-                <div class="plan-price">Sur Devis</div>
+                <h3 class="plan-name" data-i18n="web.pack3.name">Sur-Mesure</h3>
+                <p class="plan-desc" data-i18n="web.pack3.desc">Besoin spécifique : E-commerce, plateforme ou web app.</p>
+                <div class="plan-price" data-i18n="web.pack3.price">Sur Devis</div>
                 <ul class="features">
-                    <li><i class="fas fa-check-circle"></i> Boutique en ligne (Stripe/Paypal)</li>
-                    <li><i class="fas fa-check-circle"></i> Fonctionnalités complexes</li>
-                    <li><i class="fas fa-check-circle"></i> Espace membre / Réservations</li>
-                    <li><i class="fas fa-check-circle"></i> Maintenance technique incluse</li>
-                </ul> <a href="#contact" class="cta-btn outline">Demander un devis</a>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="web.pack3.f1">Boutique en ligne (Stripe/Paypal)</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="web.pack3.f2">Fonctionnalités complexes</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="web.pack3.f3">Espace membre / Réservations</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="web.pack3.f4">Maintenance technique incluse</span></li>
+                </ul> <a href="#contact" class="cta-btn outline"><span data-i18n="web.pack3.cta">Demander un devis</span></a>
             </div>
         </div>
 
         <div class="process-section">
-            <h2>Comment nous allons travailler ensemble</h2>
+            <h2 data-i18n="web.process.title">Comment nous allons travailler ensemble</h2>
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h4>Brief & Maquettage</h4>
-                    <p>Nous définissons vos objectifs et la structure visuelle du site.</p>
+                    <h4 data-i18n="web.step1.title">Brief & Maquettage</h4>
+                    <p data-i18n="web.step1.desc">Nous définissons vos objectifs et la structure visuelle du site.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h4>Développement</h4>
-                    <p>Codage du site avec les meilleures technologies pour la vitesse.</p>
+                    <h4 data-i18n="web.step2.title">Développement</h4>
+                    <p data-i18n="web.step2.desc">Codage du site avec les meilleures technologies pour la vitesse.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h4>Optimisation & Mise en ligne</h4>
-                    <p>Tests finaux, SEO et lancement officiel de votre site.</p>
+                    <h4 data-i18n="web.step3.title">Optimisation & Mise en ligne</h4>
+                    <p data-i18n="web.step3.desc">Tests finaux, SEO et lancement officiel de votre site.</p>
                 </div>
             </div>
         </div>
 
-        <!-- SECTION FORMULAIRE DE CONTACT -->
+        <div class="process-section">
+          <h2 data-i18n="web.faq.title">Questions fréquentes</h2>
+          <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+            <details style="background: #fff; border-radius: 12px; padding: 18px; margin-bottom: 12px; border: 1px solid #f0f4f1;">
+              <summary style="font-weight: 600; cursor: pointer; color: #1a1a1a;" data-i18n="web.faq1.q">Mon site sera-t-il référencé sur Google ?</summary>
+              <p style="margin-top: 12px; font-size: 14px; color: #555; line-height: 1.6;" data-i18n="web.faq1.a">Oui, le SEO de base est inclus dans tous les packs (balises, vitesse, structure). Le pack Business inclut un SEO avancé.</p>
+            </details>
+            <details style="background: #fff; border-radius: 12px; padding: 18px; margin-bottom: 12px; border: 1px solid #f0f4f1;">
+              <summary style="font-weight: 600; cursor: pointer; color: #1a1a1a;" data-i18n="web.faq2.q">Puis-je modifier mon site après sa création ?</summary>
+              <p style="margin-top: 12px; font-size: 14px; color: #555; line-height: 1.6;" data-i18n="web.faq2.a">Absolument. Je vous forme à la prise en main (1h offerte dans le pack Business) et reste disponible pour toute modification future.</p>
+            </details>
+            <details style="background: #fff; border-radius: 12px; padding: 18px; margin-bottom: 12px; border: 1px solid #f0f4f1;">
+              <summary style="font-weight: 600; cursor: pointer; color: #1a1a1a;" data-i18n="web.faq3.q">Quels sont les délais de livraison ?</summary>
+              <p style="margin-top: 12px; font-size: 14px; color: #555; line-height: 1.6;" data-i18n="web.faq3.a">Un site vitrine est livré sous 5 à 7 jours ouvrés. Les projets plus complexes (e-commerce, web app) sont discutés ensemble.</p>
+            </details>
+          </div>
+        </div>
+
         <div id="contact" class="contact-section">
-            <h2>Discutons de votre futur site web</h2>
-            <p style="font-size: 14px; color: #666; margin-top: 10px;">Je vous réponds avec une proposition concrète
-                sous 24h.</p>
+            <h2 data-i18n="web.contact.title">Discutons de votre futur site web</h2>
+            <p style="font-size: 14px; color: #666; margin-top: 10px;" data-i18n="web.contact.desc">Je vous réponds avec une proposition concrète sous 24h.</p>
 
             <form id="contact-form" class="contact-form" data-form-type="creation-site">
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="full-name">Nom complet</label>
+                        <label for="full-name" data-i18n="form.name">Nom complet</label>
                         <div class="input-with-icon">
-                            <input type="text" name="name" id="full-name" placeholder="Jean Dupont" required>
+                            <input type="text" name="name" id="full-name" data-i18n-placeholder="form.name_placeholder" placeholder="Jean Dupont" required>
                             <i class="fas fa-user"></i>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="email-address">Adresse Email</label>
+                        <label for="email-address" data-i18n="form.email">Adresse Email</label>
                         <div class="input-with-icon">
-                            <input type="email" name="email" id="email-address" placeholder="jean@exemple.com"
-                                required>
+                            <input type="email" name="email" id="email-address" data-i18n-placeholder="form.email_placeholder" placeholder="jean@exemple.com" required>
                             <i class="fas fa-envelope"></i>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="whatsapp-number">Numéro WhatsApp (optionnel)</label>
+                    <label for="whatsapp-number" data-i18n="form.whatsapp">Numéro WhatsApp (optionnel)</label>
                     <div class="input-with-icon">
-                        <input type="tel" name="whatsapp" id="whatsapp-number" placeholder="+229 01 02 03 04"
+                        <input type="tel" name="whatsapp" id="whatsapp-number" data-i18n-placeholder="form.whatsapp_placeholder" placeholder="+229 01 02 03 04"
                             pattern="^\+?[0-9\s\-]{7,20}$"
                             title="Veuillez entrer un numéro valide (ex: +229 01 02 03 04)">
                         <i class="fab fa-whatsapp"></i>
@@ -156,15 +158,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="message">Quels sont les objectifs de votre site ?</label>
+                    <label for="message" data-i18n="form.message_web">Quels sont les objectifs de votre site ?</label>
                     <div class="input-with-icon">
-                        <textarea name="message" id="message" rows="5" placeholder="Décrivez votre projet ici..."
-                            required></textarea>
+                        <textarea name="message" id="message" rows="5" data-i18n-placeholder="form.message_web_placeholder" placeholder="Décrivez votre projet ici..." required></textarea>
                         <i class="fas fa-comment-dots"></i>
                     </div>
                 </div>
 
-                <!-- Honeypot -->
                 <input type="text" name="_gotcha" style="display:none">
 
                 <div id="form-status"
@@ -173,7 +173,7 @@
 
                 <button type="submit" id="submit-btn" class="cta-btn solid"
                     style="border: none; cursor: pointer; width: 100%;">
-                    Demander mon devis gratuit
+                    <span data-i18n="web.cta_submit">Demander mon devis gratuit</span>
                 </button>
             </form>
         </div>

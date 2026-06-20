@@ -5,149 +5,158 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-MM6839JT');</script>
-
-  <meta name="description"
+  <meta name="description" data-i18n="audit.meta_desc"
     content="Audit stratégique et optimisation de conversion pour votre business en ligne par Giovanny Gandonou.">
-  <title>Audit & Stratégie - Giovanny Gandonou</title>
+  <title data-i18n="audit.title">Audit & Stratégie - Giovanny Gandonou</title>
   <link rel="canonical" href="https://infosweb.io/audit-strategie/audit-strategie.html">
+  <link rel="alternate" href="https://infosweb.io/audit-strategie/audit-strategie.html" hreflang="x-default">
+  <link rel="alternate" href="https://infosweb.io/audit-strategie/audit-strategie.html" hreflang="fr">
+  <link rel="alternate" href="https://infosweb.io/audit-strategie/audit-strategie.html" hreflang="en">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/webp" href="/images/pl.webp">
-  <link rel="apple-touch-icon" href="/images/pl.webp">
+  <link rel="apple-touch-icon" href="/favicon.ico">
+  <script src="/i18n.js" defer></script>
 </head>
 
 <body>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM6839JT" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="container">
     <div class="header">
       <div class="header-nav">
-        <a href="../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour</a>
+        <a href="/" class="back-btn"><i class="fas fa-arrow-left"></i> <span data-i18n="tunnel.back">Retour</span></a>
+        <button class="lang-toggle" style="position:static; margin-left:auto;" onclick="i18n.switch(i18n.lang === 'fr' ? 'en' : 'fr')">EN</button>
       </div>
-      <h1>Audit & Stratégie de Conversion</h1>
-      <p>Identifions les blocages de votre tunnel actuel et transformons votre site en une machine à vendre.</p>
+      <h1 data-i18n="audit.header.title">Audit IA & Stratégie de Conversion</h1>
+      <p data-i18n="audit.header.desc">Identifions les blocages de votre tunnel avec une analyse IA et transformons votre site en une machine à vendre automatisée.</p>
     </div>
 
     <div class="pricing-grid">
-      <!-- AUDIT FLASH -->
       <div class="pricing-card">
-        <h3 class="plan-name">Audit Flash</h3>
-        <p class="plan-desc">Analyse rapide de votre page principale et retours critiques.</p>
-        <div class="plan-price">Analyse Express</div>
+        <h3 class="plan-name" data-i18n="audit.pack1.name">Audit Flash</h3>
+        <p class="plan-desc" data-i18n="audit.pack1.desc">Analyse rapide de votre page principale et retours critiques.</p>
+        <div class="plan-price" data-i18n="audit.pack1.price">Analyse Express</div>
         <ul class="features">
-          <li><i class="fas fa-check-circle"></i> Analyse de l'expérience utilisateur (UX)</li>
-          <li><i class="fas fa-check-circle"></i> Vérification technique (Vitesse/Mobile)</li>
-          <li><i class="fas fa-check-circle"></i> 3 points d'amélioration immédiats</li>
-          <li><i class="fas fa-check-circle"></i> Rapport PDF synthétique</li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="audit.pack1.f1">Analyse de l'expérience utilisateur (UX)</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="audit.pack1.f2">Vérification technique (Vitesse/Mobile)</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="audit.pack1.f3">3 points d'amélioration immédiats</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="audit.pack1.f4">Rapport PDF synthétique</span></li>
         </ul>
-        <a href="#contact" class="cta-btn outline">Commander mon audit</a>
+        <a href="#contact" class="cta-btn outline"><span data-i18n="audit.pack1.cta">Commander mon audit</span></a>
       </div>
 
-      <!-- STRATÉGIE COMPLÈTE -->
       <div class="pricing-card popular">
-        <div class="popular-badge">Recommandé</div>
-        <h3 class="plan-name">Stratégie Complète</h3>
-        <p class="plan-desc">L'étude approfondie de tout votre écosystème de vente.</p>
-        <div class="plan-price">Plan d'Action</div>
+        <div class="popular-badge" data-i18n="audit.pack2.badge">Recommandé</div>
+        <h3 class="plan-name" data-i18n="audit.pack2.name">Stratégie Complète</h3>
+        <p class="plan-desc" data-i18n="audit.pack2.desc">L'étude approfondie de tout votre écosystème de vente.</p>
+        <div class="plan-price" data-i18n="audit.pack2.price">Plan d'Action</div>
         <ul class="features">
-          <li><i class="fas fa-check-circle"></i> Audit complet du tunnel (Ads -> Vente)</li>
-          <li><i class="fas fa-check-circle"></i> Analyse psychologique de l'offre</li>
-          <li><i class="fas fa-check-circle"></i> Copywriting & Recommandations</li>
-          <li><i class="fas fa-check-circle"></i> Appel de consulting (45 min)</li>
-        </ul> <a href="#contact" class="cta-btn solid">Démarrer l'optimisation</a>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="audit.pack2.f1">Audit complet du tunnel (Ads -> Vente)</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="audit.pack2.f2">Analyse psychologique de l'offre</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="audit.pack2.f3">Copywriting & Recommandations</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="audit.pack2.f4">Appel de consulting (45 min)</span></li>
+        </ul> <a href="#contact" class="cta-btn solid"><span data-i18n="audit.pack2.cta">Démarrer l'optimisation</span></a>
       </div>
 
-      <!-- ACCOMPAGNEMENT -->
       <div class="pricing-card">
-        <h3 class="plan-name">Accompagnement</h3>
-        <p class="plan-desc">Suivi mensuel pour une croissance continue et itérative.</p>
-        <div class="plan-price">Croissance Long Terme</div>
+        <h3 class="plan-name" data-i18n="audit.pack3.name">Accompagnement</h3>
+        <p class="plan-desc" data-i18n="audit.pack3.desc">Suivi mensuel pour une croissance continue et itérative.</p>
+        <div class="plan-price" data-i18n="audit.pack3.price">Croissance Long Terme</div>
         <ul class="features">
-          <li><i class="fas fa-check-circle"></i> A/B Testing régulier</li>
-          <li><i class="fas fa-check-circle"></i> Analyse hebdomadaire des metrics</li>
-          <li><i class="fas fa-check-circle"></i> Support prioritaire WhatsApp</li>
-          <li><i class="fas fa-check-circle"></i> Optimisation continue du ROI</li>
-        </ul> <a href="#contact" class="cta-btn outline">Devenir partenaire</a>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="audit.pack3.f1">A/B Testing régulier</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="audit.pack3.f2">Analyse hebdomadaire des metrics</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="audit.pack3.f3">Support prioritaire WhatsApp</span></li>
+          <li><i class="fas fa-check-circle"></i> <span data-i18n="audit.pack3.f4">Optimisation continue du ROI</span></li>
+        </ul> <a href="#contact" class="cta-btn outline"><span data-i18n="audit.pack3.cta">Devenir partenaire</span></a>
       </div>
     </div>
 
     <div class="process-section">
-      <h2>Ma méthodologie d'audit</h2>
+      <h2 data-i18n="audit.process.title">Ma méthodologie d'audit</h2>
       <div class="steps">
         <div class="step">
           <div class="step-number">1</div>
-          <h4>Collecte de Données</h4>
-          <p>Analyse de vos outils (Analytics, Hotjar) pour comprendre le comportement réel.</p>
+          <h4 data-i18n="audit.step1.title">Collecte de Données</h4>
+          <p data-i18n="audit.step1.desc">Analyse de vos outils (Analytics, Hotjar) pour comprendre le comportement réel.</p>
         </div>
         <div class="step">
           <div class="step-number">2</div>
-          <h4>Identification des Fuites</h4>
-          <p>Repérage précis des étapes où vous perdez vos prospects et votre argent.</p>
+          <h4 data-i18n="audit.step2.title">Identification des Fuites</h4>
+          <p data-i18n="audit.step2.desc">Repérage précis des étapes où vous perdez vos prospects et votre argent.</p>
         </div>
         <div class="step">
           <div class="step-number">3</div>
-          <h4>Implémentation</h4>
-          <p>Mise en place des correctifs stratégiques pour booster votre conversion.</p>
+          <h4 data-i18n="audit.step3.title">Implémentation</h4>
+          <p data-i18n="audit.step3.desc">Mise en place des correctifs stratégiques pour booster votre conversion.</p>
         </div>
       </div>
     </div>
 
+    <div class="process-section">
+      <h2 data-i18n="audit.faq.title">Questions fréquentes</h2>
+      <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+        <details style="background: #fff; border-radius: 12px; padding: 18px; margin-bottom: 12px; border: 1px solid #f0f4f1;">
+          <summary style="font-weight: 600; cursor: pointer; color: #1a1a1a;" data-i18n="audit.faq1.q">Dois-je avoir beaucoup de trafic pour un audit ?</summary>
+          <p style="margin-top: 12px; font-size: 14px; color: #555; line-height: 1.6;" data-i18n="audit.faq1.a">Non, l'audit est utile à tout stade. Même avec peu de trafic, on peut optimiser le taux de conversion pour maximiser chaque visiteur.</p>
+        </details>
+        <details style="background: #fff; border-radius: 12px; padding: 18px; margin-bottom: 12px; border: 1px solid #f0f4f1;">
+          <summary style="font-weight: 600; cursor: pointer; color: #1a1a1a;" data-i18n="audit.faq2.q">Comment se déroule l'audit ?</summary>
+          <p style="margin-top: 12px; font-size: 14px; color: #555; line-height: 1.6;" data-i18n="audit.faq2.a">Vous remplissez le formulaire, j'analyse votre tunnel et votre offre, puis vous recevez un rapport détaillé avec des recommandations actionnables.</p>
+        </details>
+        <details style="background: #fff; border-radius: 12px; padding: 18px; margin-bottom: 12px; border: 1px solid #f0f4f1;">
+          <summary style="font-weight: 600; cursor: pointer; color: #1a1a1a;" data-i18n="audit.faq3.q">Quels outils utilisez-vous pour l'analyse ?</summary>
+          <p style="margin-top: 12px; font-size: 14px; color: #555; line-height: 1.6;" data-i18n="audit.faq3.a">Google Analytics, Hotjar (heatmaps), PageSpeed Insights, et mon expérience terrain pour identifier les fuites de conversion.</p>
+        </details>
+      </div>
+    </div>
+
     <div id="contact" class="contact-section">
-      <h2>Obtenez votre diagnostic personnalisé</h2>
-      <p style="font-size: 14px; color: #666; margin-top: 10px;">Indiquez votre site pour que je puisse commencer
-        l'analyse.</p>
+      <h2 data-i18n="audit.contact.title">Obtenez votre diagnostic personnalisé</h2>
+      <p style="font-size: 14px; color: #666; margin-top: 10px;" data-i18n="audit.contact.desc">Indiquez votre site pour que je puisse commencer l'analyse.</p>
 
       <form id="audit-form" class="contact-form" data-form-type="audit">
         <div class="form-row">
           <div class="form-group">
-            <label for="full-name">Nom complet</label>
+            <label for="full-name" data-i18n="form.name">Nom complet</label>
             <div class="input-with-icon">
-              <input type="text" name="name" id="full-name" placeholder="Jean Dupont" required>
+              <input type="text" name="name" id="full-name" data-i18n-placeholder="form.name_placeholder" placeholder="Jean Dupont" required>
               <i class="fas fa-user"></i>
             </div>
           </div>
           <div class="form-group">
-            <label for="email-address">Adresse Email</label>
+            <label for="email-address" data-i18n="form.email">Adresse Email</label>
             <div class="input-with-icon">
-              <input type="email" name="email" id="email-address" placeholder="jean@exemple.com" required>
+              <input type="email" name="email" id="email-address" data-i18n-placeholder="form.email_placeholder" placeholder="jean@exemple.com" required>
               <i class="fas fa-envelope"></i>
             </div>
           </div>
         </div>
 
         <div class="form-group">
-          <label for="website">URL de votre site actuel</label>
+          <label for="website" data-i18n="form.website">URL de votre site actuel</label>
           <div class="input-with-icon">
-            <input type="url" name="website" id="website" placeholder="https://votre-site.com" required>
+            <input type="url" name="website" id="website" data-i18n-placeholder="form.website_placeholder" placeholder="https://votre-site.com" required>
             <i class="fas fa-globe"></i>
           </div>
         </div>
 
         <div class="form-group">
-          <label for="whatsapp-number">WhatsApp (pour le suivi)</label>
+          <label for="whatsapp-number" data-i18n="form.whatsapp">WhatsApp (pour le suivi)</label>
           <div class="input-with-icon">
-            <input type="tel" name="whatsapp" id="whatsapp-number" placeholder="+229...">
+            <input type="tel" name="whatsapp" id="whatsapp-number" data-i18n-placeholder="form.whatsapp_placeholder" placeholder="+229...">
             <i class="fab fa-whatsapp"></i>
           </div>
         </div>
 
         <div class="form-group">
-          <label for="message">Quelles sont vos problématiques de vente ?</label>
+          <label for="message" data-i18n="form.message_audit">Quelles sont vos problématiques de vente ?</label>
           <div class="input-with-icon">
             <textarea name="message" id="message" rows="4"
+              data-i18n-placeholder="form.message_audit_placeholder"
               placeholder="Ex: Trop peu de visites se transforment en clients..." required></textarea>
             <i class="fas fa-comment-dots"></i>
           </div>
@@ -158,7 +167,7 @@
           style="margin-bottom: 15px; font-weight: 500; display: none; text-align: center; font-size: 14px;"></div>
 
         <button type="submit" class="cta-btn solid" style="border: none; cursor: pointer; width: 100%;">
-          Envoyer ma demande d'audit
+          <span data-i18n="audit.cta_submit">Envoyer ma demande d'audit</span>
         </button>
       </form>
     </div>

@@ -5,51 +5,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-MM6839JT');</script>
-  <!-- End Google Tag Manager -->
+  <title data-i18n="merci.title">Message bien reçu ! | Giovanny Gandonou</title>
 
-  <title>Merci pour votre message ! | Giovanny Gandonou</title>
-
-  <!-- SEO : Empêcher l'indexation de cette page de conversion -->
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description"
+  <meta name="description" data-i18n="merci.message"
     content="Votre message a bien été envoyé à Giovanny Gandonou. Je reviendrai vers vous rapidement.">
   <link rel="canonical" href="https://infosweb.io/merci.html">
+  <link rel="alternate" href="https://infosweb.io/merci.html" hreflang="x-default">
+  <link rel="alternate" href="https://infosweb.io/merci.html" hreflang="fr">
+  <link rel="alternate" href="https://infosweb.io/merci.html" hreflang="en">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Message bien reçu | Giovanny Gandonou">
-  <meta property="og:description" content="Merci pour votre confiance. J'analyse votre projet et je vous recontacte.">
+  <meta property="og:title" data-i18n="merci.title" content="Message bien reçu | Giovanny Gandonou">
+  <meta property="og:description" data-i18n="merci.message" content="Merci pour votre confiance. J'analyse votre projet et je vous recontacte.">
   <meta property="og:image" content="https://infosweb.io/images/pl.webp">
-  <meta property="og:image:alt" content="Logo Giovanny Gandonou - Confirmation d'envoi réussie">
+  <meta property="og:image:alt" content="Giovanny Gandonou - Confirmation">
   <meta property="og:url" content="https://infosweb.io/merci.html">
 
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/webp" href="/images/pl.webp">
-  <link rel="apple-touch-icon" href="/images/pl.webp">
+  <link rel="apple-touch-icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="/i18n.js" defer></script>
 </head>
 
 <body>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM6839JT" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="container">
+    <button class="lang-toggle" onclick="i18n.switch(i18n.lang === 'fr' ? 'en' : 'fr')">EN</button>
     <div class="icon"><i class="fas fa-check-circle"></i></div>
-    <h1 class="thank-you-title">Message bien reçu !</h1>
-    <p class="merci-message">Merci de m'avoir contacté. J'analyse les détails de votre projet et je reviens vers vous
-      par e-mail sous 24h à 48h.</p>
-    <a href="/index.html" class="cta-btn solid">Retour à l'accueil</a>
+    <h1 class="thank-you-title" data-i18n="merci.title">Message bien reçu !</h1>
+    <p class="merci-message" data-i18n="merci.message">Merci de m'avoir contacté. J'analyse les détails de votre projet et je reviens vers vous par e-mail sous 24h à 48h.</p>
+    <a href="/" class="cta-btn solid"><span data-i18n="merci.cta">Retour à l'accueil</span></a>
   </div>
   <script src="script.js"></script>
 </body>
