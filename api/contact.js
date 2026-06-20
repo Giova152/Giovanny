@@ -42,6 +42,17 @@ export default async function handler(req, res) {
 
     const isEN = lang === 'en';
 
+    const serviceLabels = isEN ? {
+        'tunnel': 'High-Converting Sales Funnels',
+        'audit': 'Audit & Digital Strategy',
+        'creation-site': 'Website Development'
+    } : {
+        'tunnel': 'Tunnels de vente Haute Conversion',
+        'audit': 'Audit & Stratégie Digitale',
+        'creation-site': 'Développement Site Web'
+    };
+    const serviceLabel = serviceLabels[formType] || (isEN ? 'inquiry' : 'demande');
+
     const texts = {
         notif: {
             subject: isEN ? `[${formType.toUpperCase()}] New message from ${name || 'Unknown'}` : `[${formType.toUpperCase()}] Nouveau message de ${name || 'Inconnu'}`,
@@ -88,17 +99,6 @@ export default async function handler(req, res) {
         await transporter.sendMail(mailOptions);
 
         if (email) {
-            const serviceLabels = isEN ? {
-                'tunnel': 'High-Converting Sales Funnels',
-                'audit': 'Audit & Digital Strategy',
-                'creation-site': 'Website Development'
-            } : {
-                'tunnel': 'Tunnels de vente Haute Conversion',
-                'audit': 'Audit & Stratégie Digitale',
-                'creation-site': 'Développement Site Web'
-            };
-            const serviceLabel = serviceLabels[formType] || (isEN ? 'inquiry' : 'demande');
-
             const confirmOptions = {
                 from: `"Giovanny Gandonou" <${process.env.SMTP_USER}>`,
                 to: email,
