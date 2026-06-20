@@ -83,15 +83,21 @@ export default async function handler(req, res) {
             replyTo: email,
             subject: texts.notif.subject,
             html: `
-                <div style="font-family: sans-serif; color: #333; max-width: 600px; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-                    <h2 style="color: #356646;">${texts.notif.title}</h2>
-                    <p><strong>👤 ${texts.notif.name} :</strong> ${name || texts.notif.not_given}</p>
-                    <p><strong>📧 ${texts.notif.email_label} :</strong> ${email || texts.notif.not_given}</p>
-                    <p><strong>📱 ${texts.notif.whatsapp_label} :</strong> ${whatsapp || texts.notif.not_given}</p>
-                    ${website ? `<p><strong>🌐 ${texts.notif.website_label} :</strong> <a href="${website}">${website}</a></p>` : ''}
-                    <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-                    <p><strong>${texts.notif.message_label} :</strong></p>
-                    <div style="background: #f4f7f5; padding: 15px; border-radius: 8px; white-space: pre-wrap; font-style: italic;">${message || texts.notif.no_message}</div>
+                <div style="font-family: 'Segoe UI', Helvetica, Arial, sans-serif; color: #333; max-width: 560px; margin: 0 auto; background: #ffffff; border: 1px solid #e8edeb; border-radius: 16px; overflow: hidden;">
+                    <div style="background: linear-gradient(135deg, #1a1a2e, #16213e); padding: 28px 24px;">
+                        <h2 style="color: #ffffff; margin: 0; font-size: 20px; font-weight: 600;">${texts.notif.title}</h2>
+                    </div>
+                    <div style="padding: 28px 24px;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6;">
+                            <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">👤 ${texts.notif.name}</td><td style="padding: 8px 0; font-weight: 500;">${name || texts.notif.not_given}</td></tr>
+                            <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">📧 ${texts.notif.email_label}</td><td style="padding: 8px 0; font-weight: 500;">${email || texts.notif.not_given}</td></tr>
+                            <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">📱 ${texts.notif.whatsapp_label}</td><td style="padding: 8px 0; font-weight: 500;">${whatsapp || texts.notif.not_given}</td></tr>
+                            ${website ? `<tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">🌐 ${texts.notif.website_label}</td><td style="padding: 8px 0;"><a href="${website}" style="color: #2d6a4f; font-weight: 500;">${website}</a></td></tr>` : ''}
+                        </table>
+                        <hr style="border: none; border-top: 2px solid #f0f4f1; margin: 20px 0;">
+                        <p style="font-size: 13px; color: #6b7280; margin: 0 0 8px 0; font-weight: 600;">${texts.notif.message_label}</p>
+                        <div style="background: #f8faf9; padding: 16px; border-radius: 10px; white-space: pre-wrap; font-style: italic; color: #374151; font-size: 14px; line-height: 1.6; border-left: 3px solid #2d6a4f;">${message || texts.notif.no_message}</div>
+                    </div>
                 </div>
             `,
         };
@@ -104,13 +110,25 @@ export default async function handler(req, res) {
                 to: email,
                 subject: `${texts.confirm.subject_prefix} ${serviceLabel}`,
                 html: `
-                    <div style="font-family: sans-serif; color: #333; max-width: 600px; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-                        <h2 style="color: #356646;">${texts.confirm.thank_you}</h2>
-                        <p>${texts.confirm.received}</p>
-                        <p>${texts.confirm.reply_time}</p>
-                        <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-                        <p style="font-size: 13px; color: #888;">${texts.confirm.extra_info}</p>
-                        <p style="font-size: 13px; color: #888;">${texts.confirm.goodbye}<br><strong>${texts.confirm.signature}</strong></p>
+                    <div style="font-family: 'Segoe UI', Helvetica, Arial, sans-serif; color: #333; max-width: 560px; margin: 0 auto; background: #ffffff; border: 1px solid #e8edeb; border-radius: 16px; overflow: hidden;">
+                        <div style="background: linear-gradient(135deg, #2d6a4f, #40916c); padding: 32px 28px; text-align: center;">
+                            <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 700; letter-spacing: -0.3px;">${texts.confirm.thank_you}</h1>
+                        </div>
+                        <div style="padding: 32px 28px;">
+                            <p style="font-size: 16px; line-height: 1.6; margin: 0 0 20px 0;">${texts.confirm.received}</p>
+                            <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px 0;">${texts.confirm.reply_time}</p>
+                            <hr style="border: none; border-top: 2px solid #f0f4f1; margin: 0 0 20px 0;">
+                            <p style="font-size: 14px; line-height: 1.5; color: #6b7280; margin: 0 0 6px 0;">${texts.confirm.extra_info}</p>
+                            <p style="font-size: 14px; line-height: 1.5; color: #6b7280; margin: 0;">${texts.confirm.goodbye}<br><strong style="color: #2d6a4f;">${texts.confirm.signature}</strong></p>
+                        </div>
+                        <div style="background: #f8faf9; padding: 20px 28px; text-align: center; border-top: 1px solid #e8edeb;">
+                            <p style="font-size: 12px; color: #9ca3af; margin: 0 0 10px 0;">infosweb.io</p>
+                            <div style="display: flex; justify-content: center; gap: 8px;">
+                                <a href="https://www.facebook.com/Midogiova229" style="display: inline-block; padding: 6px 14px; background: #e8edeb; border-radius: 20px; text-decoration: none; color: #374151; font-size: 12px; font-weight: 500;" target="_blank">Facebook</a>
+                                <a href="https://www.linkedin.com/in/midogiova/" style="display: inline-block; padding: 6px 14px; background: #e8edeb; border-radius: 20px; text-decoration: none; color: #374151; font-size: 12px; font-weight: 500;" target="_blank">LinkedIn</a>
+                                <a href="https://wa.me/2290198054347" style="display: inline-block; padding: 6px 14px; background: #25d366; border-radius: 20px; text-decoration: none; color: #fff; font-size: 12px; font-weight: 500;" target="_blank">WhatsApp</a>
+                            </div>
+                        </div>
                     </div>
                 `,
             };
