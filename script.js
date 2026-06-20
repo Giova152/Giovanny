@@ -133,25 +133,88 @@ document.addEventListener("DOMContentLoaded", function () {
             const website = data.website || "";
             const statusElement = contactForm.querySelector("#form-status");
 
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(clientEmail)) {
+            function showError(msg) {
                 if (statusElement) {
-                    statusElement.innerHTML = "❌ " + i18n.t('form.email_invalid');
+                    statusElement.innerHTML = "❌ " + msg;
                     statusElement.style.color = "#ef4444";
                     statusElement.style.display = "block";
                 }
+            }
+
+            if (clientName.trim().length < 3) {
+                showError(i18n.t('form.name_min'));
                 return;
             }
 
-            const phoneClean = whatsappNumber.replace(/[\s\-]/g, '');
-            const phoneRegex = /^\+?[1-9]\d{6,14}$/;
-            if (whatsappNumber.trim() !== "" && !phoneRegex.test(phoneClean)) {
-                if (statusElement) {
-                    statusElement.innerHTML = "❌ " + i18n.t('form.phone_invalid');
-                    statusElement.style.color = "#ef4444";
-                    statusElement.style.display = "block";
-                }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.([a-zA-Z]{2,})$/;
+            if (!emailRegex.test(clientEmail)) {
+                showError(i18n.t('form.email_invalid'));
                 return;
+            }
+            const commonDomains = ['gmail.com','yahoo.com','hotmail.com','outlook.com','icloud.com','protonmail.com','live.com'];
+            const emailDomain = clientEmail.split('@')[1].toLowerCase();
+            const domainTypos = {'gmai.com':'gmail.com','gmal.com':'gmail.com','gnail.com':'gmail.com','yaho.com':'yahoo.com','hotmal.com':'hotmail.com','outlok.com':'outlook.com','hotmial.com':'hotmail.com','yhoo.com':'yahoo.com','icloud.co':'icloud.com','protonmal.com':'protonmail.com'};
+            if (domainTypos[emailDomain]) {
+                showError("Email : vouliez-vous dire @" + domainTypos[emailDomain] + " ?");
+                return;
+            }
+
+            if (message.trim().length < 100) {
+                showError(i18n.t('form.message_min'));
+                return;
+            }
+
+            const countryPhoneMap = {
+                '+229': {len:8,name:'Bénin'},'+33':{len:9,name:'France'},'+1':{len:10,name:'US/Canada'},
+                '+221':{len:9,name:'Sénégal'},'+225':{len:10,name:'Côte d\'Ivoire'},'+227':{len:8,name:'Niger'},
+                '+226':{len:8,name:'Burkina Faso'},'+228':{len:8,name:'Togo'},'+237':{len:9,name:'Cameroun'},
+                '+243':{len:9,name:'RDC'},'+242':{len:9,name:'Congo'},'+241':{len:8,name:'Gabon'},
+                '+224':{len:9,name:'Guinée'},'+223':{len:8,name:'Mali'},'+44':{len:10,name:'UK'},
+                '+49':{len:11,name:'Germany'},'+32':{len:9,name:'Belgium'},'+41':{len:9,name:'Switzerland'},
+                '+31':{len:9,name:'Netherlands'},'+34':{len:9,name:'Spain'},'+39':{len:10,name:'Italy'},
+                '+351':{len:9,name:'Portugal'},'+46':{len:9,name:'Sweden'},'+47':{len:8,name:'Norway'},
+                '+45':{len:8,name:'Denmark'},'+358':{len:9,name:'Finland'},'+43':{len:10,name:'Austria'},
+                '+7':{len:10,name:'Russia'},'+86':{len:11,name:'China'},'+81':{len:10,name:'Japan'},
+                '+82':{len:10,name:'South Korea'},'+91':{len:10,name:'India'},'+55':{len:11,name:'Brazil'},
+                '+52':{len:10,name:'Mexico'},'+54':{len:10,name:'Argentina'},'+56':{len:9,name:'Chile'},
+                '+57':{len:10,name:'Colombia'},'+51':{len:9,name:'Peru'},'+234':{len:10,name:'Nigeria'},
+                '+233':{len:9,name:'Ghana'},'+254':{len:9,name:'Kenya'},'+212':{len:9,name:'Morocco'},
+                '+216':{len:8,name:'Tunisia'},'+213':{len:9,name:'Algeria'},'+20':{len:10,name:'Egypt'},
+                '+971':{len:9,name:'UAE'},'+966':{len:9,name:'Saudi Arabia'},'+65':{len:8,name:'Singapore'},
+                '+60':{len:9,name:'Malaysia'},'+62':{len:10,name:'Indonesia'},'+63':{len:10,name:'Philippines'},
+                '+84':{len:9,name:'Vietnam'},'+66':{len:9,name:'Thailand'},'+90':{len:10,name:'Turkey'},
+                '+48':{len:9,name:'Poland'},'+36':{len:9,name:'Hungary'},'+420':{len:9,name:'Czech Republic'},
+                '+40':{len:9,name:'Romania'},'+30':{len:10,name:'Greece'},'+353':{len:9,name:'Ireland'},
+                '+27':{len:9,name:'South Africa'},
+            };
+            if (whatsappNumber.trim() !== "") {
+                const phoneClean = whatsappNumber.replace(/[\s\-\(\)]/g, '');
+                const phoneRegex = /^\+[1-9]\d{6,14}$/;
+                if (!phoneRegex.test(phoneClean)) {
+                    showError(i18n.t('form.phone_invalid'));
+                    return;
+                }
+                let matched = false;
+                for (const prefix in countryPhoneMap) {
+                    if (phoneClean.startsWith(prefix)) {
+                        const digits = phoneClean.slice(prefix.length);
+                        const expected = countryPhoneMap[prefix];
+                        if (digits.length === expected.len) {
+                            matched = true;
+                            break;
+                        } else {
+                            showError("Le numéro " + prefix + " doit avoir " + expected.len + " chiffres (ex: " + prefix + " XX XX XX XX)");
+                            return;
+                        }
+                    }
+                }
+                if (!matched) {
+                    const digitsAfterPlus = phoneClean.slice(1).length;
+                    if (digitsAfterPlus < 7 || digitsAfterPlus > 15) {
+                        showError(i18n.t('form.phone_invalid'));
+                        return;
+                    }
+                }
             }
 
             const formType = contactForm.dataset.formType;
