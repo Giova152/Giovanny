@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Empêcher l'indexation des fichiers de documentation technique
+Disallow: /README.md
+
+# Ne pas indexer la page d'erreur
+Disallow: /404.html
+
+# Empêcher l'indexation de la page de confirmation de formulaire
+Disallow: /merci.html
+
+# Optimisation pour les ressources statiques
+Allow: /images/
+
+# Lien vers le plan du site
+Sitemap: https://infosweb.io/sitemap.xml

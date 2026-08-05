@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="error404.title">Page non trouvée | infosweb.io</title>
+  <link rel="alternate" href="https://infosweb.io/404.html" hreflang="x-default">
+  <link rel="alternate" href="https://infosweb.io/404.html" hreflang="fr">
+  <link rel="alternate" href="https://infosweb.io/404.html" hreflang="en">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/webp" href="/images/pl.webp">
+  <link rel="apple-touch-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="style.css">
+  <script src="/i18n.js" defer></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <button class="lang-toggle" onclick="i18n.switch(i18n.lang === 'fr' ? 'en' : 'fr')">EN</button>
+    <h1 class="error-code">404</h1>
+    <p class="error-message" data-i18n="error404.message">Oups ! Le tunnel semble bouché.</p>
+    <a href="/" class="cta-btn solid"><span data-i18n="error404.cta">Retour à l'accueil</span></a>
+  </div>
+
+  <footer>
+    <p>&copy; <span id="current-year"></span> infosweb.io - Tous droits réservés</p>
+    <p style="margin-top: 8px;">
+      <a href="/mentions-legales.html">Mentions Légales</a> | <a href="/politique-de-confidentialite.html">Politique de
+        Confidentialité</a>
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
