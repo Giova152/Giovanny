@@ -1,33 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://infosweb.io/</loc>
-    <lastmod>2026-06-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://infosweb.io/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://infosweb.io/en/"/>
+    <lastmod>2026-08-05</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://infosweb.io/en/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://infosweb.io/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://infosweb.io/en/"/>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://infosweb.io/tunnel-de-vente/tunnel-de-vente.html</loc>
-    <lastmod>2026-06-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://infosweb.io/tunnel-de-vente/tunnel-de-vente.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://infosweb.io/en/tunnel-de-vente/tunnel-de-vente.html"/>
+    <lastmod>2026-08-05</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://infosweb.io/en/tunnel-de-vente/tunnel-de-vente.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://infosweb.io/tunnel-de-vente/tunnel-de-vente.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://infosweb.io/en/tunnel-de-vente/tunnel-de-vente.html"/>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://infosweb.io/creation-site-web/creation-site-web.html</loc>
-    <lastmod>2026-06-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://infosweb.io/creation-site-web/creation-site-web.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://infosweb.io/en/creation-site-web/creation-site-web.html"/>
+    <lastmod>2026-08-05</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://infosweb.io/en/creation-site-web/creation-site-web.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://infosweb.io/creation-site-web/creation-site-web.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://infosweb.io/en/creation-site-web/creation-site-web.html"/>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://infosweb.io/audit-strategie/audit-strategie.html</loc>
-    <lastmod>2026-06-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://infosweb.io/audit-strategie/audit-strategie.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://infosweb.io/en/audit-strategie/audit-strategie.html"/>
+    <lastmod>2026-08-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://infosweb.io/en/audit-strategie/audit-strategie.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://infosweb.io/audit-strategie/audit-strategie.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://infosweb.io/en/audit-strategie/audit-strategie.html"/>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://infosweb.io/mentions-legales.html</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-08-05</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://infosweb.io/politique-de-confidentialite.html</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-08-05</lastmod>
     <priority>0.3</priority>
   </url>
 </urlset>

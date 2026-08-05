@@ -2,6 +2,9 @@
     "name": "giovanny-portfolio",
     "version": "1.0.0",
     "type": "module",
+    "scripts": {
+        "build:en": "node build-en.mjs"
+    },
     "dependencies": {
         "dotenv": "^17.4.2",
         "nodemailer": "^9.0.1"

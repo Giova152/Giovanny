@@ -258,7 +258,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                         contactForm.reset();
                         setTimeout(() => {
-                            window.location.href = "/merci.html";
+                            window.location.href = window.location.pathname.startsWith('/en/') ? '/en/merci.html' : '/merci.html';
                         }, 1500);
                     } else {
                         return response.text().then(text => {
