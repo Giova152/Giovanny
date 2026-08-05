@@ -26,7 +26,13 @@
     function showBanner() {
         const banner = document.createElement('div');
         banner.id = 'cookie-banner';
+        banner.setAttribute('role', 'dialog');
+        banner.setAttribute('aria-label', i18n.t('cookie.title'));
         banner.innerHTML = `
+            <div class="cookie-head">
+                <i class="fas fa-cookie-bite"></i>
+                <span class="cookie-title">${i18n.t('cookie.title')}</span>
+            </div>
             <p>${i18n.t('cookie.text')} <a href="/politique-de-confidentialite.html">${i18n.t('cookie.link')}</a></p>
             <div class="cookie-btns">
                 <button class="cookie-btn decline" id="cookie-decline">${i18n.t('cookie.decline')}</button>
@@ -35,17 +41,22 @@
         `;
         document.body.appendChild(banner);
         banner.style.display = 'flex';
+        banner.querySelector('#cookie-accept').focus();
 
-        document.getElementById('cookie-accept').addEventListener('click', function() {
-            setCookie(COOKIE_NAME, 'accepted', 365);
-            banner.style.display = 'none';
-            loadGTM();
-        });
+        const close = (consent) => {
+            setCookie(COOKIE_NAME, consent, 365);
+            banner.remove();
+            document.removeEventListener('keydown', onKey);
+            if (consent === 'accepted') loadGTM();
+        };
 
-        document.getElementById('cookie-decline').addEventListener('click', function() {
-            setCookie(COOKIE_NAME, 'declined', 365);
-            banner.style.display = 'none';
-        });
+        function onKey(e) {
+            if (e.key === 'Escape') close('declined');
+        }
+
+        banner.querySelector('#cookie-accept').addEventListener('click', () => close('accepted'));
+        banner.querySelector('#cookie-decline').addEventListener('click', () => close('declined'));
+        document.addEventListener('keydown', onKey);
     }
 
     function getStatusText(key) {
@@ -75,9 +86,11 @@
     document.addEventListener('langchange', function() {
         const banner = document.getElementById('cookie-banner');
         if (banner) {
+            banner.setAttribute('aria-label', i18n.t('cookie.title'));
+            banner.querySelector('.cookie-title').textContent = i18n.t('cookie.title');
             banner.querySelector('p').innerHTML = `${i18n.t('cookie.text')} <a href="/politique-de-confidentialite.html">${i18n.t('cookie.link')}</a>`;
-            document.getElementById('cookie-accept').textContent = i18n.t('cookie.accept');
-            document.getElementById('cookie-decline').textContent = i18n.t('cookie.decline');
+            banner.querySelector('#cookie-accept').textContent = i18n.t('cookie.accept');
+            banner.querySelector('#cookie-decline').textContent = i18n.t('cookie.decline');
         }
     });
 })();
