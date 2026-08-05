@@ -23,6 +23,11 @@
         })(window,document,'script','dataLayer',GTM_ID);
     }
 
+    function track(event, params) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event, ...params });
+    }
+
     function showBanner() {
         const banner = document.createElement('div');
         banner.id = 'cookie-banner';
@@ -57,18 +62,6 @@
         banner.querySelector('#cookie-accept').addEventListener('click', () => close('accepted'));
         banner.querySelector('#cookie-decline').addEventListener('click', () => close('declined'));
         document.addEventListener('keydown', onKey);
-    }
-
-    function getStatusText(key) {
-        return i18n.t(key);
-    }
-
-    function applyI18nToFormStatus() {
-        document.querySelectorAll("#form-status").forEach(el => {
-            if (el.dataset.i18nKey) {
-                el.innerHTML = getStatusText(el.dataset.i18nKey);
-            }
-        });
     }
 
     const existing = getCookie(COOKIE_NAME);
@@ -172,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            if (message.trim().length < 100) {
+            if (message.trim().length < 40) {
                 showError(i18n.t('form.message_min'));
                 return;
             }
@@ -258,6 +251,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
                 .then(response => {
                     if (response.ok) {
+                        track('form_submit', { form: formType });
                         if (statusElement) {
                             statusElement.innerHTML = "✅ " + i18n.t('form.success');
                             statusElement.style.color = "#356646";
@@ -413,5 +407,15 @@ document.addEventListener("DOMContentLoaded", function () {
         serviceCards.forEach(card => observer.observe(card));
     } else {
         serviceCards.forEach(card => card.classList.add('visible'));
+    }
+
+    document.addEventListener('click', (e) => {
+        const cta = e.target.closest('.main-cta, .vip-btn, .service-card, .social, .wa-link');
+        if (cta) track('cta_click', { cta: cta.classList[0] });
+    });
+
+    const langToggle = document.querySelector('.lang-toggle');
+    if (langToggle) {
+        langToggle.addEventListener('click', () => track('lang_switch', { lang: i18n.lang === 'fr' ? 'en' : 'fr' }));
     }
 });
