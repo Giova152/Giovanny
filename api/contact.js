@@ -1,5 +1,12 @@
 import nodemailer from 'nodemailer';
 
+const escapeHtml = (value) => String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
 // Configuration du transporteur SMTP (ex: Gmail, Outlook, Hostinger)
 const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -42,6 +49,12 @@ export default async function handler(req, res) {
 
     const isEN = lang === 'en';
 
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeWhatsapp = escapeHtml(whatsapp);
+    const safeWebsite = escapeHtml(website);
+    const safeMessage = escapeHtml(message);
+
     const serviceLabels = isEN ? {
         'tunnel': 'High-Converting Sales Funnels',
         'audit': 'Audit & Digital Strategy',
@@ -55,7 +68,7 @@ export default async function handler(req, res) {
 
     const texts = {
         notif: {
-            subject: isEN ? `[${formType.toUpperCase()}] New message from ${name || 'Unknown'}` : `[${formType.toUpperCase()}] Nouveau message de ${name || 'Inconnu'}`,
+            subject: isEN ? `[${formType.toUpperCase()}] New message from ${safeName || 'Unknown'}` : `[${formType.toUpperCase()}] Nouveau message de ${safeName || 'Inconnu'}`,
             title: isEN ? `New contact: ${formType}` : `Nouveau contact : ${formType}`,
             name: isEN ? 'Name' : 'Nom',
             not_given: isEN ? 'Not provided' : 'Non renseigné',
@@ -67,7 +80,7 @@ export default async function handler(req, res) {
         },
         confirm: {
             subject_prefix: isEN ? 'Confirmation of your' : 'Confirmation de votre',
-            thank_you: isEN ? `Thank you ${name}!` : `Merci ${name} !`,
+            thank_you: isEN ? `Thank you ${safeName}!` : `Merci ${safeName} !`,
             received: isEN ? `I have received your message regarding <strong>${serviceLabel}</strong>.` : `J'ai bien reçu votre message concernant <strong>${serviceLabel}</strong>.`,
             reply_time: isEN ? 'I will get back to you as soon as possible (usually within 24h).' : 'Je vous répondrai dans les plus brefs délais (généralement sous 24h).',
             extra_info: isEN ? 'If you have any additional information, simply reply to this email.' : "Si vous avez des informations supplémentaires à ajouter, répondez simplement à cet email.",
@@ -89,14 +102,14 @@ export default async function handler(req, res) {
                     </div>
                     <div style="padding: 28px 24px;">
                         <table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6;">
-                            <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">👤 ${texts.notif.name}</td><td style="padding: 8px 0; font-weight: 500;">${name || texts.notif.not_given}</td></tr>
-                            <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">📧 ${texts.notif.email_label}</td><td style="padding: 8px 0; font-weight: 500;">${email || texts.notif.not_given}</td></tr>
-                            <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">📱 ${texts.notif.whatsapp_label}</td><td style="padding: 8px 0; font-weight: 500;">${whatsapp || texts.notif.not_given}</td></tr>
-                            ${website ? `<tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">🌐 ${texts.notif.website_label}</td><td style="padding: 8px 0;"><a href="${website}" style="color: #2d6a4f; font-weight: 500;">${website}</a></td></tr>` : ''}
+                            <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">👤 ${texts.notif.name}</td><td style="padding: 8px 0; font-weight: 500;">${safeName || texts.notif.not_given}</td></tr>
+                            <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">📧 ${texts.notif.email_label}</td><td style="padding: 8px 0; font-weight: 500;">${safeEmail || texts.notif.not_given}</td></tr>
+                            <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">📱 ${texts.notif.whatsapp_label}</td><td style="padding: 8px 0; font-weight: 500;">${safeWhatsapp || texts.notif.not_given}</td></tr>
+                            ${safeWebsite ? `<tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">🌐 ${texts.notif.website_label}</td><td style="padding: 8px 0;"><a href="${safeWebsite}" style="color: #2d6a4f; font-weight: 500;">${safeWebsite}</a></td></tr>` : ''}
                         </table>
                         <hr style="border: none; border-top: 2px solid #f0f4f1; margin: 20px 0;">
                         <p style="font-size: 13px; color: #6b7280; margin: 0 0 8px 0; font-weight: 600;">${texts.notif.message_label}</p>
-                        <div style="background: #f8faf9; padding: 16px; border-radius: 10px; white-space: pre-wrap; font-style: italic; color: #374151; font-size: 14px; line-height: 1.6; border-left: 3px solid #2d6a4f;">${message || texts.notif.no_message}</div>
+                        <div style="background: #f8faf9; padding: 16px; border-radius: 10px; white-space: pre-wrap; font-style: italic; color: #374151; font-size: 14px; line-height: 1.6; border-left: 3px solid #2d6a4f;">${safeMessage || texts.notif.no_message}</div>
                     </div>
                 </div>
             `,
