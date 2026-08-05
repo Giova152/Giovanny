@@ -399,4 +399,19 @@ document.addEventListener("DOMContentLoaded", function () {
             autoScrollInterval = setInterval(() => window.moveCarousel(1), 5000);
         });
     }
+
+    const serviceCards = document.querySelectorAll('.service-card');
+    if (serviceCards.length > 0 && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        serviceCards.forEach(card => observer.observe(card));
+    } else {
+        serviceCards.forEach(card => card.classList.add('visible'));
+    }
 });
