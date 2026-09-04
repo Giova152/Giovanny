@@ -97,7 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
     contactLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.href = `mailto:${email}`;
+            const subject = encodeURIComponent(window.i18n && window.i18n.lang === 'en' ? 'Discuss a project' : "Discuter d'un projet");
+            window.location.href = `mailto:${email}?subject=${subject}`;
         });
     });
 
@@ -410,12 +411,34 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     document.addEventListener('click', (e) => {
-        const cta = e.target.closest('.main-cta, .vip-btn, .service-card, .social, .wa-link');
+        const cta = e.target.closest('.main-cta, .service-card, .social, .wa-link');
         if (cta) track('cta_click', { cta: cta.classList[0] });
     });
 
     const langToggle = document.querySelector('.lang-toggle');
     if (langToggle) {
-        langToggle.addEventListener('click', () => track('lang_switch', { lang: i18n.lang === 'fr' ? 'en' : 'fr' }));
+        langToggle.addEventListener('click', (e) => {
+            track('lang_switch', { lang: (typeof i18n !== 'undefined' && i18n.lang === 'fr') ? 'en' : 'fr' });
+            if (window.location.protocol === 'file:') {
+                e.preventDefault();
+                const href = langToggle.getAttribute('href') || '';
+                const path = window.location.pathname;
+                let basePath = path;
+                if (basePath.includes('/en/')) {
+                    basePath = basePath.substring(0, basePath.indexOf('/en/') + 1);
+                } else {
+                    const subdirs = ['/tunnel-de-vente/', '/creation-site-web/', '/audit-strategie/', '/automatisation-crm/'];
+                    const found = subdirs.find(s => basePath.includes(s));
+                    if (found) {
+                        basePath = basePath.substring(0, basePath.indexOf(found) + 1);
+                    } else {
+                        basePath = basePath.substring(0, basePath.lastIndexOf('/') + 1);
+                    }
+                }
+                let target = href.startsWith('/') ? href.slice(1) : href;
+                if (target === '' || target.endsWith('/')) target += 'index.html';
+                window.location.href = basePath + target;
+            }
+        });
     }
 });

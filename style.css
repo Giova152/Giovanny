@@ -208,6 +208,10 @@ h1 {
     box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
 }
 
+.main-cta {
+    margin-bottom: 24px;
+}
+
 .cta-btn.solid:hover,
 .main-cta:hover {
     background: #1ebe5d;
@@ -454,48 +458,6 @@ h1 {
     background: var(--primary);
     color: #fff;
     box-shadow: 0 8px 15px rgba(53, 102, 70, 0.2);
-}
-
-/* VIP Banner */
-.vip-banner {
-    margin: 20px 0 25px;
-    padding: 18px 20px;
-    background: #f5f8f6;
-    border-radius: 16px;
-    border-left: 4px solid var(--primary);
-    box-shadow: 0 4px 15px rgba(53, 102, 70, 0.06);
-}
-
-.vip-label {
-    font-size: 11px;
-    color: var(--primary);
-    margin-bottom: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.vip-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 14px;
-    background: var(--primary);
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    font-size: 14px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: var(--transition);
-    box-shadow: 0 6px 18px rgba(53, 102, 70, 0.2);
-}
-
-.vip-btn:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(53, 102, 70, 0.3);
 }
 
 .tabs {
@@ -862,10 +824,13 @@ h1 {
     transform: scale(0.9);
     opacity: 0.6;
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
     padding: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
     flex-shrink: 0;
+    text-decoration: none;
 }
 
 @media (max-width: 400px) {

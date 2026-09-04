@@ -137,7 +137,7 @@ export default async function handler(req, res) {
                         <div style="background: #f8faf9; padding: 20px 28px; text-align: center; border-top: 1px solid #e8edeb;">
                             <p style="font-size: 12px; color: #9ca3af; margin: 0 0 10px 0;">infosweb.io</p>
                             <div style="display: flex; justify-content: center; gap: 8px;">
-                                <a href="https://www.facebook.com/Midogiova229" style="display: inline-block; padding: 6px 14px; background: #e8edeb; border-radius: 20px; text-decoration: none; color: #374151; font-size: 12px; font-weight: 500;" target="_blank">Facebook</a>
+                                <a href="https://www.instagram.com/midogiova/" style="display: inline-block; padding: 6px 14px; background: #e8edeb; border-radius: 20px; text-decoration: none; color: #374151; font-size: 12px; font-weight: 500;" target="_blank">Instagram</a>
                                 <a href="https://www.linkedin.com/in/midogiova/" style="display: inline-block; padding: 6px 14px; background: #e8edeb; border-radius: 20px; text-decoration: none; color: #374151; font-size: 12px; font-weight: 500;" target="_blank">LinkedIn</a>
                                 <a href="https://wa.me/2290198054347" style="display: inline-block; padding: 6px 14px; background: #25d366; border-radius: 20px; text-decoration: none; color: #fff; font-size: 12px; font-weight: 500;" target="_blank">WhatsApp</a>
                             </div>
