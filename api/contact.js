@@ -35,7 +35,7 @@ export default async function handler(req, res) {
     }
 
     // Extraction des données
-    const { name, email, whatsapp, message, formType = 'contact', website, _gotcha, lang = 'fr' } = body || {};
+    const { name, email, phone, whatsapp, message, formType = 'contact', website, _gotcha, lang = 'fr' } = body || {};
 
     // Sécurité Honeypot
     if (_gotcha) {
@@ -51,7 +51,7 @@ export default async function handler(req, res) {
 
     const safeName = escapeHtml(name);
     const safeEmail = escapeHtml(email);
-    const safeWhatsapp = escapeHtml(whatsapp);
+    const safePhone = escapeHtml(phone || whatsapp);
     const safeWebsite = escapeHtml(website);
     const safeMessage = escapeHtml(message);
 
@@ -73,7 +73,7 @@ export default async function handler(req, res) {
             name: isEN ? 'Name' : 'Nom',
             not_given: isEN ? 'Not provided' : 'Non renseigné',
             email_label: isEN ? 'Client Email' : 'Email du client',
-            whatsapp_label: isEN ? 'WhatsApp' : 'WhatsApp',
+            phone_label: isEN ? 'Phone' : 'Téléphone',
             website_label: isEN ? 'Website to audit' : 'Site à auditer',
             message_label: isEN ? 'Message' : 'Message',
             no_message: isEN ? 'No message provided.' : 'Aucun message fourni.',
@@ -104,7 +104,7 @@ export default async function handler(req, res) {
                         <table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6;">
                             <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">👤 ${texts.notif.name}</td><td style="padding: 8px 0; font-weight: 500;">${safeName || texts.notif.not_given}</td></tr>
                             <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">📧 ${texts.notif.email_label}</td><td style="padding: 8px 0; font-weight: 500;">${safeEmail || texts.notif.not_given}</td></tr>
-                            <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">📱 ${texts.notif.whatsapp_label}</td><td style="padding: 8px 0; font-weight: 500;">${safeWhatsapp || texts.notif.not_given}</td></tr>
+                            <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">📞 ${texts.notif.phone_label}</td><td style="padding: 8px 0; font-weight: 500;">${safePhone || texts.notif.not_given}</td></tr>
                             ${safeWebsite ? `<tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">🌐 ${texts.notif.website_label}</td><td style="padding: 8px 0;"><a href="${safeWebsite}" style="color: #2d6a4f; font-weight: 500;">${safeWebsite}</a></td></tr>` : ''}
                         </table>
                         <hr style="border: none; border-top: 2px solid #f0f4f1; margin: 20px 0;">
@@ -139,7 +139,7 @@ export default async function handler(req, res) {
                             <div style="display: flex; justify-content: center; gap: 8px;">
                                 <a href="https://www.instagram.com/midogiova/" style="display: inline-block; padding: 6px 14px; background: #e8edeb; border-radius: 20px; text-decoration: none; color: #374151; font-size: 12px; font-weight: 500;" target="_blank">Instagram</a>
                                 <a href="https://www.linkedin.com/in/midogiova/" style="display: inline-block; padding: 6px 14px; background: #e8edeb; border-radius: 20px; text-decoration: none; color: #374151; font-size: 12px; font-weight: 500;" target="_blank">LinkedIn</a>
-                                <a href="https://wa.me/2290198054347" style="display: inline-block; padding: 6px 14px; background: #25d366; border-radius: 20px; text-decoration: none; color: #fff; font-size: 12px; font-weight: 500;" target="_blank">WhatsApp</a>
+                                <a href="https://t.me/GiovaOfficiel" style="display: inline-block; padding: 6px 14px; background: #e8edeb; border-radius: 20px; text-decoration: none; color: #374151; font-size: 12px; font-weight: 500;" target="_blank">Telegram</a>
                             </div>
                         </div>
                     </div>

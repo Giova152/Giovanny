@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const clientName = data.name || "";
             const clientEmail = data.email || data._replyto || "";
-            const whatsappNumber = data.whatsapp || "";
+            const phoneNumber = data.phone || data.whatsapp || "";
             const message = data.message || "";
             const website = data.website || "";
             const statusElement = contactForm.querySelector("#form-status");
@@ -194,8 +194,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 '+40':{len:9,name:'Romania'},'+30':{len:10,name:'Greece'},'+353':{len:9,name:'Ireland'},
                 '+27':{len:9,name:'South Africa'},
             };
-            if (whatsappNumber.trim() !== "") {
-                const phoneClean = whatsappNumber.replace(/[\s\-\(\)]/g, '');
+            if (phoneNumber.trim() !== "") {
+                const phoneClean = phoneNumber.replace(/[\s\-\(\)]/g, '');
                 const phoneRegex = /^\+[1-9]\d{6,14}$/;
                 if (!phoneRegex.test(phoneClean)) {
                     showError(i18n.t('form.phone_invalid'));
@@ -237,7 +237,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const payload = {
                 name: clientName,
                 email: clientEmail,
-                whatsapp: whatsappNumber,
+                phone: phoneNumber,
+                whatsapp: phoneNumber,
                 message: message,
                 formType: formType,
                 website: website,
@@ -432,7 +433,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        const cta = e.target.closest('.main-cta, .service-accordion, .social, .wa-link');
+        const cta = e.target.closest('.main-cta, .service-accordion, .social');
         if (cta) track('cta_click', { cta: cta.classList[0] });
     });
 
