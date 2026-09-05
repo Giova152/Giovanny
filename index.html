@@ -111,10 +111,15 @@
         aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
     </div>
 
-    <!-- BOUTON CTA PRINCIPAL : EMAIL DIRECT -->
-    <a href="mailto:midogiova@outlook.com" class="main-cta js-obfuscated-email" aria-label="Discutez de votre projet">
-      <i class="fas fa-envelope"></i> <span data-i18n="cta.email">Discutez de votre projet</span>
-    </a>
+    <!-- ACTIONS PRINCIPALES : RDV & ENVOI DE PROJET -->
+    <div class="hero-cta-group">
+      <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" class="hero-cta-btn rdv" id="heroRdvBtn" aria-label="Prendre rendez-vous">
+        <i class="fas fa-calendar-alt"></i> <span data-i18n="cta.rdv">Prendre rendez-vous</span>
+      </a>
+      <button type="button" class="hero-cta-btn email js-service-cta" data-service-key="contact" data-service="Projet Général" onclick="openServiceModal('contact', 'Projet Général')" aria-label="Envoyer mon projet">
+        <i class="fas fa-paper-plane"></i> <span data-i18n="cta.send_project">Envoyer mon projet</span>
+      </button>
+    </div>
 
 
     <!-- ONGLETS -->

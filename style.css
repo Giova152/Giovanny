@@ -212,6 +212,73 @@ h1 {
     margin-bottom: 24px;
 }
 
+/* Hero Dual CTA Group */
+.hero-cta-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 auto 24px auto;
+    width: 100%;
+}
+
+.hero-cta-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 18px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14.5px;
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.hero-cta-btn.rdv {
+    background: #25D366;
+    color: #ffffff;
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.25);
+}
+
+.hero-cta-btn.rdv:hover {
+    background: #1ebe5d;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(37, 211, 102, 0.35);
+}
+
+.hero-cta-btn.email {
+    background: #ffffff;
+    color: #1a1a2e;
+    border: 1.5px solid #d1d5db;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.hero-cta-btn.email:hover {
+    background: #f8faf9;
+    border-color: #2d6a4f;
+    color: #2d6a4f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(45, 106, 79, 0.15);
+}
+
+@media (max-width: 480px) {
+    .hero-cta-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-cta-btn {
+        width: 100%;
+        padding: 14px;
+    }
+}
+
 .cta-btn.solid:hover,
 .main-cta:hover {
     background: #1ebe5d;
