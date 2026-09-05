@@ -106,7 +106,6 @@ export default async function handler(req, res) {
         const mailOptions = {
             from: `"Contact InfosWeb" <${process.env.SMTP_USER}>`,
             to: receiverEmail,
-            bcc: process.env.SMTP_USER || 'midogiova@gmail.com',
             replyTo: email,
             subject: texts.notif.subject,
             html: `
