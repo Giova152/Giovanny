@@ -78,8 +78,9 @@ export default async function handler(req, res) {
 
     const texts = {
         notif: {
-            subject: isEN ? `[${formType.toUpperCase()}] New message from ${safeName || 'Unknown'}` : `[${formType.toUpperCase()}] Nouveau message de ${safeName || 'Inconnu'}`,
-            title: isEN ? `New contact: ${formType}` : `Nouveau contact : ${formType}`,
+            subject: isEN ? `[${serviceLabel}] New inquiry from ${safeName || 'Unknown'}` : `[${serviceLabel}] Nouveau message de ${safeName || 'Inconnu'}`,
+            title: isEN ? `New Project Inquiry: ${serviceLabel}` : `Nouveau Projet : ${serviceLabel}`,
+            service_label_key: isEN ? 'Requested Service' : 'Service demandé',
             name: isEN ? 'Name' : 'Nom',
             not_given: isEN ? 'Not provided' : 'Non renseigné',
             email_label: isEN ? 'Client Email' : 'Email du client',
@@ -112,10 +113,11 @@ export default async function handler(req, res) {
                     </div>
                     <div style="padding: 28px 24px;">
                         <table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6;">
-                            <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">👤 ${texts.notif.name}</td><td style="padding: 8px 0; font-weight: 500;">${safeName || texts.notif.not_given}</td></tr>
-                            <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">📧 ${texts.notif.email_label}</td><td style="padding: 8px 0; font-weight: 500;">${safeEmail || texts.notif.not_given}</td></tr>
-                            <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">📞 ${texts.notif.phone_label}</td><td style="padding: 8px 0; font-weight: 500;">${safePhone || texts.notif.not_given}</td></tr>
-                            ${safeWebsite ? `<tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">🌐 ${texts.notif.website_label}</td><td style="padding: 8px 0;"><a href="${safeWebsite}" style="color: #2d6a4f; font-weight: 500;">${safeWebsite}</a></td></tr>` : ''}
+                            <tr><td style="padding: 8px 0; color: #6b7280; width: 140px; vertical-align: top;">🎯 ${texts.notif.service_label_key}</td><td style="padding: 8px 0; font-weight: 700; color: #2d6a4f; font-size: 15px;">${serviceLabel}</td></tr>
+                            <tr><td style="padding: 8px 0; color: #6b7280; width: 140px; vertical-align: top;">👤 ${texts.notif.name}</td><td style="padding: 8px 0; font-weight: 500;">${safeName || texts.notif.not_given}</td></tr>
+                            <tr><td style="padding: 8px 0; color: #6b7280; width: 140px; vertical-align: top;">📧 ${texts.notif.email_label}</td><td style="padding: 8px 0; font-weight: 500;">${safeEmail || texts.notif.not_given}</td></tr>
+                            <tr><td style="padding: 8px 0; color: #6b7280; width: 140px; vertical-align: top;">📞 ${texts.notif.phone_label}</td><td style="padding: 8px 0; font-weight: 500;">${safePhone || texts.notif.not_given}</td></tr>
+                            ${safeWebsite ? `<tr><td style="padding: 8px 0; color: #6b7280; width: 140px; vertical-align: top;">🌐 ${texts.notif.website_label}</td><td style="padding: 8px 0;"><a href="${safeWebsite}" style="color: #2d6a4f; font-weight: 500;">${safeWebsite}</a></td></tr>` : ''}
                         </table>
                         <hr style="border: none; border-top: 2px solid #f0f4f1; margin: 20px 0;">
                         <p style="font-size: 13px; color: #6b7280; margin: 0 0 8px 0; font-weight: 600;">${texts.notif.message_label}</p>

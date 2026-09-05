@@ -1233,44 +1233,6 @@ h1 {
     transform: none;
 }
 
-.modal-direct-mail {
-    margin-top: 14px;
-    padding-top: 12px;
-    border-top: 1px solid #f3f4f6;
-    text-align: center;
-    font-size: 12px;
-    color: #6b7280;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-}
-
-.modal-copy-email-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #f3f4f6;
-    border: 1px solid #e5e7eb;
-    border-radius: 20px;
-    padding: 5px 12px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #374151;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.modal-copy-email-btn:hover {
-    background: #e5e7eb;
-    color: #111827;
-}
-
-.modal-copy-email-btn .copy-badge {
-    color: var(--primary);
-    font-size: 11px;
-}
-
 /* Sections Process & Steps */
 .process-section {
     margin-top: 60px;
