@@ -108,7 +108,10 @@ document.addEventListener("DOMContentLoaded", function () {
     contactLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            const subject = encodeURIComponent(window.i18n && window.i18n.lang === 'en' ? 'Discuss a project' : "Discuter d'un projet");
+            const isEN = (window.i18n && window.i18n.lang === 'en') || window.location.pathname.includes('/en/');
+            const defaultSubject = isEN ? 'Project Inquiry' : 'Présentation de projet';
+            const customSubject = isEN ? (link.getAttribute('data-subject-en') || defaultSubject) : (link.getAttribute('data-subject') || defaultSubject);
+            const subject = encodeURIComponent(customSubject);
             window.location.href = `mailto:${email}?subject=${subject}`;
         });
     });
