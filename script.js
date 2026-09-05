@@ -456,6 +456,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    window.copyModalEmail = function (btn) {
+        const email = 'midogiova@outlook.com';
+        const isEN = (typeof i18n !== 'undefined' && i18n.lang === 'en') || window.location.pathname.includes('/en/');
+        const badge = btn.querySelector('.copy-badge');
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(email).then(() => {
+                if (badge) badge.innerHTML = `<i class="fas fa-check"></i> ${isEN ? 'Copied!' : 'Copié !'}`;
+                setTimeout(() => {
+                    if (badge) badge.innerHTML = `<i class="fas fa-copy"></i> ${isEN ? 'Copy' : 'Copier'}`;
+                }, 2500);
+            }).catch(() => {
+                window.location.href = `mailto:${email}`;
+            });
+        } else {
+            window.location.href = `mailto:${email}`;
+        }
+    };
+
     const projectModalForm = document.getElementById('projectModalForm');
     if (projectModalForm) {
         projectModalForm.addEventListener('submit', async function (e) {

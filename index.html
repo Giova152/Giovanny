@@ -111,10 +111,10 @@
         aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
     </div>
 
-    <!-- BOUTON CTA PRINCIPAL : MODALE DE CONTACT -->
-    <button type="button" class="main-cta js-main-contact-cta" onclick="openServiceModal('contact', 'Général')" aria-label="Discutez de votre projet">
+    <!-- BOUTON CTA PRINCIPAL : EMAIL DIRECT -->
+    <a href="mailto:midogiova@outlook.com" class="main-cta js-obfuscated-email" aria-label="Discutez de votre projet">
       <i class="fas fa-envelope"></i> <span data-i18n="cta.email">Discutez de votre projet</span>
-    </button>
+    </a>
 
 
     <!-- ONGLETS -->
@@ -406,6 +406,14 @@
         <button type="submit" id="modalSubmitBtn" class="modal-submit-btn">
           <i class="fas fa-paper-plane"></i> <span data-i18n="modal.submit">Envoyer ma demande</span>
         </button>
+
+        <div class="modal-direct-mail">
+          <span data-i18n="modal.or_email">Ou écrivez directement à</span>
+          <button type="button" class="modal-copy-email-btn" onclick="copyModalEmail(this)" aria-label="Copier l'adresse email">
+            <span class="email-text">midogiova@outlook.com</span>
+            <span class="copy-badge" data-i18n="modal.copy"><i class="fas fa-copy"></i> Copier</span>
+          </button>
+        </div>
       </form>
     </div>
   </div>
