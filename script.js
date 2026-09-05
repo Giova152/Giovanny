@@ -456,24 +456,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    window.copyModalEmail = function (btn) {
-        const email = 'midogiova@outlook.com';
-        const isEN = (typeof i18n !== 'undefined' && i18n.lang === 'en') || window.location.pathname.includes('/en/');
-        const badge = btn.querySelector('.copy-badge');
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(email).then(() => {
-                if (badge) badge.innerHTML = `<i class="fas fa-check"></i> ${isEN ? 'Copied!' : 'Copié !'}`;
-                setTimeout(() => {
-                    if (badge) badge.innerHTML = `<i class="fas fa-copy"></i> ${isEN ? 'Copy' : 'Copier'}`;
-                }, 2500);
-            }).catch(() => {
-                window.location.href = `mailto:${email}`;
-            });
-        } else {
-            window.location.href = `mailto:${email}`;
-        }
-    };
-
     const projectModalForm = document.getElementById('projectModalForm');
     if (projectModalForm) {
         projectModalForm.addEventListener('submit', async function (e) {
@@ -540,39 +522,32 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (res.ok) {
                     if (statusEl) {
                         statusEl.className = 'modal-form-status success';
-                        statusEl.innerHTML = `<i class="fas fa-check-circle"></i> ${isEN ? 'Request received! I will get back to you within 24 hours.' : 'Demande reçue avec succès ! Je reviens vers vous sous 24h.'}`;
+                        statusEl.innerHTML = `<i class="fas fa-check-circle"></i> ${isEN ? 'Request sent successfully! I will get back to you within 24 hours.' : 'Demande envoyée avec succès ! Je reviens vers vous sous 24h.'}`;
                     }
                     track('form_submit', { form: 'service_modal', service: serviceName });
                     projectModalForm.reset();
                     setTimeout(() => {
                         window.closeServiceModal();
-                        if (statusEl) statusEl.style.display = 'none';
+                        if (statusEl) {
+                            statusEl.className = 'modal-form-status';
+                            statusEl.style.display = 'none';
+                            statusEl.textContent = '';
+                        }
                     }, 2800);
                 } else {
-                    throw new Error('API unavailable');
+                    let errMessage = 'Erreur serveur';
+                    try {
+                        const data = await res.json();
+                        if (data && data.error) errMessage = data.error;
+                    } catch (e) {}
+                    throw new Error(errMessage);
                 }
             } catch (err) {
-                // Fallback direct par email (local file:// ou indisponibilité API)
-                const mailSubject = encodeURIComponent(isEN ? `Projet ${serviceName} : ${name}` : `Projet ${serviceName} : ${name}`);
-                const mailBody = encodeURIComponent(
-`${isEN ? 'Full Name' : 'Nom'}: ${name}
-Email: ${email}
-${isEN ? 'Phone' : 'Téléphone'}: ${phone || (isEN ? 'Not specified' : 'Non renseigné')}
-Service: ${serviceName}
-
-${isEN ? 'Project details' : 'Détails du projet'}:
-${message}`
-                );
-                window.location.href = `mailto:midogiova@outlook.com?subject=${mailSubject}&body=${mailBody}`;
-
+                console.error("Erreur d'envoi du formulaire modal:", err);
                 if (statusEl) {
-                    statusEl.className = 'modal-form-status success';
-                    statusEl.innerHTML = `<i class="fas fa-envelope-open-text"></i> ${isEN ? 'Opening your email client...' : 'Ouverture de votre application email...'}`;
+                    statusEl.className = 'modal-form-status error';
+                    statusEl.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${isEN ? 'An error occurred while sending. Please check your connection and try again.' : 'Une erreur est survenue lors de l’envoi. Veuillez vérifier votre connexion et réessayer.'}`;
                 }
-                setTimeout(() => {
-                    window.closeServiceModal();
-                    if (statusEl) statusEl.style.display = 'none';
-                }, 2500);
             } finally {
                 if (submitBtn) {
                     submitBtn.disabled = false;
