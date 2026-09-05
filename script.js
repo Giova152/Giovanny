@@ -549,13 +549,30 @@ document.addEventListener("DOMContentLoaded", function () {
                         if (statusEl) statusEl.style.display = 'none';
                     }, 2800);
                 } else {
-                    throw new Error('Server error');
+                    throw new Error('API unavailable');
                 }
             } catch (err) {
+                // Fallback direct par email (local file:// ou indisponibilité API)
+                const mailSubject = encodeURIComponent(isEN ? `Projet ${serviceName} : ${name}` : `Projet ${serviceName} : ${name}`);
+                const mailBody = encodeURIComponent(
+`${isEN ? 'Full Name' : 'Nom'}: ${name}
+Email: ${email}
+${isEN ? 'Phone' : 'Téléphone'}: ${phone || (isEN ? 'Not specified' : 'Non renseigné')}
+Service: ${serviceName}
+
+${isEN ? 'Project details' : 'Détails du projet'}:
+${message}`
+                );
+                window.location.href = `mailto:midogiova@outlook.com?subject=${mailSubject}&body=${mailBody}`;
+
                 if (statusEl) {
-                    statusEl.className = 'modal-form-status error';
-                    statusEl.textContent = isEN ? 'An error occurred. Please write directly to midogiova@outlook.com' : 'Une erreur est survenue. Veuillez écrire directement à midogiova@outlook.com';
+                    statusEl.className = 'modal-form-status success';
+                    statusEl.innerHTML = `<i class="fas fa-envelope-open-text"></i> ${isEN ? 'Opening your email client...' : 'Ouverture de votre application email...'}`;
                 }
+                setTimeout(() => {
+                    window.closeServiceModal();
+                    if (statusEl) statusEl.style.display = 'none';
+                }, 2500);
             } finally {
                 if (submitBtn) {
                     submitBtn.disabled = false;

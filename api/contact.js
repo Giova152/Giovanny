@@ -100,9 +100,13 @@ export default async function handler(req, res) {
     };
 
     try {
+        const receiverEmail = (process.env.CONTACT_RECEIVER && process.env.CONTACT_RECEIVER !== 'midogiova@gmail.com')
+            ? process.env.CONTACT_RECEIVER
+            : 'midogiova@outlook.com';
+
         const mailOptions = {
             from: `"Contact InfosWeb" <${process.env.SMTP_USER}>`,
-            to: process.env.CONTACT_RECEIVER || process.env.SMTP_USER,
+            to: receiverEmail,
             replyTo: email,
             subject: texts.notif.subject,
             html: `
