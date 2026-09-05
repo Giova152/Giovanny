@@ -112,6 +112,12 @@ export default async function handler(req, res) {
             to: receiverEmail,
             replyTo: email,
             subject: texts.notif.subject,
+            text: `NOUVELLE DEMANDE : ${serviceLabel}\n\nNom: ${safeName || 'Non renseigné'}\nEmail: ${safeEmail || 'Non renseigné'}\nTéléphone: ${safePhone || 'Non renseigné'}\n${safeWebsite ? 'Site: ' + safeWebsite + '\n' : ''}\nMessage:\n${safeMessage || 'Aucun message'}\n\n--- InfosWeb (https://infosweb.io)`,
+            headers: {
+                'X-Priority': '1',
+                'Importance': 'High',
+                'X-Auto-Response-Suppress': 'OOF, AutoReply'
+            },
             html: `
                 <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #333333; max-width: 580px; margin: 0 auto; background: #ffffff; border: 1px solid #e8edeb; border-radius: 16px; overflow: hidden;">
                     <!-- En-tête vert signature harmonisé comme la photo 2 -->
