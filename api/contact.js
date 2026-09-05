@@ -8,15 +8,18 @@ const escapeHtml = (value) => String(value ?? '')
     .replace(/'/g, '&#39;');
 
 // Configuration du transporteur SMTP (ex: Gmail, Outlook, Hostinger)
-const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT) || 587,
-    secure: process.env.SMTP_PORT === "465", // true pour 465, false pour les autres ports
-    auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-    },
-});
+function getTransporter() {
+    const port = Number(process.env.SMTP_PORT) || 587;
+    return nodemailer.createTransport({
+        host: process.env.SMTP_HOST || 'smtp.gmail.com',
+        port: port,
+        secure: port === 465,
+        auth: {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS,
+        },
+    });
+}
 
 export default async function handler(req, res) {
     // On n'autorise que les requêtes POST (celles envoyées par ton formulaire)
@@ -101,6 +104,7 @@ export default async function handler(req, res) {
     };
 
     try {
+        const transporter = getTransporter();
         const receiverEmail = 'midogiova@outlook.com';
 
         const mailOptions = {
