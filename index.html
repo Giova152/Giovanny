@@ -112,7 +112,7 @@
     </div>
 
     <!-- BOUTON CTA PRINCIPAL : EMAIL -->
-    <a href="mailto:midogiova@gmail.com" class="main-cta js-obfuscated-email" aria-label="Discutez de votre projet">
+    <a href="mailto:midogiova@outlook.com" class="main-cta js-obfuscated-email" aria-label="Discutez de votre projet">
       <i class="fas fa-envelope"></i> <span data-i18n="cta.email">Discutez de votre projet</span>
     </a>
 
@@ -175,34 +175,100 @@
 
     <!-- SECTION 2 : SERVICES -->
     <div id="services" class="section">
-      <div class="services-grid">
-        <a href="tunnel-de-vente/tunnel-de-vente.html" class="service-card">
-          <div class="service-icon"><i class="fas fa-filter"></i></div>
-          <h3 data-i18n="service.tunnel">Tunnels de vente Haute Conversion</h3>
-          <p data-i18n="service.tunnel_desc">Création de systèmes d'acquisition automatisés de A à Z.</p>
-          <span class="service-arrow"><i class="fas fa-arrow-right"></i></span>
-        </a>
+      <div class="services-list">
 
-        <a href="creation-site-web/creation-site-web.html" class="service-card">
-          <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
-          <h3 data-i18n="service.web">Développement Site Web</h3>
-          <p data-i18n="service.web_desc">Sites vitrines et e-commerce rapides, responsives et modernes.</p>
-          <span class="service-arrow"><i class="fas fa-arrow-right"></i></span>
-        </a>
+        <!-- Service 1 : Applications Web & Mobile -->
+        <div class="service-accordion" onclick="toggleService(this)">
+          <div class="service-header">
+            <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+            <div class="service-header-text">
+              <h3 data-i18n="service1.title">Applications Web & Mobile</h3>
+              <p data-i18n="service1.desc">Interfaces modernes, performantes et scalables sur mesure.</p>
+            </div>
+            <span class="service-chevron"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="service-body">
+            <ul class="service-features">
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="service1.f1">Front-end moderne et responsive (React, Next.js, Vue)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="service1.f2">Applications mobiles cross-platform & PWA</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="service1.f3">Back-end robuste, bases de données et API REST</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="service1.f4">Optimisation des performances, SEO & sécurité</span></li>
+            </ul>
+            <a href="mailto:midogiova@outlook.com?subject=Projet%20Application%20Web%20%26%20Mobile" class="service-cta js-service-cta" data-service="Web & Mobile">
+              <i class="fas fa-envelope"></i> <span data-i18n="service1.cta">Discuter d'un projet Web / Mobile</span>
+            </a>
+          </div>
+        </div>
 
-        <a href="audit-strategie/audit-strategie.html" class="service-card">
-          <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-          <h3 data-i18n="service.audit">Audit & Stratégie Digitale</h3>
-          <p data-i18n="service.audit_desc">Analyse de tes offres actuelles et plan d'action personnalisé.</p>
-          <span class="service-arrow"><i class="fas fa-arrow-right"></i></span>
-        </a>
+        <!-- Service 2 : Création de SaaS & MVP -->
+        <div class="service-accordion" onclick="toggleService(this)">
+          <div class="service-header">
+            <div class="service-icon"><i class="fas fa-rocket"></i></div>
+            <div class="service-header-text">
+              <h3 data-i18n="service2.title">Création de SaaS & MVP</h3>
+              <p data-i18n="service2.desc">De l'idée au premier utilisateur en 2 à 4 semaines.</p>
+            </div>
+            <span class="service-chevron"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="service-body">
+            <ul class="service-features">
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="service2.f1">Prototypage rapide et validation du concept</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="service2.f2">Authentification, gestion utilisateurs & Dashboard</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="service2.f3">Intégration des paiements récurrents (Stripe)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="service2.f4">Architecture cloud prête pour la croissance</span></li>
+            </ul>
+            <a href="mailto:midogiova@outlook.com?subject=Projet%20SaaS%20%26%20MVP" class="service-cta js-service-cta" data-service="SaaS & MVP">
+              <i class="fas fa-envelope"></i> <span data-i18n="service2.cta">Lancer mon SaaS / MVP</span>
+            </a>
+          </div>
+        </div>
 
-        <a href="https://wa.me/2290198054347" target="_blank" rel="noopener noreferrer" class="service-card">
-          <div class="service-icon"><i class="fas fa-plug"></i></div>
-          <h3 data-i18n="service.auto">Automatisation & CRM</h3>
-          <p data-i18n="service.auto_desc">Connectez vos outils, automatisez vos relances et pilotez vos clients en continu.</p>
-          <span class="service-arrow"><i class="fas fa-arrow-right"></i></span>
-        </a>
+        <!-- Service 3 : Solutions & Intégration IA -->
+        <div class="service-accordion" onclick="toggleService(this)">
+          <div class="service-header">
+            <div class="service-icon"><i class="fas fa-brain"></i></div>
+            <div class="service-header-text">
+              <h3 data-i18n="service3.title">Solutions & Intégration IA</h3>
+              <p data-i18n="service3.desc">Automatisez et enrichissez vos produits grâce à l'IA.</p>
+            </div>
+            <span class="service-chevron"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="service-body">
+            <ul class="service-features">
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="service3.f1">Assistants IA & Chatbots métier sur vos données</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="service3.f2">Intégration des modèles LLM (OpenAI, Gemini, Claude)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="service3.f3">Analyse, classification et traitement intelligent</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="service3.f4">Agents autonomes pour automatiser vos tâches</span></li>
+            </ul>
+            <a href="mailto:midogiova@outlook.com?subject=Projet%20Solution%20IA" class="service-cta js-service-cta" data-service="Solutions IA">
+              <i class="fas fa-envelope"></i> <span data-i18n="service3.cta">Intégrer l'IA dans mon produit</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 4 : Automatisation & Architecture API -->
+        <div class="service-accordion" onclick="toggleService(this)">
+          <div class="service-header">
+            <div class="service-icon"><i class="fas fa-plug"></i></div>
+            <div class="service-header-text">
+              <h3 data-i18n="service4.title">Automatisation & Architecture API</h3>
+              <p data-i18n="service4.desc">Connectez vos outils et supprimez le travail manuel.</p>
+            </div>
+            <span class="service-chevron"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="service-body">
+            <ul class="service-features">
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="service4.f1">Workflows automatisés avec n8n, Make ou Zapier</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="service4.f2">Développement d'API REST et connecteurs sur mesure</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="service4.f3">Synchronisation CRM, paiements et bases de données</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="service4.f4">Monitoring et alertes en temps réel</span></li>
+            </ul>
+            <a href="mailto:midogiova@outlook.com?subject=Projet%20Automatisation%20%26%20API" class="service-cta js-service-cta" data-service="Automatisation & API">
+              <i class="fas fa-envelope"></i> <span data-i18n="service4.cta">Automatiser mes systèmes</span>
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
 

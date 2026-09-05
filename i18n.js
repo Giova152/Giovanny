@@ -41,14 +41,34 @@ const i18n = {
       'gratuit.name': 'La Forge des Entrepreneurs',
       'gratuit.badge': 'OFFERT',
       'gratuit.desc': 'Astuces quotidiennes et ressources offertes pour débuter.',
-      'service.tunnel': 'Tunnels de vente Haute Conversion',
-      'service.tunnel_desc': 'Création de systèmes d\'acquisition automatisés de A à Z.',
-      'service.web': 'Développement Site Web',
-      'service.web_desc': 'Sites vitrines et e-commerce rapides, responsives et modernes.',
-      'service.audit': 'Audit & Stratégie Digitale',
-      'service.audit_desc': 'Analyse de tes offres actuelles et plan d\'action personnalisé.',
-      'service.auto': 'Automatisation & CRM',
-      'service.auto_desc': 'Connectez vos outils, automatisez vos relances et pilotez vos clients en continu.',
+      'service1.title': 'Applications Web & Mobile',
+      'service1.desc': 'Interfaces modernes, performantes et scalables sur mesure.',
+      'service1.f1': 'Front-end moderne et responsive (React, Next.js, Vue)',
+      'service1.f2': 'Applications mobiles cross-platform & PWA',
+      'service1.f3': 'Back-end robuste, bases de données et API REST',
+      'service1.f4': 'Optimisation des performances, SEO & sécurité',
+      'service1.cta': 'Discuter d\'un projet Web / Mobile',
+      'service2.title': 'Création de SaaS & MVP',
+      'service2.desc': 'De l\'idée au premier utilisateur en 2 à 4 semaines.',
+      'service2.f1': 'Prototypage rapide et validation du concept',
+      'service2.f2': 'Authentification, gestion utilisateurs & Dashboard',
+      'service2.f3': 'Intégration des paiements récurrents (Stripe)',
+      'service2.f4': 'Architecture cloud prête pour la croissance',
+      'service2.cta': 'Lancer mon SaaS / MVP',
+      'service3.title': 'Solutions & Intégration IA',
+      'service3.desc': 'Automatisez et enrichissez vos produits grâce à l\'IA.',
+      'service3.f1': 'Assistants IA & Chatbots métier sur vos données',
+      'service3.f2': 'Intégration des modèles LLM (OpenAI, Gemini, Claude)',
+      'service3.f3': 'Analyse, classification et traitement intelligent',
+      'service3.f4': 'Agents autonomes pour automatiser vos tâches',
+      'service3.cta': 'Intégrer l\'IA dans mon produit',
+      'service4.title': 'Automatisation & Architecture API',
+      'service4.desc': 'Connectez vos outils et supprimez le travail manuel.',
+      'service4.f1': 'Workflows automatisés avec n8n, Make ou Zapier',
+      'service4.f2': 'Développement d\'API REST et connecteurs sur mesure',
+      'service4.f3': 'Synchronisation CRM, paiements et bases de données',
+      'service4.f4': 'Monitoring et alertes en temps réel',
+      'service4.cta': 'Automatiser mes systèmes',
       'realisations.title': 'Réalisations',
       'projet1.title': 'Adsafrik',
       'projet1.desc': 'ads-afrik.com',
@@ -332,14 +352,34 @@ const i18n = {
       'gratuit.name': 'The Entrepreneurs\' Forge',
       'gratuit.badge': 'FREE',
       'gratuit.desc': 'Daily tips and free resources to get started.',
-      'service.tunnel': 'High-Converting Sales Funnels',
-      'service.tunnel_desc': 'End-to-end automated acquisition systems.',
-      'service.web': 'Website Development',
-      'service.web_desc': 'Fast, responsive, modern showcase and e-commerce sites.',
-      'service.audit': 'Digital Audit & Strategy',
-      'service.audit_desc': 'Analysis of your current offers and a custom action plan.',
-      'service.auto': 'Automation & CRM',
-      'service.auto_desc': 'Connect your tools, automate follow-ups and manage your clients continuously.',
+      'service1.title': 'Web & Mobile Applications',
+      'service1.desc': 'Modern, high-performance and scalable custom apps.',
+      'service1.f1': 'Modern responsive front-end (React, Next.js, Vue)',
+      'service1.f2': 'Cross-platform mobile apps & PWAs',
+      'service1.f3': 'Robust back-end, databases & REST APIs',
+      'service1.f4': 'Performance optimization, SEO & security',
+      'service1.cta': 'Discuss a Web / Mobile project',
+      'service2.title': 'SaaS & MVP Development',
+      'service2.desc': 'From idea to first active users in 2 to 4 weeks.',
+      'service2.f1': 'Rapid prototyping and concept validation',
+      'service2.f2': 'Authentication, user management & Dashboard',
+      'service2.f3': 'Recurring subscription & Stripe payments',
+      'service2.f4': 'Cloud architecture ready for scale',
+      'service2.cta': 'Launch my SaaS / MVP',
+      'service3.title': 'AI Solutions & Integration',
+      'service3.desc': 'Automate and empower your products with AI.',
+      'service3.f1': 'AI assistants & business chatbots on your data',
+      'service3.f2': 'LLM integration (OpenAI, Gemini, Claude)',
+      'service3.f3': 'Smart analysis, document parsing & categorization',
+      'service3.f4': 'Autonomous agents to automate workflows',
+      'service3.cta': 'Integrate AI into my product',
+      'service4.title': 'Automation & API Architecture',
+      'service4.desc': 'Connect your business tools and eliminate manual tasks.',
+      'service4.f1': 'Automated workflows with n8n, Make or Zapier',
+      'service4.f2': 'REST API development & custom connectors',
+      'service4.f3': 'CRM, payment & database real-time sync',
+      'service4.f4': 'Real-time monitoring, error handling & alerts',
+      'service4.cta': 'Automate my systems',
       'realisations.title': 'Projects',
       'projet1.title': 'Adsafrik',
       'projet1.desc': 'ads-afrik.com',
@@ -540,10 +580,78 @@ const i18n = {
     }
   },
 
-  detect() {
-    const saved = localStorage.getItem('giova_lang');
-    if (saved === 'fr' || saved === 'en') return saved;
+  getSavedLang() {
+    try {
+      if (typeof localStorage !== 'undefined') {
+        const saved = localStorage.getItem('giova_lang');
+        if (saved === 'fr' || saved === 'en') return saved;
+      }
+    } catch (_) {}
     return null;
+  },
+
+  setSavedLang(lang) {
+    try {
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('giova_lang', lang);
+      }
+    } catch (_) {}
+  },
+
+  detectBrowserLang() {
+    if (typeof navigator === 'undefined') return null;
+    const langs = (navigator.languages && navigator.languages.length)
+      ? navigator.languages
+      : [navigator.language || navigator.userLanguage];
+
+    for (const l of langs) {
+      if (!l) continue;
+      const lower = l.toLowerCase();
+      if (lower.startsWith('fr')) return 'fr';
+      if (lower.startsWith('en')) return 'en';
+    }
+
+    const primary = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    if (primary) {
+      return primary.startsWith('fr') ? 'fr' : 'en';
+    }
+    return null;
+  },
+
+  detect() {
+    // 1. Choix explicite sauvegardé
+    const saved = this.getSavedLang();
+    if (saved) return saved;
+
+    // 2. Langue du navigateur (instantané)
+    const browserLang = this.detectBrowserLang();
+    if (browserLang) {
+      this.setSavedLang(browserLang);
+      return browserLang;
+    }
+
+    return null;
+  },
+
+  redirectToEn() {
+    if (typeof window === 'undefined' || window.location.protocol === 'file:') return false;
+    const path = window.location.pathname;
+    if (path.includes('/en/')) return false;
+
+    // Vérifie s'il existe une balise hreflang alternative pour cette page
+    const alternate = document.querySelector('link[rel="alternate"][hreflang="en"]');
+    if (alternate && alternate.getAttribute('href')) {
+      window.location.replace(alternate.getAttribute('href'));
+      return true;
+    }
+
+    // Sinon déduit le chemin en/
+    let target = '/en/';
+    if (path !== '/' && path !== '/index.html' && path !== '') {
+      target = '/en' + (path.startsWith('/') ? path : '/' + path);
+    }
+    window.location.replace(target);
+    return true;
   },
 
   t(key) {
@@ -586,7 +694,7 @@ const i18n = {
   switch(lang) {
     if (lang === this.lang) return;
     this.lang = lang;
-    localStorage.setItem('giova_lang', lang);
+    this.setSavedLang(lang);
     this.apply();
     document.dispatchEvent(new CustomEvent('langchange', { detail: lang }));
   },
@@ -599,24 +707,39 @@ const i18n = {
       this.ready();
       return;
     }
-    const saved = this.detect();
-    if (saved) {
-      this.lang = saved;
-      this.ready();
-    } else {
+
+    const preferred = this.detect();
+    if (preferred === 'en') {
+      this.lang = 'en';
+      if (!this.redirectToEn()) {
+        this.ready();
+      }
+      return;
+    } else if (preferred === 'fr') {
       this.lang = 'fr';
-      fetch('/api/country')
-        .then(r => r.json())
-        .then(data => {
-          const country = (data.country || '').toUpperCase();
-          this.lang = this.francophoneCountries.includes(country) ? 'fr' : 'en';
-          localStorage.setItem('giova_lang', this.lang);
-          this.ready();
-        })
-        .catch(() => {
-          this.ready();
-        });
+      this.ready();
+      return;
     }
+
+    // Fallback : géolocalisation IP si la langue du navigateur est indéterminée
+    this.lang = 'fr';
+    fetch('/api/country')
+      .then(r => r.json())
+      .then(data => {
+        const country = (data.country || '').toUpperCase();
+        this.lang = this.francophoneCountries.includes(country) ? 'fr' : 'en';
+        this.setSavedLang(this.lang);
+        if (this.lang === 'en') {
+          if (!this.redirectToEn()) {
+            this.ready();
+          }
+        } else {
+          this.ready();
+        }
+      })
+      .catch(() => {
+        this.ready();
+      });
   },
 
   ready() {

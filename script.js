@@ -90,7 +90,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     const user = "midogiova";
-    const domain = "gmail.com";
+    const domain = "outlook.com";
     const email = `${user}@${domain}`;
 
     const contactLinks = document.querySelectorAll('[id^="contact-link"], .js-obfuscated-email, .mailto-link');
@@ -360,6 +360,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const section = document.getElementById(tabId);
         if (section) {
             section.classList.add('active');
+            section.querySelectorAll('.service-card').forEach(card => card.classList.add('visible'));
         }
     }
 
@@ -410,15 +411,40 @@ document.addEventListener("DOMContentLoaded", function () {
         serviceCards.forEach(card => card.classList.add('visible'));
     }
 
+    window.toggleService = function (accordionEl) {
+        const wasOpen = accordionEl.classList.contains('open');
+        document.querySelectorAll('.service-accordion').forEach(el => el.classList.remove('open'));
+        if (!wasOpen) {
+            accordionEl.classList.add('open');
+        }
+    };
+
     document.addEventListener('click', (e) => {
-        const cta = e.target.closest('.main-cta, .service-card, .social, .wa-link');
+        const serviceCta = e.target.closest('.js-service-cta');
+        if (serviceCta) {
+            e.preventDefault();
+            e.stopPropagation();
+            const serviceName = serviceCta.dataset.service || 'Projet';
+            const isEN = (typeof i18n !== 'undefined' && i18n.lang === 'en') || window.location.pathname.includes('/en/');
+            const subject = encodeURIComponent(isEN ? `Project Inquiry: ${serviceName}` : `Projet : ${serviceName}`);
+            track('cta_click', { cta: 'service_cta', service: serviceName });
+            window.location.href = `mailto:midogiova@outlook.com?subject=${subject}`;
+            return;
+        }
+
+        const cta = e.target.closest('.main-cta, .service-accordion, .social, .wa-link');
         if (cta) track('cta_click', { cta: cta.classList[0] });
     });
 
     const langToggle = document.querySelector('.lang-toggle');
     if (langToggle) {
         langToggle.addEventListener('click', (e) => {
-            track('lang_switch', { lang: (typeof i18n !== 'undefined' && i18n.lang === 'fr') ? 'en' : 'fr' });
+            const isCurrentlyFr = (typeof i18n !== 'undefined' && i18n.lang === 'fr') || !window.location.pathname.includes('/en/');
+            const targetLang = isCurrentlyFr ? 'en' : 'fr';
+            try {
+                localStorage.setItem('giova_lang', targetLang);
+            } catch (_) {}
+            track('lang_switch', { lang: targetLang });
             if (window.location.protocol === 'file:') {
                 e.preventDefault();
                 const href = langToggle.getAttribute('href') || '';
