@@ -23,10 +23,15 @@
         })(window,document,'script','dataLayer',GTM_ID);
     }
 
-    function track(event, params) {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event, ...params });
-    }
+    window.track = function(event, params) {
+        try {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ event, ...(params || {}) });
+        } catch (e) {
+            console.warn('Tracking error:', e);
+        }
+    };
+    const track = window.track;
 
     function showBanner() {
         const banner = document.createElement('div');
@@ -89,6 +94,12 @@
 })();
 
 document.addEventListener("DOMContentLoaded", function () {
+    const track = (event, params) => {
+        if (typeof window.track === 'function') {
+            window.track(event, params);
+        }
+    };
+
     const user = "midogiova";
     const domain = "outlook.com";
     const email = `${user}@${domain}`;
@@ -296,10 +307,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let currentProject = 0;
     window.moveCarousel = function (direction) {
-        const track = document.getElementById('carouselTrack');
+        const carouselTrack = document.getElementById('carouselTrack');
         const cards = document.querySelectorAll('.project-card');
         const dots = document.querySelectorAll('.dot');
-        if (!track || cards.length === 0) return;
+        if (!carouselTrack || cards.length === 0) return;
 
         currentProject = (currentProject + direction + cards.length) % cards.length;
 
@@ -314,7 +325,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const cardWidth = cards[0].offsetWidth;
         const gap = 15;
         const offset = currentProject * -(cardWidth + gap);
-        track.style.transform = `translate3d(${offset}px, 0, 0)`;
+        carouselTrack.style.transform = `translate3d(${offset}px, 0, 0)`;
     }
 
     const dotsContainer = document.getElementById('carouselDots');
@@ -332,16 +343,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    const track = document.getElementById('carouselTrack');
+    const carouselTrack = document.getElementById('carouselTrack');
     let touchStartX = 0;
     let touchEndX = 0;
 
-    if (track) {
-        track.addEventListener('touchstart', e => {
+    if (carouselTrack) {
+        carouselTrack.addEventListener('touchstart', e => {
             touchStartX = e.changedTouches[0].screenX;
         }, { passive: true });
 
-        track.addEventListener('touchend', e => {
+        carouselTrack.addEventListener('touchend', e => {
             touchEndX = e.changedTouches[0].screenX;
             handleSwipe();
         }, { passive: true });
