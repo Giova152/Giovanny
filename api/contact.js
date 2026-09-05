@@ -78,8 +78,9 @@ export default async function handler(req, res) {
 
     const texts = {
         notif: {
-            subject: isEN ? `[${formType.toUpperCase()}] New message from ${safeName || 'Unknown'}` : `[${formType.toUpperCase()}] Nouveau message de ${safeName || 'Inconnu'}`,
-            title: isEN ? `New contact: ${formType}` : `Nouveau contact : ${formType}`,
+            subject: isEN ? `[${serviceLabel.toUpperCase()}] New project request from ${safeName || 'Unknown'}` : `[${serviceLabel.toUpperCase()}] Nouvelle demande de projet de ${safeName || 'Inconnu'}`,
+            title: isEN ? `New Request: ${serviceLabel}` : `Nouvelle demande : ${serviceLabel}`,
+            service_label: isEN ? 'Service' : 'Service',
             name: isEN ? 'Name' : 'Nom',
             not_given: isEN ? 'Not provided' : 'Non renseigné',
             email_label: isEN ? 'Client Email' : 'Email du client',
@@ -116,6 +117,7 @@ export default async function handler(req, res) {
                     </div>
                     <div style="padding: 28px 24px;">
                         <table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6;">
+                            <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">🚀 ${texts.notif.service_label}</td><td style="padding: 8px 0; font-weight: 600; color: #2d6a4f;">${serviceLabel}</td></tr>
                             <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">👤 ${texts.notif.name}</td><td style="padding: 8px 0; font-weight: 500;">${safeName || texts.notif.not_given}</td></tr>
                             <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">📧 ${texts.notif.email_label}</td><td style="padding: 8px 0; font-weight: 500;">${safeEmail || texts.notif.not_given}</td></tr>
                             <tr><td style="padding: 8px 0; color: #6b7280; width: 120px; vertical-align: top;">📞 ${texts.notif.phone_label}</td><td style="padding: 8px 0; font-weight: 500;">${safePhone || texts.notif.not_given}</td></tr>
