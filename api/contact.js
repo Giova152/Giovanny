@@ -56,13 +56,23 @@ export default async function handler(req, res) {
     const safeMessage = escapeHtml(message);
 
     const serviceLabels = isEN ? {
+        'web-mobile': 'Web & Mobile Applications',
+        'saas-mvp': 'SaaS & MVP Development',
+        'solutions-ia': 'AI Solutions & Integration',
+        'automation-api': 'Automation & API Architecture',
         'tunnel': 'High-Converting Sales Funnels',
         'audit': 'Audit & Digital Strategy',
-        'creation-site': 'Website Development'
+        'creation-site': 'Website Development',
+        'contact': 'General Inquiry'
     } : {
+        'web-mobile': 'Applications Web & Mobile',
+        'saas-mvp': 'Création de SaaS & MVP',
+        'solutions-ia': 'Solutions & Intégration IA',
+        'automation-api': 'Automatisation & Architecture API',
         'tunnel': 'Tunnels de vente Haute Conversion',
         'audit': 'Audit & Stratégie Digitale',
-        'creation-site': 'Développement Site Web'
+        'creation-site': 'Développement Site Web',
+        'contact': 'Prise de contact'
     };
     const serviceLabel = serviceLabels[formType] || (isEN ? 'inquiry' : 'demande');
 

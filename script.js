@@ -420,21 +420,170 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    window.openServiceModal = function (serviceKey, serviceName) {
+        const modal = document.getElementById('projectModal');
+        if (!modal) return;
+        const typeInput = document.getElementById('modalFormType');
+        const nameInput = document.getElementById('modalServiceName');
+        const badge = document.getElementById('modalServiceBadge');
+        if (typeInput) typeInput.value = serviceKey || 'contact';
+        if (nameInput) nameInput.value = serviceName || 'Projet';
+        if (badge) badge.textContent = serviceName || ((typeof i18n !== 'undefined' && i18n.lang === 'en') ? 'Project' : 'Projet');
+
+        const status = document.getElementById('modalFormStatus');
+        if (status) {
+            status.className = 'modal-form-status';
+            status.style.display = 'none';
+            status.textContent = '';
+        }
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => {
+            const firstInput = document.getElementById('modalClientName');
+            if (firstInput) firstInput.focus();
+        }, 100);
+        track('modal_open', { service: serviceName });
+    };
+
+    window.closeServiceModal = function (e) {
+        if (e && e.target && e.target.id !== 'projectModal' && !e.target.classList.contains('project-modal-close')) {
+            return;
+        }
+        const modal = document.getElementById('projectModal');
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+
+    window.copyModalEmail = function (btn) {
+        const email = 'midogiova@outlook.com';
+        const isEN = (typeof i18n !== 'undefined' && i18n.lang === 'en') || window.location.pathname.includes('/en/');
+        const badge = btn.querySelector('.copy-badge');
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(email).then(() => {
+                if (badge) badge.innerHTML = `<i class="fas fa-check"></i> ${isEN ? 'Copied!' : 'Copié !'}`;
+                setTimeout(() => {
+                    if (badge) badge.innerHTML = `<i class="fas fa-copy"></i> ${isEN ? 'Copy' : 'Copier'}`;
+                }, 2500);
+            }).catch(() => {
+                window.location.href = `mailto:${email}`;
+            });
+        } else {
+            window.location.href = `mailto:${email}`;
+        }
+    };
+
+    const projectModalForm = document.getElementById('projectModalForm');
+    if (projectModalForm) {
+        projectModalForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const statusEl = document.getElementById('modalFormStatus');
+            const submitBtn = document.getElementById('modalSubmitBtn');
+            const name = document.getElementById('modalClientName')?.value.trim() || '';
+            const email = document.getElementById('modalClientEmail')?.value.trim() || '';
+            const phone = document.getElementById('modalClientPhone')?.value.trim() || '';
+            const message = document.getElementById('modalClientMessage')?.value.trim() || '';
+            const formType = document.getElementById('modalFormType')?.value || 'contact';
+            const serviceName = document.getElementById('modalServiceName')?.value || 'Projet';
+            const bot = projectModalForm.querySelector('input[name="_gotcha"]')?.value;
+
+            if (bot) return;
+
+            const isEN = (typeof i18n !== 'undefined' && i18n.lang === 'en') || window.location.pathname.includes('/en/');
+
+            if (name.length < 2) {
+                if (statusEl) {
+                    statusEl.className = 'modal-form-status error';
+                    statusEl.textContent = isEN ? 'Please enter your name.' : 'Veuillez entrer votre nom.';
+                }
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                if (statusEl) {
+                    statusEl.className = 'modal-form-status error';
+                    statusEl.textContent = isEN ? 'Please enter a valid email address.' : 'Veuillez entrer une adresse email valide.';
+                }
+                return;
+            }
+
+            if (message.length < 10) {
+                if (statusEl) {
+                    statusEl.className = 'modal-form-status error';
+                    statusEl.textContent = isEN ? 'Please briefly describe your project (at least 10 characters).' : 'Veuillez décrire brièvement votre besoin (au moins 10 caractères).';
+                }
+                return;
+            }
+
+            const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${isEN ? 'Sending...' : 'Envoi en cours...'}`;
+            }
+
+            try {
+                const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        phone,
+                        message,
+                        formType,
+                        lang: isEN ? 'en' : 'fr'
+                    })
+                });
+
+                if (res.ok) {
+                    if (statusEl) {
+                        statusEl.className = 'modal-form-status success';
+                        statusEl.innerHTML = `<i class="fas fa-check-circle"></i> ${isEN ? 'Request received! I will get back to you within 24 hours.' : 'Demande reçue avec succès ! Je reviens vers vous sous 24h.'}`;
+                    }
+                    track('form_submit', { form: 'service_modal', service: serviceName });
+                    projectModalForm.reset();
+                    setTimeout(() => {
+                        window.closeServiceModal();
+                        if (statusEl) statusEl.style.display = 'none';
+                    }, 2800);
+                } else {
+                    throw new Error('Server error');
+                }
+            } catch (err) {
+                if (statusEl) {
+                    statusEl.className = 'modal-form-status error';
+                    statusEl.textContent = isEN ? 'An error occurred. Please write directly to midogiova@outlook.com' : 'Une erreur est survenue. Veuillez écrire directement à midogiova@outlook.com';
+                }
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHtml;
+                }
+            }
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            window.closeServiceModal();
+        }
+    });
+
     document.addEventListener('click', (e) => {
         const serviceCta = e.target.closest('.js-service-cta');
         if (serviceCta) {
             e.preventDefault();
             e.stopPropagation();
+            const serviceKey = serviceCta.dataset.serviceKey || 'contact';
             const serviceName = serviceCta.dataset.service || 'Projet';
-            const isEN = (typeof i18n !== 'undefined' && i18n.lang === 'en') || window.location.pathname.includes('/en/');
-            const subject = encodeURIComponent(isEN ? `Project Inquiry: ${serviceName}` : `Projet : ${serviceName}`);
-            track('cta_click', { cta: 'service_cta', service: serviceName });
-            window.location.href = `mailto:midogiova@outlook.com?subject=${subject}`;
+            openServiceModal(serviceKey, serviceName);
             return;
         }
 
         const cta = e.target.closest('.main-cta, .service-accordion, .social');
-        if (cta) track('cta_click', { cta: cta.classList[0] });
+        if (cta && !cta.classList.contains('js-main-contact-cta')) track('cta_click', { cta: cta.classList[0] });
     });
 
     const langToggle = document.querySelector('.lang-toggle');

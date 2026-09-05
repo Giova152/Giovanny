@@ -111,10 +111,10 @@
         aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
     </div>
 
-    <!-- BOUTON CTA PRINCIPAL : EMAIL -->
-    <a href="mailto:midogiova@outlook.com" class="main-cta js-obfuscated-email" aria-label="Discutez de votre projet">
+    <!-- BOUTON CTA PRINCIPAL : MODALE DE CONTACT -->
+    <button type="button" class="main-cta js-main-contact-cta" onclick="openServiceModal('contact', 'Général')" aria-label="Discutez de votre projet">
       <i class="fas fa-envelope"></i> <span data-i18n="cta.email">Discutez de votre projet</span>
-    </a>
+    </button>
 
 
     <!-- ONGLETS -->
@@ -194,9 +194,9 @@
               <li><i class="fas fa-check-circle"></i> <span data-i18n="service1.f3">Back-end robuste, bases de données et API REST</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-i18n="service1.f4">Optimisation des performances, SEO & sécurité</span></li>
             </ul>
-            <a href="mailto:midogiova@outlook.com?subject=Projet%20Application%20Web%20%26%20Mobile" class="service-cta js-service-cta" data-service="Web & Mobile">
-              <i class="fas fa-envelope"></i> <span data-i18n="service1.cta">Discuter d'un projet Web / Mobile</span>
-            </a>
+            <button type="button" class="service-cta js-service-cta" data-service-key="web-mobile" data-service="Web & Mobile" onclick="event.stopPropagation(); openServiceModal('web-mobile', 'Web & Mobile')">
+              <i class="fas fa-paper-plane"></i> <span data-i18n="service1.cta">Discuter d'un projet Web / Mobile</span>
+            </button>
           </div>
         </div>
 
@@ -217,9 +217,9 @@
               <li><i class="fas fa-check-circle"></i> <span data-i18n="service2.f3">Intégration des paiements récurrents (Stripe)</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-i18n="service2.f4">Architecture cloud prête pour la croissance</span></li>
             </ul>
-            <a href="mailto:midogiova@outlook.com?subject=Projet%20SaaS%20%26%20MVP" class="service-cta js-service-cta" data-service="SaaS & MVP">
-              <i class="fas fa-envelope"></i> <span data-i18n="service2.cta">Lancer mon SaaS / MVP</span>
-            </a>
+            <button type="button" class="service-cta js-service-cta" data-service-key="saas-mvp" data-service="SaaS & MVP" onclick="event.stopPropagation(); openServiceModal('saas-mvp', 'SaaS & MVP')">
+              <i class="fas fa-paper-plane"></i> <span data-i18n="service2.cta">Lancer mon SaaS / MVP</span>
+            </button>
           </div>
         </div>
 
@@ -240,9 +240,9 @@
               <li><i class="fas fa-check-circle"></i> <span data-i18n="service3.f3">Analyse, classification et traitement intelligent</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-i18n="service3.f4">Agents autonomes pour automatiser vos tâches</span></li>
             </ul>
-            <a href="mailto:midogiova@outlook.com?subject=Projet%20Solution%20IA" class="service-cta js-service-cta" data-service="Solutions IA">
-              <i class="fas fa-envelope"></i> <span data-i18n="service3.cta">Intégrer l'IA dans mon produit</span>
-            </a>
+            <button type="button" class="service-cta js-service-cta" data-service-key="solutions-ia" data-service="Solutions IA" onclick="event.stopPropagation(); openServiceModal('solutions-ia', 'Solutions IA')">
+              <i class="fas fa-paper-plane"></i> <span data-i18n="service3.cta">Intégrer l'IA dans mon produit</span>
+            </button>
           </div>
         </div>
 
@@ -263,9 +263,9 @@
               <li><i class="fas fa-check-circle"></i> <span data-i18n="service4.f3">Synchronisation CRM, paiements et bases de données</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-i18n="service4.f4">Monitoring et alertes en temps réel</span></li>
             </ul>
-            <a href="mailto:midogiova@outlook.com?subject=Projet%20Automatisation%20%26%20API" class="service-cta js-service-cta" data-service="Automatisation & API">
-              <i class="fas fa-envelope"></i> <span data-i18n="service4.cta">Automatiser mes systèmes</span>
-            </a>
+            <button type="button" class="service-cta js-service-cta" data-service-key="automation-api" data-service="Automatisation & API" onclick="event.stopPropagation(); openServiceModal('automation-api', 'Automatisation & API')">
+              <i class="fas fa-paper-plane"></i> <span data-i18n="service4.cta">Automatiser mes systèmes</span>
+            </button>
           </div>
         </div>
 
@@ -352,6 +352,72 @@
     <span>&times;</span>
     <img id="imgModal" alt="Certificat d'expertise" onclick="event.stopPropagation()">
   </div>
+
+  <!-- MODAL DE CONTACT SERVICE / DEVIS -->
+  <div id="projectModal" class="project-modal-overlay" onclick="closeServiceModal(event)">
+    <div class="project-modal-card" onclick="event.stopPropagation()">
+      <button type="button" class="project-modal-close" onclick="closeServiceModal()" aria-label="Fermer">&times;</button>
+      
+      <div class="project-modal-header">
+        <div class="project-modal-badge"><i class="fas fa-sparkles"></i> <span id="modalServiceBadge">Web & Mobile</span></div>
+        <h3 id="modalTitle" data-i18n="modal.title">Discutons de votre projet</h3>
+        <p data-i18n="modal.subtitle">Remplissez ce formulaire et je vous réponds sous 24h avec une proposition claire.</p>
+      </div>
+
+      <form id="projectModalForm" novalidate>
+        <input type="hidden" name="formType" id="modalFormType" value="web-mobile">
+        <input type="hidden" name="serviceName" id="modalServiceName" value="Web & Mobile">
+        <input type="text" name="_gotcha" style="display:none !important;" tabindex="-1" autocomplete="off">
+
+        <div class="modal-form-group">
+          <label for="modalClientName" data-i18n="modal.name">Votre Nom complet</label>
+          <div class="modal-input-wrap">
+            <i class="fas fa-user"></i>
+            <input type="text" id="modalClientName" name="name" required placeholder="ex: Thomas Martin" data-i18n-placeholder="modal.name_placeholder">
+          </div>
+        </div>
+
+        <div class="modal-form-group">
+          <label for="modalClientEmail" data-i18n="modal.email">Votre Adresse Email</label>
+          <div class="modal-input-wrap">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="modalClientEmail" name="email" required placeholder="ex: thomas@entreprise.com" data-i18n-placeholder="modal.email_placeholder">
+          </div>
+        </div>
+
+        <div class="modal-form-group">
+          <label for="modalClientPhone" data-i18n="modal.phone">Téléphone (optionnel)</label>
+          <div class="modal-input-wrap">
+            <i class="fas fa-phone"></i>
+            <input type="tel" id="modalClientPhone" name="phone" placeholder="+33..." data-i18n-placeholder="modal.phone_placeholder">
+          </div>
+        </div>
+
+        <div class="modal-form-group">
+          <label for="modalClientMessage" data-i18n="modal.message">Parlez-moi de votre projet</label>
+          <div class="modal-input-wrap">
+            <i class="fas fa-comment-dots"></i>
+            <textarea id="modalClientMessage" name="message" rows="3" required placeholder="Décrivez vos besoins, vos objectifs ou vos délais..." data-i18n-placeholder="modal.message_placeholder"></textarea>
+          </div>
+        </div>
+
+        <div id="modalFormStatus" class="modal-form-status"></div>
+
+        <button type="submit" id="modalSubmitBtn" class="modal-submit-btn">
+          <i class="fas fa-paper-plane"></i> <span data-i18n="modal.submit">Envoyer ma demande</span>
+        </button>
+
+        <div class="modal-direct-mail">
+          <span data-i18n="modal.or_email">Ou écrivez directement à</span>
+          <button type="button" class="modal-copy-email-btn" onclick="copyModalEmail(this)" aria-label="Copier l'adresse email">
+            <span class="email-text">midogiova@outlook.com</span>
+            <span class="copy-badge" data-i18n="modal.copy"><i class="fas fa-copy"></i> Copier</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 
 </body>
