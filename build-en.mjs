@@ -66,9 +66,9 @@ function build(html, { frPath, frUrl, enUrl }) {
   out = out.replace(/href="\.\.\/mentions-legales\.html"/g, 'href="/mentions-legales.html"');
   out = out.replace(/href="\.\.\/politique-de-confidentialite\.html"/g, 'href="/politique-de-confidentialite.html"');
   out = out.replace(/href="\.\.\/style\.css"/g, 'href="../../style.css"');
-  out = out.replace(/src="\.\.\/script\.js"/g, 'src="../../script.js"');
+  out = out.replace(/src="\.\.\/script\.js(\?[^"]*)?"/g, 'src="../../script.js$1"');
   out = out.replace(/href="style\.css"/g, 'href="../style.css"');
-  out = out.replace(/src="script\.js"/g, 'src="../script.js"');
+  out = out.replace(/src="script\.js(\?[^"]*)?"/g, 'src="../script.js$1"');
 
   // 7. URLs absolues vers la version EN (canonical, og:url, JSON-LD url...), hors chemins d'images
   out = out.replace(new RegExp('https://infosweb.io/(?!images/)', 'g'), 'https://infosweb.io/en/');

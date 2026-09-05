@@ -485,28 +485,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const isEN = (typeof i18n !== 'undefined' && i18n.lang === 'en') || window.location.pathname.includes('/en/');
 
+            const showStatus = (type, html) => {
+                if (!statusEl) return;
+                statusEl.className = `modal-form-status ${type}`;
+                statusEl.innerHTML = html;
+                statusEl.style.display = 'block';
+            };
+
             if (name.length < 2) {
-                if (statusEl) {
-                    statusEl.className = 'modal-form-status error';
-                    statusEl.textContent = isEN ? 'Please enter your name.' : 'Veuillez entrer votre nom.';
-                }
+                showStatus('error', isEN ? 'Please enter your name.' : 'Veuillez entrer votre nom.');
                 return;
             }
 
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                if (statusEl) {
-                    statusEl.className = 'modal-form-status error';
-                    statusEl.textContent = isEN ? 'Please enter a valid email address.' : 'Veuillez entrer une adresse email valide.';
-                }
+                showStatus('error', isEN ? 'Please enter a valid email address.' : 'Veuillez entrer une adresse email valide.');
                 return;
             }
 
             if (message.length < 10) {
-                if (statusEl) {
-                    statusEl.className = 'modal-form-status error';
-                    statusEl.textContent = isEN ? 'Please briefly describe your project (at least 10 characters).' : 'Veuillez décrire brièvement votre besoin (au moins 10 caractères).';
-                }
+                showStatus('error', isEN ? 'Please briefly describe your project (at least 10 characters).' : 'Veuillez décrire brièvement votre besoin (au moins 10 caractères).');
                 return;
             }
 
@@ -531,10 +529,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
                 if (res.ok) {
-                    if (statusEl) {
-                        statusEl.className = 'modal-form-status success';
-                        statusEl.innerHTML = `<i class="fas fa-check-circle"></i> ${isEN ? 'Request sent successfully! I will get back to you within 24 hours.' : 'Demande envoyée avec succès ! Je reviens vers vous sous 24h.'}`;
-                    }
+                    showStatus('success', `<i class="fas fa-check-circle"></i> ${isEN ? 'Request sent successfully! I will get back to you within 24 hours.' : 'Demande envoyée avec succès ! Je reviens vers vous sous 24h.'}`);
                     track('form_submit', { form: 'service_modal', service: serviceName });
                     projectModalForm.reset();
                     setTimeout(() => {
@@ -555,10 +550,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             } catch (err) {
                 console.error("Erreur d'envoi du formulaire modal:", err);
-                if (statusEl) {
-                    statusEl.className = 'modal-form-status error';
-                    statusEl.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${isEN ? 'An error occurred while sending. Please check your connection and try again.' : 'Une erreur est survenue lors de l’envoi. Veuillez vérifier votre connexion et réessayer.'}`;
-                }
+                showStatus('error', `<i class="fas fa-exclamation-circle"></i> ${isEN ? 'An error occurred while sending. Please check your connection and try again.' : 'Une erreur est survenue lors de l’envoi. Veuillez vérifier votre connexion et réessayer.'}`);
             } finally {
                 if (submitBtn) {
                     submitBtn.disabled = false;
